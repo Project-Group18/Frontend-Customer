@@ -1,0 +1,10 @@
+.Headercontainer {  
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  
+  .Account {
+    display:flex;
+  
+  }
