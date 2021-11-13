@@ -1,19 +1,25 @@
 import React from 'react'
 import styles from './ObsPopup.module.css'
-
+import { useState } from 'react';
+import LoginPopUp from './Login';
+import RegisterPopUp from './Register';
 function ObsPopup(props) {
+    const [buttonLogin, setButtonLogin] = useState(false);
+    const [buttonRegister, setButtonRegister] = useState(false);
     return (props.trigger) ? (
         <div className={styles.popup}>
             <div className={styles.popup_inner}>
                 <div className= {styles.popup_text_container}>
                 <h1>Please log in or register first!</h1>
                 <br/>
-                <button>Log in</button>
+                <button onClick={() => setButtonLogin(true)} >Log in</button>
                 <br/>
-                <button>Register</button>
+                <button onClick={() => setButtonRegister(true)}>Register</button>
                 </div>
                 <button onClick={() => props.setTrigger(false)}>close button</button>
             </div>
+            <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
+            <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
         </div>
     ) : "";
 }

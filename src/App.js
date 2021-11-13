@@ -7,8 +7,9 @@ function App() {
   const [buttonPopup, setButtonPopup] = useState(false);   
   return (
     <div>
+ 
       <Frontpage/>
-      <button onClick={() => setButtonPopup(true)}>Open obs popup</button>
+    <button onClick={() => setButtonPopup(true)}>Open obs popup</button>
       <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/>
     </div>
   );

@@ -1,8 +1,14 @@
 import React from 'react'
 import styles from './Frontpage.module.css';
-
+import ObsPopup from './ObsPopup';
+import { useState } from 'react';
+import LoginPopUp from './Login';
+import RegisterPopUp from './Register.js';
 
 function Frontpage() {
+  const [buttonPopup, setButtonPopup] = useState(false);
+  const [buttonLogin, setButtonLogin] = useState(false);
+  const [buttonRegister, setButtonRegister] = useState(false);
   return (
     <div className="App">
       <header className={styles.background}>
@@ -12,8 +18,9 @@ function Frontpage() {
         <img className={styles.image} src='olivertwistLogo1.jpg' alt='picture'/>
 
                   <div className={styles.Account}>
-                  <button>Log in</button>
-                  <button>Sign up</button>
+                  <button onClick={() => setButtonLogin(true)}>Log in</button>
+                  
+                  <button onClick={() => setButtonRegister(true)}>Sign up</button>
                   <i className={styles.shoppingcart} class="fas fa-shopping-cart" ></i>
                   </div>
             
@@ -53,13 +60,14 @@ function Frontpage() {
 
         </div>
       </header>
+     
       <footer>
         
         <div className={styles.footer}>
           <p>Terms of service</p>
           <p>Contact us</p>
           <p>About us</p>
-          <p>For restaurants</p>
+          <p className={styles.restaurantLogin} onClick={() => setButtonPopup(true)}>For restaurants</p>
 
           <div className={styles.socialmedia}>
           <i class="fab fa-facebook"></i>
@@ -69,6 +77,9 @@ function Frontpage() {
         </div>
 
       </footer>
+      <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/>
+      <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
+      <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
     </div>
   );
 }
