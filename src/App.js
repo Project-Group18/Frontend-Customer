@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ObsPopup from './components/ObsPopup';
 import { useState } from 'react';
-
+import CustomerMyAccountPage from './components/CustomerMyAccountPage';
 
 function App() {
 const [buttonPopup, setButtonPopup] = useState(false);  
@@ -19,6 +19,14 @@ const orderData = [
     orderId: '', 
     message: '',
     notes: '',
+  }
+];
+const customerInfo = [
+  {
+    cName: 'Twilight Sparkle',
+    cAddress: 'Equestria',
+    cCreditCardNumber: '12345', 
+    cEmail: 'twilight@email.com', 
   }
 ];
 
@@ -34,7 +42,9 @@ const orderData = [
         orderData.map(element => <Managerfrontpage orderNumber= {element.orderNumber} address= {element.address} customerName= {element.customerName} phoneNumber= {element.phoneNumber} orderId= {element.orderId} message= {element.message} notes= {element.notes}/>)
       }
       <Restaurantaccountpage/>
-      
+      {
+      customerInfo.map(element1 =><CustomerMyAccountPage cName={element1.cName} cAddress={element1.cAddress} cCreditCardNumber={element1.cCreditCardNumber} cEmail={element1.cEmail}/>)
+      }
 
     </div>
 
