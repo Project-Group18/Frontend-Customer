@@ -75,3 +75,6 @@
   .categories{
     margin-left: 40px;
   }
+  .restaurantLogin {
+    cursor: pointer;
+  }
