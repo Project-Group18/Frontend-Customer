@@ -7,62 +7,75 @@ import HeaderSignedIn from './components/HeaderSignedIn';
 import SearchbarLocation from './components/SearchbarLocation';
 import Footer from './components/Footer';
 import ObsPopup from './components/ObsPopup';
-import { useState } from 'react';
 import CustomerMyAccountPage from './components/CustomerMyAccountPage';
 import ManagerOrderHistoryPage from './components/ManagerOrderHistoryPage';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 function App() {
-const [buttonPopup, setButtonPopup] = useState(false);  
-const orderData = [
-  {
-    orderNumber: '',
-    address: '',
-    customerName: '', 
-    phoneNumber: '', 
-    orderId: '', 
-    message: '',
-    notes: '',
-  }
-];
-const customerInfo = [
-  {
-    cName: 'Twilight Sparkle',
-    cAddress: 'Equestria',
-    cCreditCardNumber: '12345', 
-    cEmail: 'twilight@email.com', 
-  }
-];
-
-
+  const orderData = [
+    {
+      orderNumber: '',
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    }
+  ];
   return (
     <div>
-      <Header/>
-      <SearchbarLocation/>
-      <Frontpage/>
-      <Footer/>
+<Router>
+        <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
+        <Link to='/'>Logged out</Link>
+        <Link to='/signedin'>Logged in</Link>
+        </div>
+<Routes>
+  <Route path="/"element={<Header/>}/>
+  <Route path="/signedin"element={<HeaderSignedIn/>}/>
+</Routes>
+
+</Router>
+
+
+
+<Router>
+      <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
+        <Link to='/'>Frontpage</Link>
+        <Link to='/restaurantaccountpage'>Restaurant account page</Link>
+        <Link to='/managerfrontpage'>Manager frontpage </Link>
+      </div>
+    <Routes>
+      <Route path="/" element={<Frontpage/>}/>
+        <Route path="/"element={<SearchbarLocation />}/>
+      <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
+      <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
+
+    </Routes>
+   </Router>
+
       
-      <HeaderSignedIn/>
-      <SearchbarLocation/>
-      <Frontpage/>
-      <Footer/>
+     <Footer/>
+       
       
-        <button onClick={() => setButtonPopup(true)}>Open obs popup</button>
-        <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/>
+     
+      
+        {/* <button onClick={() => setButtonPopup(true)}>Open obs popup</button> */}
+       {/*  <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/> */}
       {
-        orderData.map(element => <Managerfrontpage orderNumber= {element.orderNumber} address= {element.address} customerName= {element.customerName} phoneNumber= {element.phoneNumber} orderId= {element.orderId} message= {element.message} notes= {element.notes}/>)
-      }
-      <Restaurantaccountpage/>
+        
+      } 
+     {/*  <Restaurantaccountpage/> */}
       
-      <HeaderSignedIn/>
-      {
+    {/*   <HeaderSignedIn/> */}
+      {/* {
       customerInfo.map(element1 =><CustomerMyAccountPage cName={element1.cName} cAddress={element1.cAddress} cCreditCardNumber={element1.cCreditCardNumber} cEmail={element1.cEmail} />)
-      }
-      <Footer/>
-      <HeaderSignedIn/>
-      {
+      } */}
+      {/* <HeaderSignedIn/> */}
+      {/* {
         orderData.map(element => <ManagerOrderHistoryPage orderNumber= {element.orderNumber} address= {element.address} customerName= {element.customerName} phoneNumber= {element.phoneNumber} orderId= {element.orderId} message= {element.message} notes= {element.notes}/>)
-      }
-      <Footer/>
+      } */}
+     
     </div>
 
   
