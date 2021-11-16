@@ -16,7 +16,7 @@ function ObsPopup(props) {
                 <br/>
                 <button onClick={() => setButtonRegister(true)}>Register</button>
                 </div>
-                <button onClick={() => props.setTrigger(false)}>close button</button>
+                <button className= {styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button>
             </div>
             <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
             <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>

@@ -3,9 +3,11 @@ import styles from './Header.module.css'
 import { useState } from 'react';
 import LoginPopUp from './Login';
 import RegisterPopUp from './Register.js';
+import ShoppingCartPopUp from './ShoppingCart';
 
 export default function Header() {
-    
+
+    const [buttonShoppingCart, setButtonShoppingCart] = useState(false);
     const [buttonLogin, setButtonLogin] = useState(false);
     const [buttonRegister, setButtonRegister] = useState(false);
     return (
@@ -17,7 +19,7 @@ export default function Header() {
                   <button onClick={() => setButtonLogin(true)}>Log in</button>
                   
                   <button onClick={() => setButtonRegister(true)}>Sign up</button>
-                  <i className={styles.shoppingcart} class="fas fa-shopping-cart" ></i>
+                  <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i>
                   </div>
             
         </div>
@@ -39,6 +41,7 @@ export default function Header() {
             </div>
             <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
             <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
+            <ShoppingCartPopUp trigger={buttonShoppingCart} setTrigger ={setButtonShoppingCart}/>
         </div>
     )
 }

@@ -68,7 +68,7 @@ function Managerfrontpage(props) {
             <p>Terms of service</p>
             <p>Contact us</p>
             <p>About us</p>
-            <p>For restaurants</p>
+            <p className={styles.restaurantLogin}>For restaurants</p>
   
             <div className={styles.socialmedia}>
             <i class="fab fa-facebook"></i>

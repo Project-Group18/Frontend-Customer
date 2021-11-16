@@ -14,6 +14,9 @@ function Frontpage() {
       <header className={styles.background}>
 
       <div>
+        
+            
+        </div>
             <div className={styles.onSale}>
             <img className={styles.ufo} src='ufo2.png' alt='picture'/>
             </div>
@@ -31,9 +34,29 @@ function Frontpage() {
             </div>
          
 
-        </div>
+      
       </header>
-    </div>
+     
+      <footer>
+        
+        <div className={styles.footer}>
+          <p>Terms of service</p>
+          <p>Contact us</p>
+          <p>About us</p>
+          <p className={styles.restaurantLogin} onClick={() => setButtonPopup(true)}>For restaurants</p>
+
+          <div className={styles.socialmedia}>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter-square"></i>
+          <i class="fab fa-instagram-square"></i>
+          </div>
+        </div>
+
+      </footer>
+      <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/>
+      <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
+      <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
+      </div>
   );
 }
 

@@ -16,10 +16,11 @@ function RegisterPopUp(props) {
                     <input type="text" placeholder="Email*"></input>
                     <p>Address</p>
                     <input type="text" placeholder="Address*"></input>
+                    <br></br>
                     
                     <button className={styles.registerButton}>Register now!</button>
                 </div>
-                <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>X</button>
+                <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button>
             </div>
         </div>
     ) : "";
