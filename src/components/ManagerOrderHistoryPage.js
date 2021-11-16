@@ -1,24 +1,10 @@
 import React from 'react'
-import styles from './CustomerMyAccountPage.module.css';
-import { useState } from 'react';
+import styles from './ManagerOrderHistoryPage.module.css';
 
-export default function CustomerMyAccountPage(props) {
-    const [setEditProfile] = useState(false);
+export default function ManagerOrderHistoryPage(props) {
     return (
         <div className="App">
         
-
-        <div class={styles.heading}><b>My Profile</b></div>
-        
-        <div class={styles.myaccountinfo}>
-        
-        <div>Name:</div><input className={styles.searchbar} type="name" placeholder= {props.cName}></input> 
-        <div>Default Address:</div><input className={styles.searchbar} type="address" placeholder= {props.cAddress}></input> 
-        <div>Credit card number:</div><input className={styles.searchbar} type="creditcard" placeholder= {props.cCreditCardNumber}></input> 
-        <div>Email:</div><input className={styles.searchbar} type="email" placeholder= {props.cEmail}></input> 
-        
-        </div>
-        <button onClick={() => setEditProfile(true)}class={styles.heading}>Edit Profile</button>
         <div class={styles.heading}><b>Order History</b></div>
        
         <div> 
@@ -79,7 +65,6 @@ export default function CustomerMyAccountPage(props) {
               </div>
               </div>
               </div>
-
         </div>
     )
 }
