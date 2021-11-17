@@ -1,13 +1,11 @@
 import React from 'react'
 import styles from './Header.module.css'
-import { useState } from 'react';
-import LoginPopUp from './Login';
-import RegisterPopUp from './Register.js';
+
+
 
 export default function SearchbarLocation() {
     
-    const [buttonLogin, setButtonLogin] = useState(false);
-    const [buttonRegister, setButtonRegister] = useState(false);
+    
     return (
         <div>
             <div className={styles.search}> 
@@ -24,8 +22,6 @@ export default function SearchbarLocation() {
                 </select>
               
             </div>
-            <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
-            <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
         </div>
     )
 }

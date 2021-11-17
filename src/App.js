@@ -23,6 +23,16 @@ function App() {
       notes: '',
     }
   ];
+  const customerInfo = [
+    {
+      cName: 'Twilight Sparkle',
+      cAddress: 'Equestria',
+      cCreditCardNumber: '12345', 
+      cEmail: 'twilight@email.com', 
+    }
+  ];
+
+
   return (
     <div>
 <Router>
@@ -44,13 +54,16 @@ function App() {
         <Link to='/'>Frontpage</Link>
         <Link to='/restaurantaccountpage'>Restaurant account page</Link>
         <Link to='/managerfrontpage'>Manager frontpage </Link>
+        <Link to='/managerorderhistorypage'>Manager Order History</Link>
+        <Link to='/customermyaccountpage'>Customer Account Page</Link>
       </div>
     <Routes>
       <Route path="/" element={<Frontpage/>}/>
         <Route path="/"element={<SearchbarLocation />}/>
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
-
+      <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
+      <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
     </Routes>
    </Router>
 
@@ -62,20 +75,8 @@ function App() {
       
         {/* <button onClick={() => setButtonPopup(true)}>Open obs popup</button> */}
        {/*  <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/> */}
-      {
-        
-      } 
-     {/*  <Restaurantaccountpage/> */}
+
       
-    {/*   <HeaderSignedIn/> */}
-      {/* {
-      customerInfo.map(element1 =><CustomerMyAccountPage cName={element1.cName} cAddress={element1.cAddress} cCreditCardNumber={element1.cCreditCardNumber} cEmail={element1.cEmail} />)
-      } */}
-      {/* <HeaderSignedIn/> */}
-      {/* {
-        orderData.map(element => <ManagerOrderHistoryPage orderNumber= {element.orderNumber} address= {element.address} customerName= {element.customerName} phoneNumber= {element.phoneNumber} orderId= {element.orderId} message= {element.message} notes= {element.notes}/>)
-      } */}
-     
     </div>
 
   
