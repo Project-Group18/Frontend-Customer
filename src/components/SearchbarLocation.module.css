@@ -3,28 +3,6 @@
     font-size: calc(10px + 2vmin);
   }
 
-  .Headercontainer { 
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-between;
-  
-  }
-  .image{
-    border-radius: 14px;
-  }
-
-
-  .Account {
-    display:flex;
-    justify-content:space-around;
-    height: 30px;
-    width: auto;
-  }
-
-  .Account> * {
-    margin-right: 15px;
-  }
-
   .search{
     background-color: #FFD8B4;
     margin-top: 10px;
