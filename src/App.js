@@ -37,17 +37,15 @@ function App() {
 
 </Router>
 
-
-
 <Router>
       <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
-        <Link to='/'>Frontpage</Link>
+        <Link to='/'>Home</Link>
         <Link to='/restaurantaccountpage'>Restaurant account page</Link>
         <Link to='/managerfrontpage'>Manager frontpage </Link>
       </div>
     <Routes>
-      <Route path="/" element={<Frontpage/>}/>
-        <Route path="/"element={<SearchbarLocation />}/>
+      <Route path="/" element={<SearchbarLocation/>}/>
+        <Route path=":frontpage" element={<Frontpage/>}/>
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
 

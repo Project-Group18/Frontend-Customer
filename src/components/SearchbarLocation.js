@@ -3,7 +3,7 @@ import styles from './Header.module.css'
 import { useState } from 'react';
 import LoginPopUp from './Login';
 import RegisterPopUp from './Register.js';
-
+import {Outlet} from 'react-router-dom';
 export default function SearchbarLocation() {
     
     const [buttonLogin, setButtonLogin] = useState(false);
@@ -26,6 +26,7 @@ export default function SearchbarLocation() {
             </div>
             <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
             <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
+            <Outlet/>
         </div>
     )
 }
