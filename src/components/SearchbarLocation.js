@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './Header.module.css'
-
-
-
+import { useState } from 'react';
+import LoginPopUp from './Login';
+import RegisterPopUp from './Register.js';
+import {Outlet} from 'react-router-dom';
 export default function SearchbarLocation() {
     
     
@@ -22,6 +23,9 @@ export default function SearchbarLocation() {
                 </select>
               
             </div>
+            <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
+            <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
+            <Outlet/>
         </div>
     )
 }
