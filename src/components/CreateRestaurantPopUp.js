@@ -23,8 +23,12 @@ function CreateRestaurantPopUp(props) {
                         <option>€€€</option>
                         <option>€€€€</option>
                     </select>
-                    
-                    <button className={styles.loginButton}>Create now</button>
+                    <div>
+                        <p className={styles.restaurantPic}>Picture of the restaurant</p>
+                        <input type="file" placeholder="Picture"/>
+                    </div>
+
+                    <button className={styles.createButton}>Create now</button>
                 </div>
                 <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button> 
             </div>

@@ -16,8 +16,8 @@
     border-radius: 15px;
     left: 25%;
     right: 25%;
-    top: 15%;
-    bottom: 20%;
+    top: 10%;
+    bottom: 15%;
     margin: auto;
     background: #FFD8B4;
   }
@@ -31,18 +31,16 @@
     align-items: center;
     flex:2;
     padding-top: 10px;
-    
   }
-  .loginButton {
-    display: flex;
-    float: right;
+  .createButton{
+    margin-top: 10px;
   }
-  .forgotPassword:hover {
-    cursor: pointer;
-    background-color: #fff;
-  }
+
   .closeButton{
     margin-top: 15px;
     margin-right: 20px;
     font-size: 24px;
+  }
+  .restaurantPic{
+      margin-left: 50px;
   }
