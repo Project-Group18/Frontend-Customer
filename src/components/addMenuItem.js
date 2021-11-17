@@ -15,12 +15,22 @@ function AddMenuItemPopUp(props) {
                   <option>Coconut</option>
                   <option>Mango</option>
                 </select>
-                <p> Name of the dish </p>
-                <input type="text" placeholder=" Dish name"/>
-                <button className={styles.addButton}>Add item to your menu</button>
+                <div>
+                    <p> Name of the dish </p>
+                    <input type="text" placeholder=" Dish name"/>
+                    <p>Price</p>
+                    <input type="text" placeholder="€€€"/>
+                    <p>Description</p>
+                    <textarea class={styles.description} placeholder="Description"/>
+                    <p>picture</p>
+                    <input type="file" placeholder="Picture"/>
+                    <button className={styles.addButton}>Add item to your menu</button>
+                    </div>
+                    
                 </div>
                 <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button> 
             </div>
+
                
         </div>
     

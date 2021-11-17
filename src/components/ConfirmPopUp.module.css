@@ -50,7 +50,7 @@
     align-content: center;
     position: absolute;
     top: 15%;
-    bottom: 15%;
+    bottom: 20%;
     left: 15%;
     right: 15%;
     background-color: #fff;
@@ -66,4 +66,14 @@
   .confirmButton{
     margin: 1px;
   }
-
+  .msgBox{
+      height: 200px;
+      font-size: 14px;
+      margin-left: 5px;
+      padding-right: 20px;
+  }
+  .creditCard{
+    font-size: 14px;
+    margin-left: 5px;
+    padding-right: 20px;
+  }

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ObsPopup.module.css'
 import { useState } from 'react';
 import LoginPopUp from './Login';
-import RegisterPopUp from './Register';
+import ManagerRegisterPopUp from './ManagerRegister';
 function ObsPopup(props) {
     const [buttonLogin, setButtonLogin] = useState(false);
     const [buttonRegister, setButtonRegister] = useState(false);
@@ -19,7 +19,7 @@ function ObsPopup(props) {
                 <button className= {styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button>
             </div>
             <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
-            <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
+            <ManagerRegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
         </div>
     ) : "";
 }

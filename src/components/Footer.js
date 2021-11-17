@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Footer.module.css'
 import ObsPopup from './ObsPopup';
 import LoginPopUp from './Login';
-import RegisterPopUp from './Register.js';
+import ManagerRegisterPopUp from './ManagerRegister.js';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -29,7 +29,7 @@ export default function Footer() {
       </footer>
       <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/>
       <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
-      <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
+      
         </div>
     )
 }

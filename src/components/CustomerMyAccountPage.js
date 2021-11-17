@@ -1,9 +1,12 @@
 import React from 'react'
 import styles from './CustomerMyAccountPage.module.css';
 import { useState } from 'react';
+import LogOutPopUp from './LogOut.js';  
 
 export default function CustomerMyAccountPage(props) {
     const [setEditProfile] = useState(false);
+    const [buttonLogOut, setButtonLogOut] = useState(false);
+
     return (
         <div className="App">
         
@@ -15,7 +18,7 @@ export default function CustomerMyAccountPage(props) {
 
               <div className={styles.Account}>
               <button>My account</button>
-              <button>Log Out</button>
+              <button onClick={() => setButtonLogOut(true)}>Log Out</button>
               <i className={styles.shoppingcart} class="fas fa-shopping-cart" ></i>
               </div>
         </div>
@@ -109,6 +112,7 @@ export default function CustomerMyAccountPage(props) {
           </div>
   
         </footer>
+        <LogOutPopUp trigger={buttonLogOut} setTrigger ={setButtonLogOut}/>
 
 
 

@@ -1,10 +1,7 @@
 import React from 'react'
-import styles from './ShoppingCart.module.css'
-import {useState} from 'react'
-import ConfirmPopUp from './ConfirmPopUp';
+import styles from './ConfirmPopUp.module.css'
 
-function ShoppingCartPopUp(props) {
-    const [confirmPopup, setConfirmPopup] = useState(false);
+function  ConfirmPopUp(props) {
     return (props.trigger) ? (
     <div>
       
@@ -13,18 +10,17 @@ function ShoppingCartPopUp(props) {
                 
              <div className={styles.container}>
                 <div className={styles.items}>
-                    <p>ITEM1</p>
-                    <p>ITEM2</p>
-                    <p>ITEM3</p>
+                   <p>Message:</p>
+                   <textarea className={styles.msgBox} type="text" placeholder="Message"/>
+                   <p>Credit card number:</p>
+                   <input type="text" className={styles.creditCard} />
                 </div>
              </div>
 
              <div className={styles.options}>
-                <button className={styles.cancelButton}>
-                    cancel order
-                </button>
-                <button onClick={() => setConfirmPopup(true)} className={styles.confirmButton}>
-                    confirm
+                
+                <button className={styles.confirmButton}>
+                    confirm payment
                 </button>
              </div>
 
@@ -33,11 +29,11 @@ function ShoppingCartPopUp(props) {
             </div>
        <div onClick={() => props.setTrigger(false)} className={styles.popup}>   
        </div>
-       <ConfirmPopUp trigger={confirmPopup} setTrigger={setConfirmPopup} />
+    
     </div>
       
     
     ) : "";
 }
 
-export default ShoppingCartPopUp
+export default ConfirmPopUp
