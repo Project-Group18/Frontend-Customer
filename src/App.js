@@ -6,7 +6,6 @@ import Header from './components/Header';
 import HeaderSignedIn from './components/HeaderSignedIn';
 import SearchbarLocation from './components/SearchbarLocation';
 import Footer from './components/Footer';
-import ObsPopup from './components/ObsPopup';
 import CustomerMyAccountPage from './components/CustomerMyAccountPage';
 import ManagerOrderHistoryPage from './components/ManagerOrderHistoryPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
@@ -38,26 +37,29 @@ function App() {
 <Router>
         <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
         <Link to='/'>Logged out</Link>
-        <Link to='/signedin'>Logged in</Link>
+        <Link to='/customersignedin'>Customer Signed in</Link>
         </div>
 <Routes>
   <Route path="/"element={<Header/>}/>
-  <Route path="/signedin"element={<HeaderSignedIn/>}/>
+  <Route path="/customersignedin"element={<HeaderSignedIn/>}/>
+
 </Routes>
 
 </Router>
 
 <Router>
       <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
-        <Link to='/'>Home</Link>
-        <Link to='/restaurantaccountpage'>Restaurant account page</Link>
+        <Link to='/'>Frontpage</Link>
         <Link to='/managerfrontpage'>Manager frontpage </Link>
+        <Link to='/restaurantaccountpage'>Restaurant account page</Link>
         <Link to='/managerorderhistorypage'>Manager Order History</Link>
         <Link to='/customermyaccountpage'>Customer Account Page</Link>
       </div>
+
+      <SearchbarLocation/> 
+
     <Routes>
-      <Route path="/" element={<SearchbarLocation/>}/>
-        <Route path=":frontpage" element={<Frontpage/>}/>
+      <Route path="/" element={<Frontpage/>}/>
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
@@ -68,12 +70,6 @@ function App() {
       
      <Footer/>
        
-      
-     
-      
-        {/* <button onClick={() => setButtonPopup(true)}>Open obs popup</button> */}
-       {/*  <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/> */}
-
       
     </div>
 
