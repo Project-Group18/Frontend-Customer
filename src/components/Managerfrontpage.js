@@ -46,6 +46,7 @@ function Managerfrontpage(props) {
   
           </div>
         </header>
+
       </div>
     );
   }

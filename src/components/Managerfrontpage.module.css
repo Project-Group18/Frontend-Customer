@@ -76,6 +76,10 @@
 .socialmedia> * {
     margin-right: 10px;
   }
+  .restaurantLogin:hover {
+    cursor: pointer;
+  }
+
   
 
  

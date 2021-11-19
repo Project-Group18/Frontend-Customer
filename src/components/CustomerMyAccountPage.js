@@ -1,12 +1,16 @@
 import React from 'react'
 import styles from './CustomerMyAccountPage.module.css';
 import { useState } from 'react';
+import LogOutPopUp from './LogOut.js';  
 
 export default function CustomerMyAccountPage(props) {
     const [setEditProfile] = useState(false);
+    const [buttonLogOut, setButtonLogOut] = useState(false);
+
     return (
         <div className="App">
         
+
 
         <div class={styles.heading}><b>My Profile</b></div>
         
@@ -79,6 +83,7 @@ export default function CustomerMyAccountPage(props) {
               </div>
               </div>
               </div>
+
 
         </div>
     )

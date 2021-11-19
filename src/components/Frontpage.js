@@ -14,6 +14,9 @@ function Frontpage() {
       <header className={styles.background}>
 
       <div>
+        
+            
+        </div>
             <div className={styles.onSale}>
             <img className={styles.ufo} src='ufo2.png' alt='picture'/>
             </div>
@@ -31,10 +34,9 @@ function Frontpage() {
             </div>
          
 
-        </div>
-      </header>
       
-    </div>
+      </header>
+
   );
 }
 

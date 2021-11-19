@@ -1,7 +1,12 @@
 import React from 'react'
-import styles from './Register.module.css'
+import styles from './Register.module.css';
+import {useState} from 'react';
+import CreateRestaurantPopUp from './CreateRestaurantPopUp'
 
-function RegisterPopUp(props) {
+function ManagerRegisterPopUp(props) {
+
+    const [createRestaurantPopup, setCreateRestaurantPopup] = useState(false);
+
     return (props.trigger) ? (
         <div className={styles.popup}>
             <div className={styles.popup_inner}>
@@ -14,16 +19,19 @@ function RegisterPopUp(props) {
                     <input type="text" placeholder="password*"></input>
                     <p>*Email</p>
                     <input type="text" placeholder="Email*"></input>
-                    <p>Address</p>
-                    <input type="text" placeholder="Address*"></input>
+
                     <br></br>
                     
-                    <button className={styles.registerButton}>Register now!</button>
+                    
+                    <button className={styles.registerButton} onClick={() => setCreateRestaurantPopup(true)}>Register now!</button>
                 </div>
                 <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button>
             </div>
+
+            <CreateRestaurantPopUp trigger={createRestaurantPopup} setTrigger ={setCreateRestaurantPopup}/>
         </div>
+        
     ) : "";
 }
 
-export default RegisterPopUp
+export default ManagerRegisterPopUp

@@ -15,7 +15,7 @@ function LoginPopUp(props) {
                 <p className={styles.forgotPassword}>Forgot your password?</p>
                 <button className={styles.loginButton}>Log in</button>
                 </div>
-                <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>X</button> 
+                <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button> 
             </div>
                
         </div>
