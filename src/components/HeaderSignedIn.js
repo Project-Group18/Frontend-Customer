@@ -1,13 +1,12 @@
 import React from 'react'
-import styles from './Header.module.css'
+import styles from './HeaderSignedIn.module.css'
 import { useState } from 'react';
 import LoginPopUp from './Login';
 import RegisterPopUp from './Register.js';
-import ShoppingCartPopUp from './ShoppingCart';
 
-export default function Header() {
 
-    const [buttonShoppingCart, setButtonShoppingCart] = useState(false);
+export default function HeaderSignedIn() {
+    
     const [buttonLogin, setButtonLogin] = useState(false);
     const [buttonRegister, setButtonRegister] = useState(false);
     return (
@@ -16,17 +15,16 @@ export default function Header() {
         <img className={styles.image} src='olivertwistLogo1.jpg' alt='picture'/>
 
                   <div className={styles.Account}>
-                  <button onClick={() => setButtonLogin(true)}>Log in</button>
+                  <button onClick={() => setButtonLogin(true)}>My Account</button>
                   
-                  <button onClick={() => setButtonRegister(true)}>Sign up</button>
-                  <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i>
+                  <button onClick={() => setButtonRegister(true)}>Log Out</button>
+                  <i className={styles.shoppingcart} class="fas fa-shopping-cart" ></i>
                   </div>
             
         </div>
       
             <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
             <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
-            <ShoppingCartPopUp trigger={buttonShoppingCart} setTrigger ={setButtonShoppingCart}/>
         </div>
     )
 }

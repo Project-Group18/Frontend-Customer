@@ -36,12 +36,7 @@ function Frontpage() {
 
       
       </header>
-     
 
-      <ObsPopup trigger={buttonPopup} setTrigger ={setButtonPopup}/>
-      <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
-      <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>
-      </div>
   );
 }
 

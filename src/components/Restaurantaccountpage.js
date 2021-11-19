@@ -10,17 +10,8 @@ export default function Restaurantaccountpage() {
         <header className={styles.background}>
   
         <div >
-          <div class={styles.Headercontainer}>
-          <img className={styles.image} src='olivertwistLogo1.jpg' alt='picture'/>
-  
-                    <div className={styles.Account}>
-                    <button>Log in</button>
-                    <button>Sign up</button>
-                    <i className={styles.shoppingcart} class="fas fa-shopping-cart" ></i>
-                    </div>
-              
-          </div>
-            <div>
+
+            <div className={styles.Headercontainer}>
                 <div>
                     <p>Restaurant Manager Name:</p>
                     <p>Restaurant Manager Email:</p>
@@ -106,23 +97,7 @@ export default function Restaurantaccountpage() {
   
           </div>
         </header>
-        <footer>
-          
-          <div className={styles.footer}>
-            <p>Terms of service</p>
-            <p>Contact us</p>
-            <p>About us</p>
-            <p>For restaurants</p>
-  
-            <div className={styles.socialmedia}>
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter-square"></i>
-            <i class="fab fa-instagram-square"></i>
-            </div>
-          </div>
-  
-        </footer>
-        <AddMenuItemPopUp trigger={menuItemPopup} setTrigger ={setMenuItemPopup}/>
+
       </div>
     )
 }
