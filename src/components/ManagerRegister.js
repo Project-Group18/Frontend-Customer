@@ -19,8 +19,7 @@ function ManagerRegisterPopUp(props) {
                     <input type="text" placeholder="password*"></input>
                     <p>*Email</p>
                     <input type="text" placeholder="Email*"></input>
-                    <p>Address</p>
-                    <input type="text" placeholder="Address*"></input>
+
                     <br></br>
                     
                     
