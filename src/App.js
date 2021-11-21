@@ -11,6 +11,7 @@ import CustomerMyAccountPage from './components/CustomerMyAccountPage';
 import ManagerOrderHistoryPage from './components/ManagerOrderHistoryPage';
 import SearchResultPage from './components/SearchResultPage';
 import FoodCategoriesPage from './components/FoodCategoriesPage';
+import RestaurantInfoPage from './components/RestaurantInfoPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 function App() {
@@ -66,6 +67,8 @@ function App() {
         <Link to='/customermyaccountpage'>Customer Account Page</Link>
         <Link to='/searchresultpage'>Search Result Page</Link>
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
+        <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
+        
         
       </div>
     <Routes>
@@ -76,7 +79,8 @@ function App() {
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
-      <Route path="/foodcategoriespage" element={dishData.map(element => <FoodCategoriesPage {...element}/>)}/>    
+      <Route path="/foodcategoriespage" element={dishData.map(element => <FoodCategoriesPage {...element}/>)}/> 
+      <Route path="/restaurantinfopage" element={dishData.map(element => <RestaurantInfoPage {...element}/>)}/>   
     </Routes>
    </Router>
 

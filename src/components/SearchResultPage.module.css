@@ -14,12 +14,12 @@
     width:800px;
 }
 
-.DetailContainer{
-    width: 900px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-top: 1px solid rgb(131, 128, 128);
+.detailContainer{
+  width: 750px;
+  display: flex;
+  margin-bottom: 20px;
+  border-top: 1px solid rgb(131, 128, 128);
+  justify-content: space-between;
 }
 
 .scrolldiv{
@@ -30,8 +30,8 @@
   overflow-y:scroll;
 }
 
-.Placeholder{
-    margin-top: 20px;
-    width: 60%;
-    height: auto;
-  }
+.placeholder{
+  margin-top: 20px;
+  width: 250px;
+  height: auto;
+}
