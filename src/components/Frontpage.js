@@ -36,8 +36,9 @@ function Frontpage() {
 
       
       </header>
-
+      </div>
   );
-}
+  }
+
 
 export default Frontpage;
