@@ -56,14 +56,18 @@ function App() {
         <Link to='/customermyaccountpage'>Customer Account Page</Link>
       </div>
 
-      <SearchbarLocation/> 
+       <SearchbarLocation/>
 
     <Routes>
+
       <Route path="/" element={<Frontpage/>}/>
+        {/* <Route path='/' element={<SearchbarLocation/>}/>
+        </Route> */}
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
+  
     </Routes>
    </Router>
 

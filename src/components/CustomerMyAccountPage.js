@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './CustomerMyAccountPage.module.css';
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom'
 
 export default function CustomerMyAccountPage(props) {
     const [setEditProfile] = useState(false);
     return (
         <div className="App">
+        
         
 
         <div class={styles.heading}><b>My Profile</b></div>

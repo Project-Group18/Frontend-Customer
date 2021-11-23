@@ -4,6 +4,7 @@ import ObsPopup from './ObsPopup';
 import { useState } from 'react';
 import LoginPopUp from './Login';
 import RegisterPopUp from './Register.js';
+import { Outlet } from 'react-router-dom'
 
 function Frontpage() {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -12,6 +13,7 @@ function Frontpage() {
   return (
     <div className="App">
       <header className={styles.background}>
+      {/* <Outlet /> */}
 
       <div>
             <div className={styles.onSale}>
@@ -33,6 +35,7 @@ function Frontpage() {
 
         </div>
       </header>
+      
       
     </div>
   );
