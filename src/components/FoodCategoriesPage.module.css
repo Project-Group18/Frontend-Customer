@@ -1,0 +1,42 @@
+.heading{
+    margin-left: 40px;
+    display:flex;
+    margin-top:40px;
+    margin-bottom: 20px;
+}
+
+.InfoContainer{
+  background-color: #FFD8B4; 
+  padding-left: 10px;
+  margin-bottom: 40px;
+  line-height: 10px;
+  margin-left:40px;
+  width:800px;
+}
+
+.detailContainer{
+  width: 750px;
+  display: flex;
+  margin-bottom: 20px;
+  border-top: 1px solid rgb(131, 128, 128);
+  justify-content: space-between;
+}
+
+.scrolldiv{
+width:800px;
+background: #FFD8B4;
+height:400px;
+overflow: hidden;
+overflow-y:scroll;
+}
+
+.placeholder{
+  margin-top: 20px;
+  width: 250px;
+  height: auto;
+}
+
+.button{
+  margin-left: 40px;
+  margin-bottom:40px;
+}

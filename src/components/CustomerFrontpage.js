@@ -4,21 +4,16 @@ import ObsPopup from './ObsPopup';
 import { useState } from 'react';
 import LoginPopUp from './Login';
 import RegisterPopUp from './Register.js';
-import { Outlet } from 'react-router-dom'
 
-function Frontpage() {
+function CustomerFrontpage() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [buttonLogin, setButtonLogin] = useState(false);
   const [buttonRegister, setButtonRegister] = useState(false);
   return (
     <div className="App">
       <header className={styles.background}>
-      {/* <Outlet /> */}
 
       <div>
-        
-            
-        </div>
             <div className={styles.onSale}>
             <img className={styles.ufo} src='ufo2.png' alt='picture'/>
             </div>
@@ -36,11 +31,11 @@ function Frontpage() {
             </div>
          
 
-      
+        </div>
       </header>
-      </div>
+      
+    </div>
   );
-  }
+}
 
-
-export default Frontpage;
+export default CustomerFrontpage;

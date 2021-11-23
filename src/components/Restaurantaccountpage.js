@@ -1,7 +1,10 @@
 import React from 'react'
 import styles from './Restaurantaccountpage.module.css'
+import AddMenuItemPopUp from './addMenuItem.js'
+import { useState } from 'react'
 
 export default function Restaurantaccountpage() {
+    const [menuItemPopup, setMenuItemPopup] = useState(false);
     return (
         <div className="App">
         <header className={styles.background}>
@@ -29,6 +32,11 @@ export default function Restaurantaccountpage() {
                         <input className={styles.add} type="submit" value="Add" />
                     </form>
                     </p>
+                    <input className={styles.catergoryAdd} type="text" placeholder="Add new catergory (max. 12)" />
+                    <button> Add catergory</button>
+                    
+                    <br/>
+                    <button onClick={() => setMenuItemPopup(true)}>Add new dish</button>
                     </div>
                 <div>Edit Profile</div>
             </div>
@@ -95,6 +103,7 @@ export default function Restaurantaccountpage() {
   
           </div>
         </header>
+
       </div>
     )
 }
