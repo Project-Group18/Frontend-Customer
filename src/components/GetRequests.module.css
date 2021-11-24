@@ -1,0 +1,7 @@
+.itemContainer {
+    display:flex;
+}
+.itemContainer> * {
+    margin-right: 10px;
+    font-size: 17px;
+}

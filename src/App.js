@@ -12,6 +12,7 @@ import SearchResultPage from './components/SearchResultPage';
 import FoodCategoriesPage from './components/FoodCategoriesPage';
 import RestaurantInfoPage from './components/RestaurantInfoPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import GetRequests from './components/GetRequests';
 
 function App() {
   const orderData = [
@@ -68,6 +69,8 @@ function App() {
         <Link to='/searchresultpage'>Search Result Page</Link>
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
+        <Link to='/getrequests'>Here are all the requests</Link>
+        
         
         
       </div>
@@ -85,7 +88,8 @@ function App() {
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
       <Route path="/foodcategoriespage" element={dishData.map(element => <FoodCategoriesPage {...element}/>)}/> 
-      <Route path="/restaurantinfopage" element={dishData.map(element => <RestaurantInfoPage {...element}/>)}/>   
+      <Route path="/restaurantinfopage" element={dishData.map(element => <RestaurantInfoPage {...element}/>)}/> 
+      <Route path="/getrequests" element={(<GetRequests />)}/>   
     </Routes>
    </Router>
 
