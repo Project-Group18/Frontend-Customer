@@ -14,6 +14,7 @@ function GetRequests() {
             console.log(res);
             setCustomer(res.data)
             } catch (err) {//Not in 200 response range
+                console.log(err);
             }}
             fetchCustomer();
         }, [])
@@ -24,6 +25,7 @@ function GetRequests() {
         console.log(res);
         setRestaurant(res.data)
         } catch (err) {//Not in 200 response range
+            console.log(err);
         }}
         fetchRestaurant();
     }, [])
@@ -32,7 +34,7 @@ function GetRequests() {
     return (
         <div>
 
-            <h1>Customer information:</h1>
+{/*             <h1>Customer information:</h1>
              <div>
 
             
@@ -46,8 +48,8 @@ function GetRequests() {
                 <div>Password: {customer.customer_password}</div>
                 </li>))} 
             </div>
-          
-            <h1>Restaurant information:</h1>
+           */}
+{/*             <h1>Restaurant information:</h1>
             <div>
               
                 {getRestaurant.map(get => (
@@ -60,7 +62,9 @@ function GetRequests() {
                 <div>Location: {get.location},</div>
                 </li>
                 ))}
-            </div>
+            </div> */}
+
+            
         </div>
     )
 }

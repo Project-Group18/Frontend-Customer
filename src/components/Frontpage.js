@@ -21,7 +21,6 @@ function Frontpage(props) {
 
 
             <p className={styles.categories}> Food categories:</p>
-            <div>
             <li className={styles.optionmenu}>
               
               <a href='foodcategoriespage' ><img src='buffet-pic.jpg'/></a>
@@ -32,8 +31,8 @@ function Frontpage(props) {
               <a href='foodcategoriespage'><img src='plus-sign-pic.jpg'/></a>
               <br/>            
             </li>
-            </div>
          
+        
 
       
       </header>

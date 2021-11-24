@@ -14,7 +14,26 @@ import RestaurantInfoPage from './components/RestaurantInfoPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import GetRequests from './components/GetRequests';
 
+import RestaurantDisplayComponent from './components/RestaurantDisplayComponent';
+import { useState, useEffect } from 'react';
+import api from './api/config';
+
+
 function App() {
+//////////////
+  const [getRestaurant, setRestaurant ] = useState([]);
+
+  useEffect(() => {
+    const fetchRestaurant =  async () => {
+    try {const res = await api.get('/restaurant');
+    console.log(res);
+    setRestaurant(res.data)
+    } catch (err) {//Not in 200 response range
+        console.log(err);
+    }}
+    fetchRestaurant();
+}, [])
+////////////////
   const orderData = [
     {
       orderNumber: '',
@@ -69,8 +88,8 @@ function App() {
         <Link to='/searchresultpage'>Search Result Page</Link>
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
-        <Link to='/getrequests'>Here are all the requests</Link>
-        
+        <Link to='/getrequests'>All requests</Link>
+        <Link to='/displaycomponent'>Restaurant display component</Link>
         
         
       </div>
@@ -80,16 +99,17 @@ function App() {
     <Routes>
 
       <Route path="/" element={<Frontpage/>}/>
-        {/* <Route path='/' element={<SearchbarLocation/>}/>
-        </Route> */}
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
-      <Route path="/foodcategoriespage" element={dishData.map(element => <FoodCategoriesPage {...element}/>)}/> 
-      <Route path="/restaurantinfopage" element={dishData.map(element => <RestaurantInfoPage {...element}/>)}/> 
+      <Route path="/foodcategoriespage" element={getRestaurant.map(element => <FoodCategoriesPage {...element}/>)}/> 
+      <Route path="/restaurantinfopage/:restaurantID" element={<RestaurantInfoPage />}/> 
+        {/* <Route path=":restaurandId" element ={<RestaurantInfoPage />}/> */}
       <Route path="/getrequests" element={(<GetRequests />)}/>   
+      <Route path="/displaycomponent"element={getRestaurant.map(element => <RestaurantDisplayComponent {...element}/>)}/>
+   
     </Routes>
    </Router>
 
