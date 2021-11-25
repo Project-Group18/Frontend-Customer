@@ -1,27 +1,32 @@
-import React, { useContext } from 'react'
+import React  from 'react'
 import styles from './FoodCategoriesPage.module.css'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ContextDemo } from './Contexts';
+import { Link, useNavigate, useEffect } from 'react-router-dom';
 
 
 export default function FoodCategoriesPage(props) {
-  const contextValue = useContext(ContextDemo)
+
+  const navigate = useNavigate();
+      const toRestInfoPage=(props)=>{
+        navigate('restaurantinfopage',
+{state:{id:props.restaurant_id,name:props.restaurant_name, type: props.restaurant_type, hours: props.open_hours, pricelvl: props.price_level, location: props.location}})        
+      };
 
   return (
-
-    
         <div>
         {/* <div class={styles.heading}><b>Foods under this category</b></div> */}
         {/* <button class={styles.button}>Show restaurants under this category</button> */}
-        <div>{contextValue}</div>
         
       {props.restaurants.map(restaurant =>
       <div>
         <br/>
-        <Link to= {restaurant.restaurant_id.toString()}> 
+     {/*    <Link to= {restaurant.restaurant_id.toString()}> 
                 <div>Choose Restaurant {restaurant.restaurant_id}</div>
-        </Link>
+        </Link> */}
+
+
+      <div> <button onClick={()=>{toRestInfoPage(restaurant)}}> Restaurant {restaurant.restaurant_id} page</button></div>
+
+
                 <ul>ID: {restaurant.restaurant_id}</ul>
                 <ul>Name: {restaurant.restaurant_name}</ul>
                 <ul>Type: {restaurant.restaurant_type}</ul>

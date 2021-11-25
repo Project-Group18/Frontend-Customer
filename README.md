@@ -1,3 +1,5 @@
+# The application still requires the backend server to be running for certain functions, so make sure to boot it up before using pages with requests
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -12,16 +12,15 @@ import SearchResultPage from './components/SearchResultPage';
 import FoodCategoriesPage from './components/FoodCategoriesPage';
 import RestaurantInfoPage from './components/RestaurantInfoPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import GetRequests from './components/GetRequests';
 
 import RestaurantDisplayComponent from './components/RestaurantDisplayComponent';
 import { useState, useEffect } from 'react';
 import api from './api/config';
-import { ContextDemo } from './components/Contexts'
 
 function App() {
 //////////////
   const [restaurants, setRestaurant ] = useState([]);
+  const [getCustomer, setCustomer ] = useState([]);
 
   useEffect(() => {
     const fetchRestaurant =  async () => {
@@ -33,6 +32,17 @@ function App() {
     }}
     fetchRestaurant();
 }, [])
+
+useEffect(() => {
+  const fetchCustomer =  async () => {
+      try {const res = await api.get('/customer');
+      console.log(res);
+      setCustomer(res.data)
+      } catch (err) {//Not in 200 response range
+          console.log(err);
+      }}
+      fetchCustomer();
+  }, [])
 ////////////////
   const orderData = [
     {
@@ -62,10 +72,7 @@ function App() {
     }
   ];
 
-
   return (
-
-      <ContextDemo.Provider value = "hello context world">
 
     <div>
 <Router>
@@ -91,9 +98,7 @@ function App() {
         <Link to='/searchresultpage'>Search Result Page</Link>
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
-        <Link to='/getrequests'>All requests</Link>
         <Link to='/displaycomponent'>Restaurant display component</Link>
-        
         
       </div>
 
@@ -110,8 +115,6 @@ function App() {
 
       <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants}/>}/>   
         <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants}/>}/> 
-        {/* <Route path=":restaurandId" element ={<RestaurantInfoPage />}/> */}
-      <Route path="/getrequests" element={(<GetRequests />)}/>   
       <Route path="/displaycomponent"element={restaurants.map(element => <RestaurantDisplayComponent {...element}/>)}/>
    
     </Routes>
@@ -122,8 +125,6 @@ function App() {
        
       
     </div>
-    </ContextDemo.Provider>
-  
       
   );
   }

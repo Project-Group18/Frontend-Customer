@@ -1,9 +1,6 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import styles from './Frontpage.module.css';
-import ObsPopup from './ObsPopup';
-import { useState } from 'react';
 import FoodCategoriesPage from './FoodCategoriesPage';
-import GetRequests from './GetRequests';
 
 function Frontpage(props) {
 

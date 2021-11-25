@@ -1,24 +1,25 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from './RestaurantInfoPage.module.css'
-import { ContextDemo } from './Contexts';
+import {useLocation} from 'react-router-dom';
+
 
 export default function RestaurantInfoPage(props) {
 
-  const contextValue = useContext(ContextDemo)
+  const location = useLocation();
 
     return (
         <div>
-              {props.restaurant}
-         <div className={styles.heading}><b>Placeholder restaurant name</b></div>
 
-          <p>This is the given context value: {contextValue}</p>
+         <div className={styles.heading}><b>{location.state.name}</b></div>
 
-        {/* <div className={styles.restaurantInfoContainer}>
+
+        <div className={styles.restaurantInfoContainer}>
         <div className={styles.info}>
-        <div>Restaurant type: Fast casual</div>
-        <div>Open Hours: 11-23</div>
-        <div>Price Level: €€</div>
-        <div>Address: Saaristonkatu 12, 90100 Oulu</div>
+        <div>Restaurant type: { location.state.type}</div>
+        <div>Open Hours: {location.state.hours}</div>
+        <div>Price Level: {location.state.pricelvl}</div>
+        <div>Address: {location.state.location}</div>
+        
         </div>
         <img className={styles.restaurantPlaceholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
         </div>
@@ -45,7 +46,7 @@ export default function RestaurantInfoPage(props) {
                     </div>
               </div>
               </div>
-              </div> */}
+              </div>
       </div>
     )
 }
