@@ -17,6 +17,7 @@ import GetRequests from './components/GetRequests';
 import RestaurantDisplayComponent from './components/RestaurantDisplayComponent';
 import { useState, useEffect } from 'react';
 import api from './api/config';
+import { ContextDemo } from './components/Contexts'
 
 function App() {
 //////////////
@@ -63,6 +64,9 @@ function App() {
 
 
   return (
+
+      <ContextDemo.Provider value = "hello context world">
+
     <div>
 <Router>
         <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
@@ -118,7 +122,7 @@ function App() {
        
       
     </div>
-
+    </ContextDemo.Provider>
   
       
   );

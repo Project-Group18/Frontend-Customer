@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './FoodCategoriesPage.module.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ContextTest } from './Contexts';
+import { ContextDemo } from './Contexts';
 
 
 export default function FoodCategoriesPage(props) {
+  const contextValue = useContext(ContextDemo)
 
   return (
 
-    <ContextTest.Provider value = "Hello context world">
+    
         <div>
         {/* <div class={styles.heading}><b>Foods under this category</b></div> */}
         {/* <button class={styles.button}>Show restaurants under this category</button> */}
-        
+        <div>{contextValue}</div>
         
       {props.restaurants.map(restaurant =>
       <div>
         <br/>
-        <Link to= {restaurant.restaurant_name}> {restaurant}
+        <Link to= {restaurant.restaurant_id.toString()}> 
                 <div>Choose Restaurant {restaurant.restaurant_id}</div>
         </Link>
                 <ul>ID: {restaurant.restaurant_id}</ul>
@@ -60,6 +61,6 @@ export default function FoodCategoriesPage(props) {
             </div> */}
  
         </div>
-        </ContextTest.Provider>
+       
     )
 }

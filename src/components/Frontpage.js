@@ -4,11 +4,9 @@ import ObsPopup from './ObsPopup';
 import { useState } from 'react';
 import FoodCategoriesPage from './FoodCategoriesPage';
 import GetRequests from './GetRequests';
-import {ContextTest} from './Contexts';
 
 function Frontpage(props) {
 
-  const contextValue = useContext(ContextTest);
 
   return (
     <div className="App">
@@ -25,7 +23,6 @@ function Frontpage(props) {
 
 
             <p className={styles.categories}> Food categories:</p>
-            <p> Here are the context values: {contextValue} </p>
             <li className={styles.optionmenu}>
               
               <a href='foodcategoriespage' ><img src='buffet-pic.jpg'/></a>

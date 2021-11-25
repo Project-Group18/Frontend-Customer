@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import styles from './RestaurantInfoPage.module.css'
-import { ContextTest } from './Contexts';
+import { ContextDemo } from './Contexts';
 
 export default function RestaurantInfoPage(props) {
 
-  const contextValue = useContext(ContextTest)
+  const contextValue = useContext(ContextDemo)
 
     return (
         <div>
