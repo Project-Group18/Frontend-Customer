@@ -18,10 +18,9 @@ import RestaurantDisplayComponent from './components/RestaurantDisplayComponent'
 import { useState, useEffect } from 'react';
 import api from './api/config';
 
-
 function App() {
 //////////////
-  const [getRestaurant, setRestaurant ] = useState([]);
+  const [restaurants, setRestaurant ] = useState([]);
 
   useEffect(() => {
     const fetchRestaurant =  async () => {
@@ -104,11 +103,12 @@ function App() {
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
-      <Route path="/foodcategoriespage" element={getRestaurant.map(element => <FoodCategoriesPage {...element}/>)}/> 
-      <Route path="/restaurantinfopage/:restaurantID" element={<RestaurantInfoPage />}/> 
+
+      <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants}/>}/>   
+        <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants}/>}/> 
         {/* <Route path=":restaurandId" element ={<RestaurantInfoPage />}/> */}
       <Route path="/getrequests" element={(<GetRequests />)}/>   
-      <Route path="/displaycomponent"element={getRestaurant.map(element => <RestaurantDisplayComponent {...element}/>)}/>
+      <Route path="/displaycomponent"element={restaurants.map(element => <RestaurantDisplayComponent {...element}/>)}/>
    
     </Routes>
    </Router>

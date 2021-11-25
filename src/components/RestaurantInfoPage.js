@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './RestaurantInfoPage.module.css'
+import { ContextTest } from './Contexts';
 
-export default function RestaurantInfoPage() {
+export default function RestaurantInfoPage(props) {
+
+  const contextValue = useContext(ContextTest)
+
     return (
         <div>
+              {props.restaurant}
+         <div className={styles.heading}><b>Placeholder restaurant name</b></div>
 
-         <div className={styles.heading}><b>Luigi's Pizzeria</b></div>{/*
-        <div className={styles.restaurantInfoContainer}>
+          <p>This is the given context value: {contextValue}</p>
+
+        {/* <div className={styles.restaurantInfoContainer}>
         <div className={styles.info}>
         <div>Restaurant type: Fast casual</div>
         <div>Open Hours: 11-23</div>
