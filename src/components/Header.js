@@ -12,17 +12,16 @@ export default function Header() {
     const [buttonRegister, setButtonRegister] = useState(false);
     return (
         <div>
-              <div class={styles.Headercontainer}>
-        <img className={styles.image} src='olivertwistLogo1.jpg' alt='picture'/>
+            <div class={styles.Headercontainer}>
+                <img className={styles.image} src='olivertwistLogo1.jpg' alt='picture'/>
 
-                  <div className={styles.Account}>
+                <div className={styles.Account}>
                   <button onClick={() => setButtonLogin(true)}>Log in</button>
-                  
                   <button onClick={() => setButtonRegister(true)}>Sign up</button>
                   <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i>
-                  </div>
+                </div>
             
-        </div>
+            </div>
       
             <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
             <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/>

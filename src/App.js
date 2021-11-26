@@ -59,7 +59,34 @@ useEffect(() => {
 
   const orderData = [
     {
-      orderNumber: '',
+      orderNumber: 1,
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    },
+    {
+      orderNumber: 2,
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    },
+    {
+      orderNumber: 3,
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    },
+    {
+      orderNumber: 4,
       address: '',
       customerName: '', 
       phoneNumber: '', 
@@ -137,8 +164,8 @@ useEffect(() => {
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
-      <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
-      <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
+      <Route path="/customermyaccountpage"element={<CustomerMyAccountPage orderData={orderData}/>}/>
+      <Route path="/searchresultpage" element={<SearchResultPage dishData={dishData} restaurants={restaurants}/>}/>
       <Route path="/customerspage" element={ <TempCustomerList customers={ customers}/>}/>
         <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers}/>}/>
       <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes }/>}/>   
