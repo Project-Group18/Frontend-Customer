@@ -1,6 +1,6 @@
 import React  from 'react'
 import styles from './FoodCategoriesPage.module.css'
-import { Link, useNavigate, useEffect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function FoodCategoriesPage(props) {

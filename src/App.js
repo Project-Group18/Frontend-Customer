@@ -12,15 +12,14 @@ import SearchResultPage from './components/SearchResultPage';
 import FoodCategoriesPage from './components/FoodCategoriesPage';
 import RestaurantInfoPage from './components/RestaurantInfoPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-
+import TempCustomerList from './components/TempCustomerList';
 import RestaurantDisplayComponent from './components/RestaurantDisplayComponent';
 import { useState, useEffect } from 'react';
 import api from './api/config';
 
 function App() {
-//////////////
   const [restaurants, setRestaurant ] = useState([]);
-  const [getCustomer, setCustomer ] = useState([]);
+  const [customers, setCustomer ] = useState([]);
 
   useEffect(() => {
     const fetchRestaurant =  async () => {
@@ -43,7 +42,8 @@ useEffect(() => {
       }}
       fetchCustomer();
   }, [])
-////////////////
+
+
   const orderData = [
     {
       orderNumber: '',
@@ -99,7 +99,7 @@ useEffect(() => {
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
         <Link to='/displaycomponent'>Restaurant display component</Link>
-        
+        <Link to='/customerspage'>See the list of customers</Link>
       </div>
 
        <SearchbarLocation/>
@@ -113,6 +113,8 @@ useEffect(() => {
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
 
+      <Route path="/customerspage" element={ <TempCustomerList customers={ customers}/>}/>
+        <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers}/>}/>
       <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants}/>}/>   
         <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants}/>}/> 
       <Route path="/displaycomponent"element={restaurants.map(element => <RestaurantDisplayComponent {...element}/>)}/>
