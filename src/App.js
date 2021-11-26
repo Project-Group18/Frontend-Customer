@@ -21,6 +21,7 @@ function App() {
   const [restaurants, setRestaurant ] = useState([]);
   const [customers, setCustomer ] = useState([]);
 
+
   useEffect(() => {
     const fetchRestaurant =  async () => {
     try {const res = await api.get('/restaurant');
@@ -57,21 +58,35 @@ useEffect(() => {
   ];
   const dishData = [
     {
+      dId: 1,
       dName: 'Pizza',
       dCategory: 'Fast Food',
       dPrice: '10,90 €', 
-      dRestaurant: 'Luigis Pizzeria'
-    }
-  ];
-  const customerInfo = [
+      dRestaurant: 'Mario\'s Pizzeria'
+    },
     {
-      cName: 'Twilight Sparkle',
-      cAddress: 'Equestria',
-      cCreditCardNumber: '12345', 
-      cEmail: 'twilight@email.com', 
+      dId: 2,
+      dName: 'Pizza2',
+      dCategory: 'Fast Food',
+      dPrice: '12,90 €', 
+      dRestaurant: 'Mario\'s Pizzeria'
+    },
+    {
+      dId: 3,
+      dName: 'Kebab Pizza',
+      dCategory: 'Fast Food',
+      dPrice: '12,50 €', 
+      dRestaurant: 'Mario\'s Pizzeria'
+    },
+    {
+      dId: 4,
+      dName: 'Reindeer Pizza',
+      dCategory: 'Fast Food',
+      dPrice: '14,90 €', 
+      dRestaurant: 'Mario\'s Pizzeria'
     }
   ];
-
+  
   return (
 
     <div>
@@ -116,7 +131,7 @@ useEffect(() => {
       <Route path="/customerspage" element={ <TempCustomerList customers={ customers}/>}/>
         <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers}/>}/>
       <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants}/>}/>   
-        <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants}/>}/> 
+        <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants} dishData={dishData}/>}/> 
       <Route path="/displaycomponent"element={restaurants.map(element => <RestaurantDisplayComponent {...element}/>)}/>
    
     </Routes>
