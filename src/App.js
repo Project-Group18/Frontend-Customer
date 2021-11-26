@@ -20,7 +20,7 @@ import api from './api/config';
 function App() {
   const [restaurants, setRestaurant ] = useState([]);
   const [customers, setCustomer ] = useState([]);
-
+  const [dishes, setDish ] = useState([]);
 
   useEffect(() => {
     const fetchRestaurant =  async () => {
@@ -43,6 +43,18 @@ useEffect(() => {
       }}
       fetchCustomer();
   }, [])
+
+
+  useEffect(() => {
+    const fetchDish =  async () => {
+        try {const res = await api.get('/dish');
+        console.log(res);
+        setDish(res.data)
+        } catch (err) {//Not in 200 response range
+            console.log(err);
+        }}
+        fetchDish();
+    }, [])
 
 
   const orderData = [
@@ -127,13 +139,11 @@ useEffect(() => {
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
-
       <Route path="/customerspage" element={ <TempCustomerList customers={ customers}/>}/>
         <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers}/>}/>
-      <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants}/>}/>   
-        <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants} dishData={dishData}/>}/> 
+      <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes }/>}/>   
+        <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants} dishes={dishes} />}/>
       <Route path="/displaycomponent"element={restaurants.map(element => <RestaurantDisplayComponent {...element}/>)}/>
-   
     </Routes>
    </Router>
 

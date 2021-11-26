@@ -8,7 +8,23 @@ export default function FoodCategoriesPage(props) {
   const navigate = useNavigate();
       const toRestInfoPage=(props)=>{
         navigate('restaurantinfopage',
-{state:{id:props.restaurant_id,name:props.restaurant_name, type: props.restaurant_type, hours: props.open_hours, pricelvl: props.price_level, location: props.location}})        
+        {state:{
+
+        id:props.restaurant_id,
+        name:props.restaurant_name,
+        type: props.restaurant_type, 
+        hours: props.open_hours, 
+        pricelvl: props.price_level, 
+        location: props.location,
+
+        /* idd: props.dish_id,
+        named:props.dish_name,
+        priced: props.price,
+        categoryd: props.category_id,
+        pictured: props.dish_picture,
+        infod: props.dish_info,
+        restaurantd: props.restaurant_id */
+      }})        
       };
 
   return (
