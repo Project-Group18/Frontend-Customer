@@ -9,7 +9,7 @@ export default function DishItem(props) {
                         <p>Food Name:<span>{props.dName}</span></p>
                         <p>Food gategory:<span>{props.dCategory}</span></p>
                         <p>Price:<span>{props.dPrice}</span></p>
-                        <p>Restaurant:<span>dRestaurant</span></p>
+                        <p>Restaurant:<span>{props.dRestaurant}</span></p>
                     
                     </div>
                       <div>
