@@ -1,11 +1,11 @@
-  .heading{
+.heading{
       margin-left: 40px;
       display:flex;
       margin-top:40px;
       margin-bottom: 20px;
   }
   
-  .InfoContainer{
+.InfoContainer{
     background-color: #FFD8B4; 
     padding-left: 10px;
     margin-bottom: 40px;
