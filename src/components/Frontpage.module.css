@@ -69,11 +69,17 @@
   .optionmenu{
     justify-content: center;
     display: grid;
-    grid-template-rows: 150px 150px;
-    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 250px 250px;
+    grid-template-columns: 250px 250px 250px;
+    border-radius: 100px;
+  }
+  .optionmenu *> * {
+    height: 250px;
+    width: 250px;
   }
   .categories{
-    margin-left: 40px;
+    margin-left: 450px;
+    
   }
   .restaurantLogin {
     cursor: pointer;

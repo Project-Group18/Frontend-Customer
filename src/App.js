@@ -13,7 +13,37 @@ import FoodCategoriesPage from './components/FoodCategoriesPage';
 import RestaurantInfoPage from './components/RestaurantInfoPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
+import RestaurantDisplayComponent from './components/RestaurantDisplayComponent';
+import { useState, useEffect } from 'react';
+import api from './api/config';
+
 function App() {
+//////////////
+  const [restaurants, setRestaurant ] = useState([]);
+  const [getCustomer, setCustomer ] = useState([]);
+
+  useEffect(() => {
+    const fetchRestaurant =  async () => {
+    try {const res = await api.get('/restaurant');
+    console.log(res);
+    setRestaurant(res.data)
+    } catch (err) {//Not in 200 response range
+        console.log(err);
+    }}
+    fetchRestaurant();
+}, [])
+
+useEffect(() => {
+  const fetchCustomer =  async () => {
+      try {const res = await api.get('/customer');
+      console.log(res);
+      setCustomer(res.data)
+      } catch (err) {//Not in 200 response range
+          console.log(err);
+      }}
+      fetchCustomer();
+  }, [])
+////////////////
   const orderData = [
     {
       orderNumber: '',
@@ -42,8 +72,8 @@ function App() {
     }
   ];
 
-
   return (
+
     <div>
 <Router>
         <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
@@ -68,7 +98,7 @@ function App() {
         <Link to='/searchresultpage'>Search Result Page</Link>
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
-        
+        <Link to='/displaycomponent'>Restaurant display component</Link>
         
       </div>
 
@@ -77,15 +107,16 @@ function App() {
     <Routes>
 
       <Route path="/" element={<Frontpage/>}/>
-        {/* <Route path='/' element={<SearchbarLocation/>}/>
-        </Route> */}
       <Route path="/restaurantaccountpage"element={ <Restaurantaccountpage/>}/>
       <Route path="/managerfrontpage"element={orderData.map(element => <Managerfrontpage {...element}/>)}/>
       <Route path="/managerorderhistorypage"element={orderData.map(element => <ManagerOrderHistoryPage {...element}/>)}/>
       <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
       <Route path="/searchresultpage" element={dishData.map(element => <SearchResultPage {...element}/>)}/>
-      <Route path="/foodcategoriespage" element={dishData.map(element => <FoodCategoriesPage {...element}/>)}/> 
-      <Route path="/restaurantinfopage" element={dishData.map(element => <RestaurantInfoPage {...element}/>)}/>   
+
+      <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants}/>}/>   
+        <Route path="foodcategoriespage/:restaurantID" element={<RestaurantInfoPage restaurants={ restaurants}/>}/> 
+      <Route path="/displaycomponent"element={restaurants.map(element => <RestaurantDisplayComponent {...element}/>)}/>
+   
     </Routes>
    </Router>
 
@@ -94,8 +125,6 @@ function App() {
        
       
     </div>
-
-  
       
   );
   }
