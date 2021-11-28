@@ -4,7 +4,7 @@ import Managerfrontpage from './components/Managerfrontpage';
 import Restaurantaccountpage from './components/Restaurantaccountpage';
 import Header from './components/Header';
 import HeaderSignedIn from './components/HeaderSignedIn';
-import SearchbarLocation from './components/SearchbarLocation';
+import Searchbar from './components/Searchbar';
 import Footer from './components/Footer';
 import CustomerMyAccountPage from './components/CustomerMyAccountPage';
 import ManagerOrderHistoryPage from './components/ManagerOrderHistoryPage';
@@ -21,7 +21,6 @@ function App() {
   const [restaurants, setRestaurant ] = useState([]);
   const [customers, setCustomer ] = useState([]);
   const [dishes, setDish ] = useState([]);
-  const [dishes2, setDish2 ] = useState([]);
 
 //get all restaurants from restaurant table
   useEffect(() => {
@@ -57,20 +56,6 @@ useEffect(() => {
         }}
         fetchDish();
     }, [])
-
-// get all dishes by restaurant id
-
-    useEffect(() => {
-      const fetchDish2 =  async () => {
-      try {const res = await api.get('/dish/65');
-      console.log(res);
-      setDish2(res.data)
-      } catch (err) {//Not in 200 response range
-          console.log(err);
-      }}
-      fetchDish2();
-  }, [])
-
 
 
   const orderData = [
@@ -117,7 +102,7 @@ useEffect(() => {
         
       </div>
 
-       <SearchbarLocation/>
+       <Searchbar/>
 
     <Routes>
 

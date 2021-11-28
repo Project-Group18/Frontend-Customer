@@ -4,13 +4,18 @@ import styles from './Header.module.css'
 
 
 
-export default function SearchbarLocation() {
+export default function Searchbar() {
+
     
     
+
     return (
         <div>
             <div className={styles.search}> 
-              <input className={styles.searchbar} type="searchtext" placeholder= "Search for restaurants or dishes"></input> 
+
+              <input className={styles.searchbar} type="searchtext" placeholder= "Search for restaurants or dishes" 
+              onChange={ console.log(event.target.value) }/>
+
               <button> Search</button>
             </div> 
 
