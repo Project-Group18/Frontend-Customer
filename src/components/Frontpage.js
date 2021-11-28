@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './Frontpage.module.css';
-import FoodCategoriesPage from './FoodCategoriesPage';
-  import { useNavigate } from 'react-router-dom';
+/* import FoodCategoriesPage from './FoodCategoriesPage';
+  import { useNavigate } from 'react-router-dom'; */
 
 function Frontpage(props) {
 
-  const navigate = useNavigate();
+/*   const navigate = useNavigate(); */
 
-  const toBuffetRest=(props)=>{
+/*   const toBuffetRest=(props)=>{
     navigate('customermyaccountpage',
 {state:{id:props.customer_id}})        
   };
@@ -30,7 +30,7 @@ function Frontpage(props) {
   const toExtra=(props)=>{
     navigate('customermyaccountpage',
 {state:{id:props.customer_id}})        
-  };
+  }; */
   
 
   return (
@@ -41,7 +41,7 @@ function Frontpage(props) {
         
         </div>
             <div className={styles.onSale}>
-            <img className={styles.ufo} src='ufo2.png' alt='picture'/>
+            <img className={styles.ufo} src='ufo2.png' alt=''/>
             </div>
             
             <p className={styles.categories}> Food categories:</p>
@@ -51,12 +51,12 @@ function Frontpage(props) {
             {/* <a> <button onClick={()=>{toBuffetRest(restaurant)}}><img src='buffet-pic.jpg'/></button></a> */}
 
 
-              <a href='foodcategoriespage' ><img src='buffet-pic.jpg'/></a>
-              <a href='foodcategoriespage'><img src='fast-food-pic.jpg'/></a>
-              <a href='foodcategoriespage'><img src='fast-casual-pic.jpg'/></a>
-              <a href='foodcategoriespage'><img src='casual-dining-pic.jpg'/></a>
-              <a href='foodcategoriespage'><img src='fine-dining-pic.jpg'/></a>
-              <a href='foodcategoriespage'><img src='plus-sign-pic.jpg'/></a>
+              <a href='foodcategoriespage' ><img src='buffet-pic.jpg' alt=''/></a>
+              <a href='foodcategoriespage'><img src='fast-food-pic.jpg'alt=''/></a>
+              <a href='foodcategoriespage'><img src='fast-casual-pic.jpg'alt=''/></a>
+              <a href='foodcategoriespage'><img src='casual-dining-pic.jpg'alt=''/></a>
+              <a href='foodcategoriespage'><img src='fine-dining-pic.jpg'alt=''/></a>
+              <a href='foodcategoriespage'><img src='plus-sign-pic.jpg'alt=''/></a>
 
               <br/>            
             </li>

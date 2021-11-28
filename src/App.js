@@ -73,9 +73,9 @@ useEffect(() => {
   
   return (
 
-    <div>
+    <div className="App">
 <Router>
-        <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
+        <div style={{ display:"flex", justifyContent: "space-around" }}>
         <Link to='/'>Logged out</Link>
         <Link to='/customersignedin'>Customer Signed in</Link>
         </div>
@@ -88,7 +88,7 @@ useEffect(() => {
 </Router>
 
 <Router>
-      <div className="App" style={{ display:"flex", justifyContent: "space-around" }}>
+      <div style={{ display:"flex", justifyContent: "space-around" }}>
 {/*         <Link to='/'>Frontpage</Link>
         <Link to='/managerfrontpage'>Manager frontpage </Link>
         <Link to='/restaurantaccountpage'>Restaurant account page</Link>
