@@ -1,13 +1,18 @@
 import React  from 'react'
 import styles from './FoodCategoriesPage.module.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 export default function FoodCategoriesPage(props) {
 
+
+  const path = 'restaurantinfopage/'
+
+
+
   const navigate = useNavigate();
       const toRestInfoPage=(props)=>{
-        navigate('restaurantinfopage',
+        navigate('restaurantinfopage/',
         {state:{
 
         id:props.restaurant_id,
@@ -16,14 +21,6 @@ export default function FoodCategoriesPage(props) {
         hours: props.open_hours, 
         pricelvl: props.price_level, 
         location: props.location,
-
-        /* idd: props.dish_id,
-        named:props.dish_name,
-        priced: props.price,
-        categoryd: props.category_id,
-        pictured: props.dish_picture,
-        infod: props.dish_info,
-        restaurantd: props.restaurant_id */
       }})        
       };
 
@@ -35,14 +32,17 @@ export default function FoodCategoriesPage(props) {
       {props.restaurants.map(restaurant =>
       <div>
         <br/>
-     {/*    <Link to= {restaurant.restaurant_id.toString()}> 
-                <div>Choose Restaurant {restaurant.restaurant_id}</div>
-        </Link> */}
+         
+        <Link to= {{ pathname: '/restaurantinfopage/' + restaurant.restaurant_id.toString()}} 
+       state={{
+        restaurant,
+      }}
+      >
+                <div>Alt route to Restaurant {restaurant.restaurant_id}</div>
+        </Link>
 
 
-      <div> <button onClick={()=>{toRestInfoPage(restaurant)}}> Restaurant {restaurant.restaurant_id} page</button></div>
-
-
+     {/*  <div> <button onClick={()=>{ toRestInfoPage(restaurant); }}> Restaurant {restaurant.restaurant_id} page</button></div> */}
                 <ul>ID: {restaurant.restaurant_id}</ul>
                 <ul>Name: {restaurant.restaurant_name}</ul>
                 <ul>Type: {restaurant.restaurant_type}</ul>
@@ -52,6 +52,22 @@ export default function FoodCategoriesPage(props) {
                 <br/>
       </div>
        )} 
+       
+
+{/* 
+{props.dishes2.map(dish2 =>
+      <div>
+        <br/>
+                <ul>ID: {dish2.dish_id}</ul>
+                <ul>Name: {dish2.dish_name}</ul>
+                <ul>Type: {dish2.restaurant_type}</ul>
+                <ul>Hours: {dish2.open_hours}</ul>
+                <ul>PriceLevel: {dish2.price_level}</ul>
+                <ul>Location: {dish2.location}</ul>
+                <br/>
+      </div>
+       )} 
+ */}
  {/*        <div key={props.restaurant_id} >
                 <ul>ID: {props.restaurant_id}</ul>
                 <ul>Name: {props.restaurant_name}</ul>
