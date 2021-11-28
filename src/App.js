@@ -75,7 +75,34 @@ useEffect(() => {
 
   const orderData = [
     {
-      orderNumber: '',
+      orderNumber: 1,
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    },
+    {
+      orderNumber: 2,
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    },
+    {
+      orderNumber: 3,
+      address: '',
+      customerName: '', 
+      phoneNumber: '', 
+      orderId: '', 
+      message: '',
+      notes: '',
+    },
+    {
+      orderNumber: 4,
       address: '',
       customerName: '', 
       phoneNumber: '', 
