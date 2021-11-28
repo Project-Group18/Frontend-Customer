@@ -14,7 +14,7 @@ export default function Searchbar() {
             <div className={styles.search}> 
 
               <input className={styles.searchbar} type="searchtext" placeholder= "Search for restaurants or dishes" 
-              onChange={ console.log(event.target.value) }/>
+             />
 
               <button> Search</button>
             </div> 
