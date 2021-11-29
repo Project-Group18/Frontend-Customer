@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './Footer.module.css'
 import ObsPopup from './ObsPopup';
 import LoginPopUp from './Login';
-import ManagerRegisterPopUp from './ManagerRegister.js';
 import { useState } from 'react';
 
 export default function Footer() {
