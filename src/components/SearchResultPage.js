@@ -119,9 +119,9 @@ export default function SearchResultPage() {
 
           <div className={styles.InfoContainer}>
             <div className={styles.scrolldiv}>
-            {
+           {/*  {
             props.dishData.map(dish => <DishItem {...dish} key = {dish.dId} />)
-            }
+            } */}
             </div>    
           </div>
         </div>
