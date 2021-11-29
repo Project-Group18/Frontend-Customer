@@ -44,11 +44,12 @@ function Frontpage(props) {
             <img className={styles.ufo} src='ufo2.png' alt=''/>
             </div>
             
-            <p className={styles.categories}> Food categories:</p>
+            <p className={styles.categories}> Food types:</p>
             <li className={styles.optionmenu}>
 
 
             {/* <a> <button onClick={()=>{toBuffetRest(restaurant)}}><img src='buffet-pic.jpg'/></button></a> */}
+
 
 
               <a href='foodcategoriespage' ><img src='buffet-pic.jpg' alt=''/></a>
@@ -57,6 +58,7 @@ function Frontpage(props) {
               <a href='foodcategoriespage'><img src='casual-dining-pic.jpg'alt=''/></a>
               <a href='foodcategoriespage'><img src='fine-dining-pic.jpg'alt=''/></a>
               <a href='foodcategoriespage'><img src='plus-sign-pic.jpg'alt=''/></a>
+
 
               <br/>            
             </li>

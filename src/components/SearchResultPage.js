@@ -11,9 +11,11 @@ export default function SearchResultPage() {
   console.log("Following = location.state.restaurants")
   console.log(location.state.restaurants)
 
+
     return (
         <div>
         
+
 
         <div class={styles.heading}><b>Search Results </b></div>
 
@@ -113,6 +115,16 @@ export default function SearchResultPage() {
               </div>
               </div> */}
 
+
+
+          <div className={styles.InfoContainer}>
+            <div className={styles.scrolldiv}>
+            {
+            props.dishData.map(dish => <DishItem {...dish} key = {dish.dId} />)
+            }
+            </div>    
+          </div>
         </div>
+              
     )
 }

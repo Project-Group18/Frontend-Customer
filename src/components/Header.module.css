@@ -3,29 +3,29 @@
     font-size: calc(10px + 2vmin);
   }
 
-  .Headercontainer { 
+.Headercontainer { 
     margin-left: 40px;
     display: flex;
     justify-content: space-between;
   
   }
-  .image{
+
+.image{
     border-radius: 14px;
   }
 
-
-  .Account {
+.Account {
     display:flex;
     justify-content:space-around;
     height: 30px;
     width: auto;
   }
 
-  .Account> * {
+.Account> * {
     margin-right: 15px;
   }
 
-  .search{
+.search{
     background-color: #FFD8B4;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -33,15 +33,12 @@
     margin-left: 40px;
   }
 
-  .searchbar{
+.searchbar{
       width: 30%;
       height: auto;
   }
 
-
-  
-
-  .location{
+.location{
     margin-left: 40px;
   }
   

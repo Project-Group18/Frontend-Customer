@@ -1,5 +1,5 @@
 
-.background {
+  .background {
     background-color: #ffffff;
     font-size: calc(10px + 2vmin);
   }
@@ -72,14 +72,17 @@
     grid-template-rows: 250px 250px;
     grid-template-columns: 250px 250px 250px;
     border-radius: 100px;
+    column-gap:10px;
+    row-gap:5px;
   }
   .optionmenu *> * {
     height: 250px;
     width: 250px;
   }
   .categories{
-    margin-left: 450px;
-    
+    margin-left: 400px;
+    font-size: 20pt;
+    font-weight: bold;
   }
   .restaurantLogin {
     cursor: pointer;
