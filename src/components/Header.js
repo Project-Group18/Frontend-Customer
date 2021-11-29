@@ -12,8 +12,11 @@ export default function Header() {
     const [buttonRegister, setButtonRegister] = useState(false);
     return (
         <div>
-            <div class={styles.Headercontainer}>
-                <img className={styles.image} src='olivertwistLogo1.jpg' alt='picture'/>
+
+              <div class={styles.Headercontainer}>
+
+        <a href='/' ><img className={styles.image} src='olivertwistLogo1.jpg'/></a>
+
 
                 <div className={styles.Account}>
                   <button onClick={() => setButtonLogin(true)}>Log in</button>

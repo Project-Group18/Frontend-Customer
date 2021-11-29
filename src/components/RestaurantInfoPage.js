@@ -14,6 +14,8 @@ export default function RestaurantInfoPage() {
 
     const [dishes, setdishes ] = useState([]);
 
+
+    //get all dishes with restaurant id
     useEffect(() => {
         const path = 'dish/' + restID;
       api.get(path)
