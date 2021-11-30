@@ -5,6 +5,11 @@ import LoginFailedPopup from './LoginFailedPopup.js'
 
 function LoginPopUp(props) {
 
+const [email, setEmail] = useState("");
+
+
+
+
 const [LoginFailedPopUp, setLoginFailed] = useState(false);
 
     return (props.trigger) ? (
