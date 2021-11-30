@@ -5,14 +5,41 @@ import LoginFailedPopup from './LoginFailedPopup.js'
 
 function LoginPopUp(props) {
 
-const [email, setEmail] = useState("");
-
-
-
-
 const [LoginFailedPopUp, setLoginFailed] = useState(false);
 
+const handleSignupSubmit = async (event) => {
+    event.preventDefault();
+    console.log(event)
+}
+
     return (props.trigger) ? (
+        
+  /*      I was working on login here when I decided to do the register first 
+  
+        <div className={styles.popup}>
+            <div className={styles.popup_inner}>
+            <div className= {styles.popup_text_container}> 
+      <h1>Login</h1>
+            <form onSubmit={}>
+                <div>
+                    Username <input type="text" name="username"/>
+                </div>
+                <div>
+                    Password <input type="password" name="password"/>
+                </div>
+                <div>
+                    <button>Sign in</button> 
+                </div>
+                <div>
+                    <button className={styles.closeButton} onClick={() => props.setTrigger(false)}>&times;</button> 
+                </div>
+            </form>
+            </div>
+      </div>
+    </div> */
+        
+        
+        
         <div className={styles.popup}>
             
             <div className={styles.popup_inner}>
