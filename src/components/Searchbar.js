@@ -1,19 +1,19 @@
 import React from 'react'
-import styles from './Header.module.css'
+import styles from './Searchbar.module.css'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import api from '../api/config';
 
 export default function Searchbar() {
 
- const [searchTerm, setSearchTerm] = React.useState("");
-  const [restaurants, setRestaurants ] = useState([]);
-  const [dishes, setDishes ] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [restaurants, setRestaurants ] = useState([]);
+    const [dishes, setDishes ] = useState([]);
  
 
       //get all restaurants
       useEffect(() => {
-        api.get('/restaurant')
+        api.get('/restaurants')
           .then(res => {
               console.log(res);
               setRestaurants(res.data)
@@ -24,7 +24,7 @@ export default function Searchbar() {
     }, [])
       //get all dishes
     useEffect(() => {
-      api.get('/dish')
+      api.get('/dishes')
         .then(res => {
             console.log(res);
             setDishes(res.data)
@@ -38,15 +38,12 @@ export default function Searchbar() {
   useEffect(() => {
   const results = 
   restaurants.filter((restaurant)=> restaurant.restaurant_name.includes(searchTerm) 
-/*   +
+ 
+  /*Couldn't add the dishes to this yet, maybe add this once necessary things are complete */
+  /*   +
   dishes.filter((dish)=> dish.dish_name.includes(searchTerm)  */
   /* || dishes.filter((dish)=> dish.dish_name.includes(searchTerm)) */
   );
-
-  
-   
-
-
   setRestaurants(results);
 }, [searchTerm]);
 
