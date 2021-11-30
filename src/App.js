@@ -11,10 +11,9 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import TempCustomerList from './components/TempCustomerList';
 import { useState, useEffect } from 'react';
 import api from './api/config';
-
-
 import Errorpage from './components/Errorpage';
-import RestaurantInfoPage from './components/RestaurantInfoPage'; 
+import RestaurantInfoPage from './components/RestaurantInfoPage';
+import FrontpageLoggedIn from './components/FrontpageLoggedIn'; 
 
 function App() {
   const [restaurants, setRestaurant ] = useState([]);
@@ -57,42 +56,34 @@ useEffect(() => {
     }, [])
 
 
-  const orderData = [
+  const orders = [
     {
-      orderNumber: 1,
+      order_id: 1,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Cool', 
       message: '',
-      notes: '',
+      status: 'Received',
     },
     {
-      orderNumber: 2,
+      order_id: 2,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Lame', 
       message: '',
-      notes: '',
+      status: 'Delivering',
     },
     {
-      orderNumber: 3,
+      order_id: 3,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Fun', 
       message: '',
-      notes: '',
+      status: 'Delivered',
     },
     {
-      orderNumber: 4,
+      order_id: 4,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Cute', 
       message: '',
-      notes: '',
+      status: 'Delivered',
     }
   ];
 
@@ -106,13 +97,15 @@ useEffect(() => {
 
 <Router>
       <div style={{ display:"flex", justifyContent: "space-around" }}>
-{/*         <Link to='/'>Frontpage</Link>
+        <Link to='/'>Frontpage</Link>
+        <Link to='/frontpageloggedin'>FrontpageLoggedIn</Link>
         <Link to='/customermyaccountpage'>Customer Account Page</Link>
         <Link to='/searchresultpage'>Search Result Page</Link>
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         <Link to='/restaurantinfopage'>Restaurant Info Page</Link>
         <Link to='/customerspage'>See the list of customers</Link>
-*/}
+        
+
         
       </div>
 
@@ -121,14 +114,14 @@ useEffect(() => {
     <Routes>
 
       <Route path="/" element={<Frontpage/>}/>
-      <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
+      {/* <Route path="/customermyaccountpage"element={orders.map(element => <CustomerMyAccountPage {...element}/>)}/> */}
+      <Route path="/frontpageloggedin" element={ <FrontpageLoggedIn orders={ orders}/>}/>
       <Route path="/searchresultpage" element={<SearchResultPage/> }/>
       <Route path="/customerspage" element={ <TempCustomerList customers={ customers}/>}/>
-        <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers}/>}/>
+        <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers} orders={ orders }/>}/>
       <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes }/>}/>   
         <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  dishes={dishes}  />}/>
       <Route path="*"element={<Errorpage />}/>  
-
     </Routes>
    </Router>
 
