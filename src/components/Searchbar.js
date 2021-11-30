@@ -13,7 +13,7 @@ export default function Searchbar() {
 
       //get all restaurants
       useEffect(() => {
-        api.get('/restaurant')
+        api.get('/restaurants')
           .then(res => {
               console.log(res);
               setRestaurants(res.data)
@@ -24,7 +24,7 @@ export default function Searchbar() {
     }, [])
       //get all dishes
     useEffect(() => {
-      api.get('/dish')
+      api.get('/dishes')
         .then(res => {
             console.log(res);
             setDishes(res.data)

@@ -22,7 +22,7 @@ function App() {
 //get all restaurants from restaurant table
   useEffect(() => {
     const fetchRestaurant =  async () => {
-    try {const res = await api.get('/restaurant');
+    try {const res = await api.get('/restaurants');
     console.log(res);
     setRestaurant(res.data)
     } catch (err) {//Not in 200 response range
@@ -33,7 +33,7 @@ function App() {
 //get all customers from customer table
 useEffect(() => {
   const fetchCustomer =  async () => {
-      try {const res = await api.get('/customer');
+      try {const res = await api.get('/customers');
       console.log(res);
       setCustomer(res.data)
       } catch (err) {//Not in 200 response range
@@ -45,7 +45,7 @@ useEffect(() => {
 //get all dishes from dish table
   useEffect(() => {
     const fetchDish =  async () => {
-        try {const res = await api.get('/dish');
+        try {const res = await api.get('/dishes');
         console.log(res);
         setDish(res.data)
         } catch (err) {//Not in 200 response range
