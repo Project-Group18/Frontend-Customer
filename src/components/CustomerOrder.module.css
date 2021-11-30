@@ -1,0 +1,17 @@
+.status {
+    display:flex;
+    justify-content:flex-start;
+    height: 30px;
+    width: auto;
+  }
+
+.status> * {
+    margin-right: 20px;
+  }
+
+.OrderDetailContainer{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    border-top: 1px solid rgb(131, 128, 128);
+}
