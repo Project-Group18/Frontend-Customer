@@ -11,7 +11,7 @@ export default function Searchbar() {
     const [dishes, setDishes ] = useState([]);
  
 
-      //get all restaurants
+      //get all restaurants/
       useEffect(() => {
         api.get('/restaurants')
           .then(res => {
