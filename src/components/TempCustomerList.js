@@ -6,7 +6,13 @@ function TempCustomerList(props) {
     const navigate = useNavigate();
     const toCustomerAccPage=(props)=>{
       navigate('customermyaccountpage',
-{state:{id:props.customer_id,name:props.customer_name, email: props.customer_email, address: props.home_address, credit_card: props.credit_card, password: props.customer_password}})        
+    {state:{
+        id:props.customer_id,
+        name:props.customer_name, 
+        email: props.customer_email, 
+        address: props.home_address, 
+        credit_card: props.credit_card, 
+        password: props.customer_password}})        
     };
 
 

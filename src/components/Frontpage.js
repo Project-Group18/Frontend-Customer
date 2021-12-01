@@ -1,37 +1,12 @@
 import React from 'react'
 import styles from './Frontpage.module.css';
-/* import FoodCategoriesPage from './FoodCategoriesPage';
-  import { useNavigate } from 'react-router-dom'; */
+import {useLocation} from 'react-router-dom';
+
 
 function Frontpage(props) {
 
-/*   const navigate = useNavigate(); */
+  const location = useLocation();
 
-/*   const toBuffetRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const toFastFoodRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const toFastCasualRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const ToCasualDiningRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const ToFineDiningRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const toExtra=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  }; */
-  
 
   return (
     <div className="App">
@@ -42,6 +17,8 @@ function Frontpage(props) {
         </div>
             <div className={styles.onSale}>
             <img className={styles.ufo} src='ufo2.png' alt=''/>
+
+            <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div>
             </div>
             
             <p className={styles.categories}> Food types:</p>
