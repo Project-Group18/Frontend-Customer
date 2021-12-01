@@ -22,7 +22,7 @@ export default function Header(props) {
                             <>
                                 {/* If user is logged in, render these buttons */}
                                 <button > <a href='/loginpage' > My account</a></button>
-                                <button onClick={props.logout}> Log out</button>
+                                <button onClick={props.logout} ><a href='/'> Log out</a></button>
                                 <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i>
                             </>
                             :
