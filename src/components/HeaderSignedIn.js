@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './HeaderSignedIn.module.css'
 import { useState } from 'react';
 import LoginPopUp from './Login';
-import RegisterPopUp from './Register.js';
+import RegisterPopUp from './RegisterPopUp.js';
 
 
 export default function HeaderSignedIn() {
