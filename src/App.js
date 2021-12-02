@@ -10,16 +10,20 @@ import FoodCategoriesPage from './components/FoodCategoriesPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import TempCustomerList from './components/TempCustomerList';
 import api from './api/config';
-
-
 import Errorpage from './components/Errorpage';
 import RestaurantInfoPage from './components/RestaurantInfoPage'; 
 import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
 import Payload from './components/Payload';
+
+
+const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
+
+
+
 function App() {
 
- const [userJWT, setUserJWT] = useState(null);
+ const [userJWT, setUserJWT] = useState(jwtFromLocalStorage);
 
   const [restaurants, setRestaurant ] = useState([]);
   const [customers, setCustomer ] = useState([]);
@@ -64,7 +68,11 @@ useEffect(() => {
     //routes which are accessable only when user is not logged in
     let accessableRoutes = <>
       <Route path="/registerpage"element={<Registerpage />}/>  
-      <Route path="/loginpage"element={<LoginPage login={ newJWToken => setUserJWT(newJWToken)
+      <Route path="/loginpage"element={<LoginPage login={ newJWToken => {
+        setUserJWT(newJWToken)
+      window.localStorage.setItem('localStorageJWT', newJWToken)
+      }
+      
       }/>}/>  
     </>
 
@@ -122,7 +130,10 @@ useEffect(() => {
   return (
 
     <div className="App">
-<Header userLoggedIn={userJWT != null} customers={ customers} logout={()=> setUserJWT(null)}/>
+<Header userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
+  setUserJWT(null)
+  window.localStorage.removeItem('localStorageJWT');
+  }}/>
 {/* <HeaderSignedIn/> */}
 
 
