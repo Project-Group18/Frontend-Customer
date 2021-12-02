@@ -11,14 +11,14 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import TempCustomerList from './components/TempCustomerList';
 import api from './api/config';
 import Errorpage from './components/Errorpage';
+
 import RestaurantInfoPage from './components/RestaurantInfoPage'; 
 import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
 import Payload from './components/Payload';
-
+import FrontpageLoggedIn from './components/FrontpageLoggedIn'; 
 
 const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
-
 
 
 function App() {
@@ -88,41 +88,34 @@ useEffect(() => {
     console.log(userJWT);
 
   const orderData = [
+
     {
-      orderNumber: 1,
+      order_id: 1,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Cool', 
       message: '',
-      notes: '',
+      status: 'Received',
     },
     {
-      orderNumber: 2,
+      order_id: 2,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Lame', 
       message: '',
-      notes: '',
+      status: 'Delivering',
     },
     {
-      orderNumber: 3,
+      order_id: 3,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Fun', 
       message: '',
-      notes: '',
+      status: 'Delivered',
     },
     {
-      orderNumber: 4,
+      order_id: 4,
       address: '',
-      customerName: '', 
-      phoneNumber: '', 
-      orderId: '', 
+      customerName: 'Cute', 
       message: '',
-      notes: '',
+      status: 'Delivered',
     }
   ];
 
@@ -138,25 +131,30 @@ useEffect(() => {
 
 
 <Router>
+
       
         <div style={{ display:"flex", justifyContent: "space-around" }}>
          <Link to='/'>Frontpage</Link>
         {/* <Link to='/customermyaccountpage'>Customer Account Page</Link>
         <Link to='/searchresultpage'>Search Result Page</Link> */}
+
         <Link to='/foodcategoriespage'>Food Categories Page</Link>
         {/* <Link to='/restaurantinfopage'>Restaurant Info Page</Link> */}
 
         <Link to='/customerspage'>See the list of customers</Link>
+
         <Link to='/registerpage'>Register page</Link>
         <Link to='/loginpage'>Login page</Link>
         <Link to='/payload'>Payload</Link>
    
+
       </div>
 
 
        <Searchbar/>
 
     <Routes>
+
 
     <Route path="/" element={<Frontpage userLoggedIn={userJWT != null}/>}/>
     <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
