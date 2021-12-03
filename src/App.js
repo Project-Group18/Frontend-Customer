@@ -17,6 +17,7 @@ import Payload from './components/Payload';
 import MyAccountPage from './components/MyAccountPage';
 import ShoppingCartPopUp from './components/ShoppingCart';
 import ShoppingCartPage from './components/ShoppingCartPage';
+import FinalizeOrder from './components/FinalizeOrder';
 //local storage space to hold the JWT
 const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
 
@@ -33,31 +34,40 @@ function App() {
   //shopping cart list
 
     const [cartItems, setCartItems] = useState([]);
+    const [cart2, setCart2] = useState(cartListFromStorage);
     
+
   const onAdd = (product) => {
     const exist = cartItems.find(x=> x.dish_id === product.dish_id);
     if (exist) {
       console.log(product)
       console.log(" added to cart")
-      window.localStorage.setItem('localCartStorage', cartItems)
+      /* window.localStorage.setItem('localCartStorage', cartItems) */
       setCartItems(
         cartItems.map((x)=>
-          x.dish_id === product.dish_id ? {...exist, qty: exist.qty +1} : x
+          x.dish_id === product.dish_id ? {...exist, qty: exist.qty +1}
+          : 
+          x
           )
           );
     }else {
-      setCartItems([...cartItems, {...product, qty: 1}]);
+      setCartItems([...cartItems, {...product, qty: 1}]
+        );
     }
   };
 
   const onRemove = (product) => {
    const exist = cartItems.find((x) => x.dish_id === product.dish_id);
    if (exist.qty === 1) {
-    setCartItems(cartItems.filter((x) => x.dish_id !== product.dish_id));
+    setCartItems(cartItems.filter((x) =>
+     x.dish_id !== product.dish_id
+     ));
    } else {
     setCartItems(
       cartItems.map((x)=>
-        x.dish_id === product.dish_id ? {...exist, qty: exist.qty -1} : x
+        x.dish_id === product.dish_id ? {...exist, qty: exist.qty -1}
+        :
+        x
         )
         );
    } 
@@ -96,10 +106,10 @@ function App() {
   ];
 
   //keeps track of local cart items in local storage
-/*   useEffect(() => {
-    console.log("updated")
-    window.localStorage.setItem('localCartStorage', cartItems)
-}, [cartItems]) */
+  useEffect(() => {
+    console.log("updated:")
+    window.localStorage.setItem('localCartStorage', JSON.stringify(cartItems))
+}, [cartItems])
 
 
 
@@ -160,6 +170,7 @@ useEffect(() => {
     <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
     {/* <Route path="/shoppingcart"element={<ShoppingCartPopUp cartItems={cartItems} dishes={dishes}/>}/> */}
     <Route path="/shoppingcartpage"element={<ShoppingCartPage onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
+    <Route path="/shoppingcartpage/:finalizeorder"element={<FinalizeOrder/>} />
     
     </>
     }
@@ -172,7 +183,7 @@ useEffect(() => {
   return (
 
     <div className="App">
-<Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
+<Header /* countCartItems={cartItems.length} */ userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
   setUserJWT(null)
   window.localStorage.removeItem('localStorageJWT');
   }}/>

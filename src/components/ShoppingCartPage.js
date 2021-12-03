@@ -1,8 +1,8 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 function ShoppingCartPage(props) {
 
-    const {cartItems, onAdd, onRemove, clearCart} = props;
+    const {cartItems, onAdd, onRemove} = props;
     console.log("cartItems:")
     console.log(cartItems)
     const totalPrice = cartItems.reduce((a,c) =>a+c.price * c.qty, 0);
@@ -38,10 +38,17 @@ function ShoppingCartPage(props) {
                         <hr></hr>
                         <div>
                         <div>Total price</div>
-                           <div>{totalPrice.toFixed(2)}€</div> 
+                        <div>{totalPrice.toFixed(2)}€</div> 
                         </div>
+                        <Link to={{
+                            pathname: '/shoppingcartpage/finalizeorder'}} 
+                            state={{cartItems, totalPrice }}>
+                            <button>Submit order</button>
+                        </Link>
                         </>
-                    )}
+                        )}
+
+
             </div>
         </div>
     )
