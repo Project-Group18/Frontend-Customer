@@ -22,12 +22,12 @@ export default function FoodCategoriesPage(props) {
         <div>Choose Restaurant {restaurant.restaurant_id}</div>
       </Link>
 
-                <ul>ID: {restaurant.restaurant_id}</ul>
+                {/* <ul key={restaurant.restaurant_id}>ID: {restaurant.restaurant_id}</ul>
                 <ul>Name: {restaurant.restaurant_name}</ul>
                 <ul>Type: {restaurant.restaurant_type}</ul>
                 <ul>Hours: {restaurant.open_hours}</ul>
                 <ul>PriceLevel: {restaurant.price_level}</ul>
-                <ul>Location: {restaurant.location}</ul>
+                <ul>Location: {restaurant.location}</ul> */}
                 <br/>
       </div>
        )} 
@@ -48,6 +48,8 @@ export default function FoodCategoriesPage(props) {
                 </div>
               </div>
             </div> */}
+
+
  
         </div>
        

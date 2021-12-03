@@ -4,9 +4,11 @@ import { useState } from 'react';
 import LoginPopUp from './Login';
 /* import RegisterPopUp from './RegisterPopUp.js'; */
 import ShoppingCartPopUp from './ShoppingCart';
-
 export default function Header(props) {
 
+    const {countCartItems} = props;
+    console.log("countCartItems")
+    console.log(countCartItems)
     const [buttonShoppingCart, setButtonShoppingCart] = useState(false);
     const [buttonLogin, setButtonLogin] = useState(false);
 /*     const [buttonRegister, setButtonRegister] = useState(false); */
@@ -21,9 +23,19 @@ export default function Header(props) {
                             {props.userLoggedIn ? 
                             <>
                                 {/* If user is logged in, render these buttons */}
-                                <button > <a href='/loginpage' > My account</a></button>
+                                <button > <a href='/accountpage' > My account</a></button>
                                 <button onClick={props.logout} ><a href='/'> Log out</a></button>
-                                <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i>
+                               {/*  <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i> */}
+                                <a href='/shoppingcartpage'>
+                                    <i className={styles.shoppingcart}class="fas fa-shopping-cart">
+                                        Cart {' '}
+                                        {countCartItems ? (
+                                            <button>{countCartItems}</button>
+                                        ): (
+                                            ''
+                                        )}
+                                    </i>
+                                </a>
                             </>
                             :
                             <>

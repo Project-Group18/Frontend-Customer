@@ -2,24 +2,36 @@ import React from 'react'
 import styles from './DishItem.module.css'
 
 export default function DishItem(props) {
+
+
+    const {onAdd, product} = props;
+/*     console.log("product:")
+    console.log(product) */
+
     return (
         <div>
+
+ {/*        <h3>Food Name:{product.dish_name}</h3>
+        <div>{product.price}€</div>
+        <div>
+            <button onClick={() =>onAdd(product)}>Add to cart</button>
+        </div> */}
+
+
+
+
+
+
             <div className={styles.detailContainer}>
+                    <p>Food Name: <span>{product.dish_name}</span></p>
+                    <p>Price: <span>{product.price}€</span></p>
                     <div>
-                        <p>Food Name: <span>{props.dish_name}</span></p>
-                        <p>Food gategory ID :<span>{props.category_id}</span></p>
-                        <p>Price: <span>{props.price}€</span></p>
-                        <p>Details: <span>{props.dish_info}</span></p>
-                        <p>Restaurant ID: <span>{props.restaurant_id}</span></p>
-                    
+                        <img className={styles.placeholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
+                        <div  className={styles.button}><i className={styles.shoppingcart} class="fas fa-cart-arrow-down"></i></div>
+                        <br/>
+                        <button onClick={() =>onAdd(product)}>Add to cart</button>
                     </div>
-                      <div>
-                      <img className={styles.placeholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
-                      <button className={styles.button}><i className={styles.shoppingcart} class="fas fa-cart-arrow-down"></i></button>
-                      </div>
-
-
-                    </div>
+            </div>
         </div>
     )
 }

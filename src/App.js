@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Frontpage from './components/Frontpage';
 import Header from './components/Header';
-import HeaderSignedIn from './components/HeaderSignedIn';
 import Searchbar from './components/Searchbar';
 import Footer from './components/Footer';
-import CustomerMyAccountPage from './components/CustomerMyAccountPage';
 import SearchResultPage from './components/SearchResultPage';
 import FoodCategoriesPage from './components/FoodCategoriesPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
@@ -16,10 +14,14 @@ import RestaurantInfoPage from './components/RestaurantInfoPage';
 import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
 import Payload from './components/Payload';
-import FrontpageLoggedIn from './components/FrontpageLoggedIn'; 
-
+import MyAccountPage from './components/MyAccountPage';
+import ShoppingCartPopUp from './components/ShoppingCart';
+import ShoppingCartPage from './components/ShoppingCartPage';
+//local storage space to hold the JWT
 const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
 
+//local storage space to hold the shopping cart contents
+const cartListFromStorage = window.localStorage.getItem('localCartStorage');
 
 function App() {
 
@@ -28,6 +30,78 @@ function App() {
   const [restaurants, setRestaurant ] = useState([]);
   const [customers, setCustomer ] = useState([]);
   const [dishes, setDish ] = useState([]);
+  //shopping cart list
+
+    const [cartItems, setCartItems] = useState([]);
+    
+  const onAdd = (product) => {
+    const exist = cartItems.find(x=> x.dish_id === product.dish_id);
+    if (exist) {
+      console.log(product)
+      console.log(" added to cart")
+      window.localStorage.setItem('localCartStorage', cartItems)
+      setCartItems(
+        cartItems.map((x)=>
+          x.dish_id === product.dish_id ? {...exist, qty: exist.qty +1} : x
+          )
+          );
+    }else {
+      setCartItems([...cartItems, {...product, qty: 1}]);
+    }
+  };
+
+  const onRemove = (product) => {
+   const exist = cartItems.find((x) => x.dish_id === product.dish_id);
+   if (exist.qty === 1) {
+    setCartItems(cartItems.filter((x) => x.dish_id !== product.dish_id));
+   } else {
+    setCartItems(
+      cartItems.map((x)=>
+        x.dish_id === product.dish_id ? {...exist, qty: exist.qty -1} : x
+        )
+        );
+   } 
+  };
+
+  const orders = [
+
+    {
+      order_id: 1,
+      address: '',
+      customerName: 'Cool', 
+      message: '',
+      status: 'Received',
+    },
+    {
+      order_id: 2,
+      address: '',
+      customerName: 'Lame', 
+      message: '',
+      status: 'Delivering',
+    },
+    {
+      order_id: 3,
+      address: '',
+      customerName: 'Fun', 
+      message: '',
+      status: 'Delivered',
+    },
+    {
+      order_id: 4,
+      address: '',
+      customerName: 'Cute', 
+      message: '',
+      status: 'Ready',
+    }
+  ];
+
+  //keeps track of local cart items in local storage
+/*   useEffect(() => {
+    console.log("updated")
+    window.localStorage.setItem('localCartStorage', cartItems)
+}, [cartItems]) */
+
+
 
 //get all restaurants from restaurant table
   useEffect(() => {
@@ -80,72 +154,44 @@ useEffect(() => {
     if (userJWT != null) {
       accessableRoutes =
     <>
-    <Route path="/customerspage"element={<TempCustomerList customers={ customers}/> }/>
+    {/* <Route path="/customerspage"element={<TempCustomerList customers={ customers}/> }/> */}
     <Route path="/payload"element={<Payload jwt={userJWT}/> }/>
+    <Route path="/accountpage"element={<MyAccountPage orders={orders}/>}/>
+    <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
+    {/* <Route path="/shoppingcart"element={<ShoppingCartPopUp cartItems={cartItems} dishes={dishes}/>}/> */}
+    <Route path="/shoppingcartpage"element={<ShoppingCartPage onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
+    
     </>
     }
     console.log("userJWT:");
     console.log(userJWT);
 
-  const orderData = [
 
-    {
-      order_id: 1,
-      address: '',
-      customerName: 'Cool', 
-      message: '',
-      status: 'Received',
-    },
-    {
-      order_id: 2,
-      address: '',
-      customerName: 'Lame', 
-      message: '',
-      status: 'Delivering',
-    },
-    {
-      order_id: 3,
-      address: '',
-      customerName: 'Fun', 
-      message: '',
-      status: 'Delivered',
-    },
-    {
-      order_id: 4,
-      address: '',
-      customerName: 'Cute', 
-      message: '',
-      status: 'Delivered',
-    }
-  ];
 
   
   return (
 
     <div className="App">
-<Header userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
+<Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
   setUserJWT(null)
   window.localStorage.removeItem('localStorageJWT');
   }}/>
-{/* <HeaderSignedIn/> */}
 
 
 <Router>
 
       
         <div style={{ display:"flex", justifyContent: "space-around" }}>
-         <Link to='/'>Frontpage</Link>
-        {/* <Link to='/customermyaccountpage'>Customer Account Page</Link>
-        <Link to='/searchresultpage'>Search Result Page</Link> */}
-
-        <Link to='/foodcategoriespage'>Food Categories Page</Link>
+        {/* <Link to='/'>Frontpage</Link>
+         <Link to='/searchresultpage'>Search Result Page</Link>  
+        <Link to='/foodcategoriespage'>Food Categories Page</Link>*/}
         {/* <Link to='/restaurantinfopage'>Restaurant Info Page</Link> */}
-
+        <Link to='/'>Frontpage</Link>
         <Link to='/customerspage'>See the list of customers</Link>
-
         <Link to='/registerpage'>Register page</Link>
         <Link to='/loginpage'>Login page</Link>
         <Link to='/payload'>Payload</Link>
+        <Link to='/shoppingcartpage'>Cart page</Link>
    
 
       </div>
@@ -156,12 +202,10 @@ useEffect(() => {
     <Routes>
 
 
-    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null}/>}/>
-    <Route path="/customermyaccountpage"element={orderData.map(element => <CustomerMyAccountPage {...element}/>)}/>
+    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders}/>}/>
     <Route path="/searchresultpage" element={<SearchResultPage/> }/>
-      <Route path="/customerspage/:customerID" element={ <CustomerMyAccountPage customers={ customers}/>}/>
-    <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes }/>}/>   
-      <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  dishes={dishes}  />}/>
+    <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes } />}/>   
+     {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
     <Route path="*"element={<Errorpage />}/>  
     {accessableRoutes}
       

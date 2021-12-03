@@ -1,4 +1,12 @@
-
+.Account {
+  display:flex;
+  justify-content:space-around;
+  height: 30px;
+  width: auto;
+}
+.Account> * {
+  margin-right: 15px;
+}
   .background {
     background-color: #ffffff;
     font-size: calc(10px + 2vmin);
@@ -8,15 +16,6 @@
     display: flex;
     justify-content: space-between;
   
-  }
-  .Account {
-    display:flex;
-    justify-content:space-around;
-    height: 30px;
-    width: auto;
-  }
-  .Account> * {
-    margin-right: 15px;
   }
   
   .onSale{
@@ -29,22 +28,6 @@
     width: 50%;
     height: auto;
   }
-  .footer{
-    background-color: #FFD8B4;
-    display: flex;
-    justify-content: space-around;
-    margin-right: 10px;
-  }
-  .socialmedia{
-    display: flex;
-    margin-top: 15px;
-    width: 50px;
-    justify-content: space-around;
-  }
-  .socialmedia> * {
-    margin-right: 10px;
-  }
-  
   .search{
     background-color: #FFD8B4;
     margin-top: 10px;
@@ -87,3 +70,23 @@
   .restaurantLogin {
     cursor: pointer;
   }
+  .OrderStats {
+    background-color: #FFD8B4;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    margin-left:40px;
+    font-size:14pt;
+}
+.OrderStatus{
+    display: flex;
+    align-items: baseline;
+}
+.deliveredButton{
+    margin-top: 20px;
+    font-size:14pt;
+    background-color: green;
+    color: white;
+}

@@ -72,17 +72,7 @@ export default function Searchbar() {
                 <div>Search</div>
         </Link></button>
             </div> 
-
-            <div className={styles.location}> 
-              <i class="fas fa-map-marker-alt"></i>
-                <select id="location">
-                  <option value="oulu">Oulu</option>
-                  <option value="rovaniemi">Rovaniemi</option>
-                  <option value="turku">Turku</option>
-                </select>
-              
-            </div>
-
+            <br/>
         </div>
     )
 }

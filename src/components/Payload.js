@@ -1,44 +1,47 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import jwt from 'jsonwebtoken';
 import api from '../api/config_customer';
 
 
 function Payload(props) {
 
-    const [customers, setCustomers] = useState([]);
+    const [customers, setCustomer] = useState([]);
     const decodedToken = jwt.decode(props.jwt);
     console.log("following is the decoded token")
     console.log(decodedToken);
+ 
 
-    //the first request to use the jwt, these will be used for the 
-    const loadDataWithJWT = async () => {
-        try {
-            const res = await api.get('/customers',
-            {
-                headers: {
-                    'Authorization': 'Bearer ' + props.jwt
-                }
-            }
-            );
-            console.log(res);
-            setCustomers(res.data);
-        } catch (error) {
-            console.log(error);
+//get all managers from manager table
+useEffect(() => {
+    const loadCustomersWithJWT =  async () => {
+    try {const res = await api.get('/customers',
+    {
+        //we need to add an authorization token from app.js to 
+        //access authenticated requests.
+        headers: {
+            'Authorization': 'Bearer ' +props.jwt
         }
     }
+    );
+    console.log(res);
+    setCustomer(res.data)
+    } catch (err) {//Not in 200 response range
+        console.log(err);
+    }}
+    loadCustomersWithJWT();
+}, [])
+
+
     return (
         <div>
             <h2>this is the payload of the token</h2> 
-
 
             <div> 
                User Id: {decodedToken.user.id} <br/>
                 User email {decodedToken.user.email} <br/>
             </div>
 
-            <div>
-                <button onClick={loadDataWithJWT}>Click for a list of customers with JWT</button>
-            </div>
+     
             <br/>
             <table>
                 {customers.map(c => 

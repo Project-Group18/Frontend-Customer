@@ -7,7 +7,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 
-export default function RestaurantInfoPage() {
+export default function RestaurantInfoPage(props) {
+
+    const {onAdd} = props;
 
     const location = useLocation();
       let {restID} = useParams();
@@ -20,6 +22,7 @@ export default function RestaurantInfoPage() {
         const path = 'dish/' + restID;
       api.get(path)
         .then(res => {
+            console.log("dishes with restID")
             console.log(res);
             setdishes(res.data)
         })
@@ -55,10 +58,14 @@ export default function RestaurantInfoPage() {
             <div className={styles.infoContainer}>
                 <div className={styles.scrolldiv}>
                     <div>
-                    {
-                    dishes.map(dish => <DishItem {
-                    ...dish} key = {dish.dish_id} />)
-                    }
+
+   {dishes.map(product =>
+      <div>
+          <DishItem key={product.dish_id} product={product} onAdd={onAdd}/>
+      </div>
+       )}
+
+     
                     </div>
                 </div>
             </div>
