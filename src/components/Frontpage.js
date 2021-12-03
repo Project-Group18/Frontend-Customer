@@ -5,7 +5,6 @@ import {useLocation} from 'react-router-dom';
 
 function Frontpage(props) {
 
-  const location = useLocation();
 
 
   return (
