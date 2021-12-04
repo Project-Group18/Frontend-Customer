@@ -46,7 +46,7 @@ export default function CustomerMyAccountPage(props) {
                 <div className={styles.OrderInfoContainer}>
                     <div className={styles.scrolldiv}>
                         {
-                        props.orders.map(order => <CustomerOrder {
+                        props.orderData.map(order => <CustomerOrder {
                         ...order} key = {order.order_id} />)
                         }
                           

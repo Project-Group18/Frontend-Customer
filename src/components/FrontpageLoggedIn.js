@@ -1,47 +1,75 @@
 import React from 'react'
 import styles from './FrontpageLoggedIn.module.css';
 import CustomerOrder from './CustomerOrder'
-/* import FoodCategoriesPage from './FoodCategoriesPage';
-  import { useNavigate } from 'react-router-dom'; */
+import { useNavigate, Link } from 'react-router-dom';
+import Restaurant from './Restaurant';
+import {useState, useEffect} from 'react'
+import api from '../api/config';
+
 
 function FrontpageLoggedIn(props) {
-
-/*   const navigate = useNavigate(); */
-
-/*   const toBuffetRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const toFastFoodRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const toFastCasualRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const ToCasualDiningRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const ToFineDiningRest=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  };
-  const toExtra=(props)=>{
-    navigate('customermyaccountpage',
-{state:{id:props.customer_id}})        
-  }; */
+ 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [restaurants, setRestaurants ] = useState([]);
   
+      //get all restaurants/
+      useEffect(() => {
+        api.get('/restaurants')
+          .then(res => {
+              console.log(res);
+              setRestaurants(res.data)
+          })
+        .catch (function (err) {//Not in 200 response range
+            console.log(err);
+        })
+    }, [])
+
+    useEffect(() => {
+      const results = 
+      restaurants.filter((restaurant)=> 
+      restaurant.restaurant_name.toUpperCase().includes(searchTerm.toUpperCase())
+      ||
+      restaurant.restaurant_type.toUpperCase().includes(searchTerm.toUpperCase())
+      );
+      setRestaurants(results);
+      }, [searchTerm]);
+
+    
+      const handleChange = event => {
+        setSearchTerm(event.target.value);
+        console.log(event.target.value);
+      };
 
   return (
     <div className="App">
+      <div className={styles.search}> 
+
+      <input className={styles.searchbar} 
+      type="searchtext" 
+      placeholder= "Search for restaurants by name or type" 
+      value={searchTerm}
+      onChange={handleChange}
+      />
+
+      <button className={styles.searchbutton} onClick={console.log(restaurants)}><Link to= {{ pathname: '/searchresultpage/'}} 
+      state={{
+      restaurants
+      }}
+      >
+
+
+      <div>Search</div>
+      </Link></button>
+      </div>
+
+
+
       <header className={styles.background}>
 
       <div>
         <div className={styles.OrderStats}>
             {
-            props.orders.map(order => <CustomerOrder {
+            props.orderData.map(order => <CustomerOrder {
             ...order} key = {order.status}/>)
             }
             <div className={styles.OrderStatus}>
@@ -50,29 +78,19 @@ function FrontpageLoggedIn(props) {
             </div>
             </div>
         </div>
-            <div className={styles.onSale}>
-            <img className={styles.ufo} src='ufo2.png' alt=''/>
+           
+            
+            <p className={styles.categories}> Restaurant selection</p>
+            <div className= {styles.restaurantsContainer}>
+            {props.restaurants.map(restaurant =>
+            <div key = {restaurant.restaurant_id}>
+            <Restaurant restaurant={restaurant}/> 
+            </div>
+            )}
+           
             </div>
             
-            <p className={styles.categories}> Food types:</p>
-            <li className={styles.optionmenu}>
-
-
-            {/* <a> <button onClick={()=>{toBuffetRest(restaurant)}}><img src='buffet-pic.jpg'/></button></a> */}
-
-
-
-              <a href='foodcategoriespage' ><img src='buffet-pic.jpg' alt=''/></a>
-              <a href='foodcategoriespage'><img src='fast-food-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='fast-casual-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='casual-dining-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='fine-dining-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='plus-sign-pic.jpg'alt=''/></a>
-
-
-              <br/>            
-            </li>
-      
+           
       </header>
       </div>
   );
