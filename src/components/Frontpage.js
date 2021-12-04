@@ -10,7 +10,7 @@ function Frontpage(props) {
   //get all restaurants from restaurant table
   useEffect(() => {
     const fetchRestaurant =  async () => {
-    try {const res = await api.get('/restaurants');
+    try {const res = await api.get('/restaurant');
     console.log(res);
     setRestaurant(res.data)
     } catch (err) {//Not in 200 response range
@@ -31,8 +31,8 @@ function Frontpage(props) {
           <>
             <div className={styles.OrderStats}>
             {
-              props.orders.map(order => <CustomerOrder {
-              ...order} key = {order.status}/>)
+              props.orders.map(o => <CustomerOrder {
+              ...o} key = {o.status}/>)
             }
             <div className={styles.OrderStatus}>
             <button className={styles.deliveredButton}>Mark as delivered </button>
@@ -56,23 +56,23 @@ function Frontpage(props) {
             </div>
             
             <p className={styles.categories}> Restaurants:</p>
-            {restaurants.map(restaurant => 
+            {restaurants.map(r => 
              /*  className={styles.optionmenu} */
-            <li >
+              <div key={r.restaurant_id}>
               <Link to={{
-                pathname: 'restaurantinfopage/'+ restaurant.restaurant_id.toString()}}
+                pathname: 'restaurantinfopage/'+ r.restaurant_id.toString()}}
                 state= {{
-                  restaurant,
+                  r,
                 }}
-               key={restaurant.restaurant_id} >
-                {restaurant.restaurant_id}
-                {restaurant.restaurant_name}
-                {restaurant.restaurant_type}
-                {restaurant.open_hours}
-                {restaurant.price_level}
-                {restaurant.location}
+                >
+                {r.restaurant_id}
+                {r.restaurant_name}
+                {r.restaurant_type}
+                {r.open_hours}
+                {r.price_level}
+                {r.location}
               </Link>
-            </li>
+              </div>
             )}
 
              {/*  <a href='foodcategoriespage' ><img src='buffet-pic.jpg' alt=''/></a>

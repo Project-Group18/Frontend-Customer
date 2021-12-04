@@ -34,15 +34,16 @@ function App() {
   //shopping cart list
 
     const [cartItems, setCartItems] = useState([]);
-    const [cart2, setCart2] = useState(cartListFromStorage);
-    
+   /*  const [cartItems, setCartItems] = useState(cartListFromStorage); */
 
   const onAdd = (product) => {
+
+    //I cannot make a find function to a "null"
     const exist = cartItems.find(x=> x.dish_id === product.dish_id);
+
     if (exist) {
       console.log(product)
-      console.log(" added to cart")
-      /* window.localStorage.setItem('localCartStorage', cartItems) */
+      console.log(" added existing product to cart")
       setCartItems(
         cartItems.map((x)=>
           x.dish_id === product.dish_id ? {...exist, qty: exist.qty +1}
@@ -51,12 +52,14 @@ function App() {
           )
           );
     }else {
-      setCartItems([...cartItems, {...product, qty: 1}]
+      console.log(" added new product to cart")
+      setCartItems([...cartItems, {...product, qty: 1}],
         );
     }
   };
 
   const onRemove = (product) => {
+
    const exist = cartItems.find((x) => x.dish_id === product.dish_id);
    if (exist.qty === 1) {
     setCartItems(cartItems.filter((x) =>
@@ -108,7 +111,8 @@ function App() {
   //keeps track of local cart items in local storage
   useEffect(() => {
     console.log("updated:")
-    window.localStorage.setItem('localCartStorage', JSON.stringify(cartItems))
+   /*  window.localStorage.setItem('localCartStorage', JSON.stringify(cartItems)) */
+    window.localStorage.setItem('localCartStorage', cartItems)
 }, [cartItems])
 
 
@@ -116,7 +120,7 @@ function App() {
 //get all restaurants from restaurant table
   useEffect(() => {
     const fetchRestaurant =  async () => {
-    try {const res = await api.get('/restaurants');
+    try {const res = await api.get('/restaurant');
     console.log(res);
     setRestaurant(res.data)
     } catch (err) {//Not in 200 response range

@@ -14,7 +14,7 @@ export default function Header(props) {
 /*     const [buttonRegister, setButtonRegister] = useState(false); */
     return (
             <div>
-                <div class={styles.Headercontainer}>
+                <div className={styles.Headercontainer}>
                     <a href='/' ><img className={styles.image} src='olivertwistLogo1.jpg'/></a>
                     <div className={styles.Account}>
                         {/* These links were changed from buttons to hrefs because I couldn't redirect from a popup window */}
@@ -27,7 +27,7 @@ export default function Header(props) {
                                 <button onClick={props.logout} ><a href='/'> Log out</a></button>
                                {/*  <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i> */}
                                 <a href='/shoppingcartpage'>
-                                    <i className={styles.shoppingcart}class="fas fa-shopping-cart">
+                                    <i className={styles.shoppingcart}className="fas fa-shopping-cart">
                                         Cart {' '}
                                         {countCartItems ? (
                                             <button>{countCartItems}</button>
