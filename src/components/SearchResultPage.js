@@ -19,8 +19,6 @@ export default function SearchResultPage() {
 
         <div class={styles.heading}><b>Search Results </b></div>
 
-
-                <h2>Listing all restaurants here</h2>
                 {location.state.restaurants.map(restaurant => 
                 <div>
                   {/* The console will complain that the unique key value is missing but that
@@ -36,12 +34,14 @@ export default function SearchResultPage() {
                 )} 
 
 
-               <h2>  Listing all dishes here </h2>
+               {/* <h2>  Listing all dishes here </h2>
                 {location.state.dishes.map(dish => 
-                <div>
+                <div> */}
+
                   {/* The console will complain that the unique key value is missing but that
                   is just before it is give here. */}
-                  <ul key={dish.dish_id}>ID: {dish.dish_id}</ul>
+
+                  {/* <ul key={dish.dish_id}>ID: {dish.dish_id}</ul>
                       
                   <ul>Name: {dish.dish_name}</ul>
                   <ul>dish gategory id: {dish.category_id}</ul>
@@ -50,7 +50,7 @@ export default function SearchResultPage() {
                   <ul>Restaurant ID: {dish.restaurant_id}</ul>
                   <br/>
                 </div>
-                )} 
+                )}  */}
 
 
 

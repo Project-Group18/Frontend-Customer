@@ -5,7 +5,9 @@ import api from '../api/config'
 import { Link } from 'react-router-dom'
 function Frontpage(props) {
 
+
   const [restaurants, setRestaurant ] = useState([]);
+
 
   //get all restaurants from restaurant table
   useEffect(() => {

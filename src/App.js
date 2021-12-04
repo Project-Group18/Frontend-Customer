@@ -206,13 +206,13 @@ useEffect(() => {
         <Link to='/registerpage'>Register page</Link>
         <Link to='/loginpage'>Login page</Link>
         <Link to='/payload'>Payload</Link>
+
         <Link to='/shoppingcartpage'>Cart page</Link>
    
 
+
       </div>
 
-
-       <Searchbar/>
 
     <Routes>
 
@@ -223,6 +223,7 @@ useEffect(() => {
      {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
     <Route path="*"element={<Errorpage />}/>  
     {accessableRoutes}
+    <Route path="/frontpageloggedin" element={<FrontpageLoggedIn restaurants={restaurants} orderData={ orderData}/>}/>
       
 
     </Routes>
