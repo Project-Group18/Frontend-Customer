@@ -1,17 +1,18 @@
 import React from 'react'
 import styles from './RestaurantInfoPage.module.css'
-import {useLocation} from 'react-router-dom';
+import {useLocation, useParams} from 'react-router-dom';
 import DishItem from './DishItem.js'
 import api from '../api/config';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
 
 export default function RestaurantInfoPage(props) {
 
     const {onAdd} = props;
-
     const location = useLocation();
+    const {r} = location.state;
+    console.log("r!!!!!!")
+    console.log(location.state);
       let {restID} = useParams();
 
     const [dishes, setdishes ] = useState([]);
@@ -36,11 +37,11 @@ export default function RestaurantInfoPage(props) {
     <div>
         <div className={styles.restaurantInfoContainer}>
             <div className={styles.info}>
-                <div>Restaurant ID: { location.state.r.restaurant_id}</div>    
-                <div>Restaurant type: { location.state.r.restaurant_type}</div>
-                <div>Open Hours: {location.state.r.open_hours}</div>
-                <div>Price Level: {location.state.r.price_level}</div>
-                <div>Address: {location.state.r.location}</div>
+                <div>Restaurant ID: { r.restaurant_id}</div>    
+                <div>Restaurant type: { r.restaurant_type}</div>
+                <div>Open Hours: {r.open_hours}</div>
+                <div>Price Level: {r.price_level}</div>
+                <div>Address: {r.location}</div>
                 <br/>   
             </div>
                 <a><img src='restaurantPlaceHolderIcon.jpg' alt='picture'/></a>

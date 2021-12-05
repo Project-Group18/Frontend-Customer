@@ -5,13 +5,14 @@ import api from '../api/config'
 import { Link } from 'react-router-dom'
 import jwtFromWeb from 'jsonwebtoken';
 import apiCustomer from '../api/config_customer';
+import Restaurant from './Restaurant';
 function Frontpage(props) {
 
   const {jwt} = props;
-
   const [restaurants, setRestaurant ] = useState([]);
   const decodedToken = jwtFromWeb.decode(jwt);
   const [orders, setOrders] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
   //get all restaurants from restaurant table
@@ -44,86 +45,72 @@ function Frontpage(props) {
     loadOrdersWithJWT();
   }, [])
 
+  useEffect(() => {
+    const results = 
+    restaurants.filter((restaurant)=> 
+    restaurant.restaurant_name.toUpperCase().includes(searchTerm.toUpperCase())
+    ||
+    restaurant.restaurant_type.toUpperCase().includes(searchTerm.toUpperCase())
+    );
+    setRestaurant(results);
+    }, [searchTerm]);
+
+    const handleChange = event => {
+      setSearchTerm(event.target.value);
+      console.log(event.target.value);
+    };
 
   return (
     <div className="App">
+
+      <div className={styles.search}> 
+
+      <input className={styles.searchbar} 
+      type="searchtext" 
+      placeholder= "Search for restaurants by name or type" 
+      value={searchTerm}
+      onChange={handleChange}
+      />
+
+      <button className={styles.searchbutton} onClick={console.log(restaurants)}><Link to= {{ pathname: '/searchresultpage/'}} 
+      state={{
+      restaurants
+      }}
+      >
+
+      <div>Search</div>
+      </Link></button>
+      </div>
+
       <header className={styles.background}>
+        <br/>
 
+       {/*  Temporary conditional rendering to show if the user is logged in */}
+      <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div>
 
-        {/* WE SHOULD CONSIDER MAKING THIS A MODAL SO THAT IT WOULDN'T BE ON THE WAY */}
-        <div>
-          {props.userLoggedIn ? 
-          //if user is logged in, render current orders here
-          <>
-          <div className={styles.OrderStats}>
-          {/* {
-          props.orders.map(o => <CustomerOrder {
-          ...o} key = {o.status}/>)
-          } */}
-          <div className={styles.OrderStatus}>
-          <button className={styles.deliveredButton}>Mark as delivered </button>
-          </div>
-          </div>
-          </> 
-          : 
-          //if user is not logged in don't render anything here
-          <> </>
-          }
-        </div>
+        
 
-
-              
+            {/* WE SHOULD CONSIDER MAKING THIS A MODAL SO THAT IT WOULDN'T BE ON THE WAY */}
         <div>
         {props.userLoggedIn ? 
         <>
         <br/>
-        <div>Test:</div>
-       
         <div className={styles.OrderStats}>
-        <CustomerOrder orders={orders} jwt={jwt}/>
-        <div className={styles.OrderStatus}>
-       {/*  <button className={styles.deliveredButton}>Mark as delivered </button> */}
+          <CustomerOrder orders={orders} jwt={jwt}/>
+          <div className={styles.OrderStatus}></div>
         </div>
+        </> :  <> </>}
         </div>
-        </> 
-        : 
-        <> </>
-        }
-        </div>
-
 
             <div className={styles.onSale}>
             <img className={styles.ufo} src='ufo2.png' alt=''/>
-
-            <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div>
             </div>
             
-            <p className={styles.categories}> Restaurants:</p>
-            {restaurants.map(r => 
-             /*  className={styles.optionmenu} */
-              <div key={r.restaurant_id}>
-              <Link to={{
-                pathname: 'restaurantinfopage/'+ r.restaurant_id.toString()}}
-                state= {{
-                  r,
-                }}
-                >
-                {r.restaurant_id}
-                {r.restaurant_name}
-                {r.restaurant_type}
-                {r.open_hours}
-                {r.price_level}
-                {r.location}
-              </Link>
-              </div>
-            )}
 
-             {/*  <a href='foodcategoriespage' ><img src='buffet-pic.jpg' alt=''/></a>
-              <a href='foodcategoriespage'><img src='fast-food-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='fast-casual-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='casual-dining-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='fine-dining-pic.jpg'alt=''/></a>
-              <a href='foodcategoriespage'><img src='plus-sign-pic.jpg'alt=''/></a> */}
+      <p className={styles.categories}> Restaurant selection</p>
+      <div className= {styles.restaurantsContainer}>
+      <Restaurant restaurants={restaurants}/> 
+      </div>
 
 
               <br/>            

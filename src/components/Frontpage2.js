@@ -57,7 +57,6 @@ function Frontpage2(props) {
       }}
       >
 
-
       <div>Search</div>
       </Link></button>
       </div>
@@ -82,7 +81,7 @@ function Frontpage2(props) {
             
             <p className={styles.categories}> Restaurant selection</p>
             <div className= {styles.restaurantsContainer}>
-            {props.restaurants.map(restaurant =>
+            {restaurants.map(restaurant =>
             <div key = {restaurant.restaurant_id}>
             <Restaurant restaurant={restaurant}/> 
             </div>

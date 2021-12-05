@@ -20,10 +20,10 @@ export default function SearchResultPage() {
         <div class={styles.heading}><b>Search Results </b></div>
 
                 {location.state.restaurants.map(restaurant => 
-                <div>
+                <div key={restaurant.restaurant_id}>
                   {/* The console will complain that the unique key value is missing but that
                   is just before it is give here. */}
-                  <ul key={restaurant.restaurant_id}>ID: {restaurant.restaurant_id}</ul>
+                  <ul >ID: {restaurant.restaurant_id}</ul>
                   <ul>Name: {restaurant.restaurant_name}</ul>
                   <ul>Type: {restaurant.restaurant_type}</ul>
                   <ul>Hours: {restaurant.open_hours}</ul>
