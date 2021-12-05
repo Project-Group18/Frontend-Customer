@@ -1,17 +1,93 @@
-import React from 'react'
-import {useLocation} from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import {useLocation, useNavigate} from 'react-router-dom';
+import jwtFromWeb from 'jsonwebtoken';
+import api from '../api/config_customer';
 
-function FinalizeOrder() {
-
+function FinalizeOrder(props) {
+    const navigate = useNavigate();
     const location = useLocation();
+    const {jwt, totalPrice, cartItems} = location.state;
+    const {clearCart} = props;
+    const [customer, setCustomer] = useState([]);
+    const decodedToken = jwtFromWeb.decode(jwt);
+    const [ orderProcessState, setOrderProcessState] = useState("idle")
 
-    const {cartItems, totalPrice} = location.state; 
-
-    //reguest or propping here about the user credentials
+    //jwt brings the user credentials
+    //get request to get customer info with decodedToken
+    useEffect(() => {
+    const loadCustomerWithJWT =  async () => {
+    try {const res = await api.get(decodedToken.user.id.toString(),
+    {
+    headers: {
+    'Authorization': 'Bearer ' +jwt
+    }
+    }
+    );
+    console.log(res);
+    setCustomer(res.data)
+    } catch (err) {//Not in 200 response range
+    console.log(err);
+    }}
+    loadCustomerWithJWT();
+    }, [])
 
     //post request for a new orders
+    const handleOrder = (event) => {
+    event.preventDefault();
+    
+    setOrderProcessState("processing");
 
-    //get request to get customer info
+    const createOrder =  async () => {
+        try {const res = await api.post('createOrder', 
+        {
+            total_price: totalPrice,
+            message: event.target.message.value,
+            customer_id: decodedToken.user.id,
+            restaurant_id: cartItems[0].restaurant_id
+        },
+        {
+            headers: {
+            'Authorization': 'Bearer ' +jwt
+            }
+        } 
+        );
+        //what should happen after an order is sent?
+        
+        setOrderProcessState("orderSuccessful");
+        console.log(res);
+        clearCart();
+         setTimeout(() => {
+            navigate('/', {replace: true})
+        }, 1500);
+                
+        } catch (error) {
+           console.log(error)
+            setOrderProcessState("orderFailed");
+        }
+        
+        } 
+        createOrder();
+    }
+
+
+    let orderUIControls = null;
+    switch(orderProcessState) {
+        case "idle":
+            orderUIControls =<button type="submit">Submit order</button>
+            break;
+        case "processing": 
+             orderUIControls = <span style={{color:"blue"}}>Processing...</span>
+            break;
+        case "orderSuccessful":
+            orderUIControls = <span style={{color:"green"}}>Order sent successfully</span>
+            break;
+
+        case "orderFailed":
+            orderUIControls = <span style={{color:"red"}}>Something went wrong</span>
+            break;
+    }
+
+
 
     return (
         <div>
@@ -31,15 +107,27 @@ function FinalizeOrder() {
             <div>Total amount: {totalPrice}</div>
             <br/>
        <div>
-        <div>Enter address here:</div>
-      <input type="text" name="address" placeholder="Enter address..."></input>
-      <div>Enter credit card number here:</div>
-      <input type="text" name="creditcard" placeholder="Enter credit card number..."></input>
-      <div>Enter message for restaurant:</div>
-      <input type="text" name="message" placeholder="Write a message..."></input>
+            <form onSubmit={ handleOrder}>
+
+            <p>*Enter delivery address here:</p>
+            {customer.length !== 0 && 
+            <input type="text" name="address" placeHolder={customer[0].home_address} ></input>
+            }
+            <p>*Enter credit card number here:</p>
+            {customer.length !== 0 && 
+            <input type="text" name="creditcard" placeHolder={customer[0].credit_card}></input>
+            }
+            <p>Edit message here:</p>
+            <textarea type="text" name="message" placeHolder="Thanks for the food!" ></textarea>
+
+            <br/>
+            <div>
+            {orderUIControls}
+            </div>
+            </form>
+               
       </div>
-        <button>Finalize order</button>
-        <br/>
+      
 
         </div>
     )

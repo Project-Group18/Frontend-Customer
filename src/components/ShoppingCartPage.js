@@ -2,17 +2,20 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 function ShoppingCartPage(props) {
 
-    const {cartItems, onAdd, onRemove} = props;
+    const {jwt, cartItems, onAdd, onRemove} = props;
     console.log("cartItems:")
     console.log(cartItems)
+
+   
     const totalPrice = cartItems.reduce((a,c) =>a+c.price * c.qty, 0).toFixed(2);
+    
 
     return (
         <div>
             <h2>The contents of your shopping cart:</h2>
             <div>{cartItems.length === 0 && <div>Cart is empty</div>}</div>
             <div>
-            {cartItems.length !== 0 && 
+            {cartItems != null && 
             <div>
                 {cartItems.map((item) => (
                     <div key={item.id} >
@@ -35,7 +38,8 @@ function ShoppingCartPage(props) {
            </div> 
 
             <div>
-                    {cartItems.length !== 0 && (
+                   {/*  {cartItems != null && ( */}
+                        {cartItems.length !== 0 && (
                         <>
                         <hr></hr>
                         <div>
@@ -44,7 +48,7 @@ function ShoppingCartPage(props) {
                         </div>
                         <Link to={{
                             pathname: '/shoppingcartpage/finalizeorder'}} 
-                            state={{cartItems, totalPrice }}>
+                            state={{cartItems, jwt, totalPrice}}>
                             <button>Submit order</button>
                         </Link>
                         </>

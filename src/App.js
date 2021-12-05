@@ -74,6 +74,10 @@ function App() {
    } 
   };
 
+  const clearCart= () => {
+    setCartItems([]);
+  };
+
   const orders = [
 
     {
@@ -171,8 +175,8 @@ useEffect(() => {
     <Route path="/accountpage"element={<MyAccountPage orders={orders}/>}/>
     <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
     {/* <Route path="/shoppingcart"element={<ShoppingCartPopUp cartItems={cartItems} dishes={dishes}/>}/> */}
-    <Route path="/shoppingcartpage"element={<ShoppingCartPage onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
-    <Route path="/shoppingcartpage/:finalizeorder"element={<FinalizeOrder/>} />
+    <Route path="/shoppingcartpage"element={<ShoppingCartPage jwt={userJWT} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
+    <Route path="/shoppingcartpage/:finalizeorder"element={<FinalizeOrder clearCart={clearCart}/>} />
     
     </>
     }
@@ -185,8 +189,10 @@ useEffect(() => {
   return (
 
     <div className="App">
+
 <Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
   setUserJWT(null)
+
   window.localStorage.removeItem('localStorageJWT');
   }}/>
 
@@ -203,12 +209,18 @@ useEffect(() => {
       </div>
 
     <Routes>
-      <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders}/>}/>
-      <Route path="/searchresultpage" element={<SearchResultPage/> }/>
-      <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes } />}/>   
-      <Route path="*"element={<Errorpage />}/>  
-      <Route path="/frontpage2" element={<Frontpage2 restaurants={restaurants} orders={ orders}/>}/>
-        {accessableRoutes}
+
+
+
+    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders} jwt={userJWT} />}/>
+    <Route path="/searchresultpage" element={<SearchResultPage/> }/>
+    <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes } />}/>   
+     {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
+    <Route path="*"element={<Errorpage />}/>  
+    <Route path="/frontpage2" element={<Frontpage2 restaurants={restaurants} orders={ orders}/>}/>
+      {accessableRoutes}
+      
+
     </Routes>
   </Router>
 

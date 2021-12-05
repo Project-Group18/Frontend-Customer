@@ -3,10 +3,15 @@ import styles from './Frontpage.module.css';
 import CustomerOrder from './CustomerOrder'
 import api from '../api/config'
 import { Link } from 'react-router-dom'
+import jwtFromWeb from 'jsonwebtoken';
+import apiCustomer from '../api/config_customer';
 function Frontpage(props) {
 
+  const {jwt} = props;
 
   const [restaurants, setRestaurant ] = useState([]);
+  const decodedToken = jwtFromWeb.decode(jwt);
+  const [orders, setOrders] = useState([]);
 
 
   //get all restaurants from restaurant table
@@ -19,7 +24,26 @@ function Frontpage(props) {
         console.log(err);
     }}
     fetchRestaurant();
-}, [])
+  }, [])
+
+  //get all orders using customer id
+  useEffect(() => {
+    const loadOrdersWithJWT =  async () => {
+    try {const res = await apiCustomer.get('getOrders/customer/'+decodedToken.user.id.toString(),
+    {
+    headers: {
+    'Authorization': 'Bearer ' +jwt
+    }
+    }
+    );
+    console.log(res);
+    setOrders(res.data)
+    } catch (err) {//Not in 200 response range
+    console.log(err);
+    }}
+    loadOrdersWithJWT();
+  }, [])
+
 
   return (
     <div className="App">
@@ -31,26 +55,43 @@ function Frontpage(props) {
           {props.userLoggedIn ? 
           //if user is logged in, render current orders here
           <>
-            <div className={styles.OrderStats}>
-            {
-              props.orders.map(o => <CustomerOrder {
-              ...o} key = {o.status}/>)
-            }
-            <div className={styles.OrderStatus}>
-            <button className={styles.deliveredButton}>Mark as delivered </button>
-            </div>
-            </div>
+          <div className={styles.OrderStats}>
+          {/* {
+          props.orders.map(o => <CustomerOrder {
+          ...o} key = {o.status}/>)
+          } */}
+          <div className={styles.OrderStatus}>
+          <button className={styles.deliveredButton}>Mark as delivered </button>
+          </div>
+          </div>
           </> 
-             : 
-             //if user is not logged in don't render anything here
-             <>
-             </>
-            }
-          
-
-
-
+          : 
+          //if user is not logged in don't render anything here
+          <> </>
+          }
         </div>
+
+
+              
+        <div>
+        {props.userLoggedIn ? 
+        <>
+        <br/>
+        <div>Test:</div>
+       
+        <div className={styles.OrderStats}>
+        <CustomerOrder orders={orders} jwt={jwt}/>
+        <div className={styles.OrderStatus}>
+       {/*  <button className={styles.deliveredButton}>Mark as delivered </button> */}
+        </div>
+        </div>
+        </> 
+        : 
+        <> </>
+        }
+        </div>
+
+
             <div className={styles.onSale}>
             <img className={styles.ufo} src='ufo2.png' alt=''/>
 

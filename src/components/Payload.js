@@ -11,8 +11,8 @@ function Payload(props) {
     console.log(decodedToken);
  
 
-//get all managers from manager table
-useEffect(() => {
+//get all customers from customer table
+    useEffect(() => {
     const loadCustomersWithJWT =  async () => {
     try {const res = await api.get('/customers',
     {
