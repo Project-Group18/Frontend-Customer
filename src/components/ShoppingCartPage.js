@@ -5,9 +5,11 @@ function ShoppingCartPage(props) {
     const {jwt, cartItems, onAdd, onRemove} = props;
     console.log("cartItems:")
     console.log(cartItems)
+
    
     const totalPrice = cartItems.reduce((a,c) =>a+c.price * c.qty, 0).toFixed(2);
     
+
     return (
         <div>
             <h2>The contents of your shopping cart:</h2>

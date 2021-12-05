@@ -1,0 +1,23 @@
+.placeholder{
+    margin-top: 20px;
+    width: auto;
+    height: 290px;
+  }
+
+.restaurant{
+  display: flex;
+  justify-content: space-between;
+  
+  font-size: 14pt;
+  padding-right:20px;
+  background-color: #FFD8B4;
+}
+.button{
+  font-size:14pt;
+  background-color:#FA9F4B;
+  margin-left: 40px;
+}
+.link {
+  color: white;
+  text-decoration: underline;
+}

@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom'
 import jwtFromWeb from 'jsonwebtoken';
 import apiCustomer from '../api/config_customer';
 function Frontpage(props) {
+
   const {jwt} = props;
+
   const [restaurants, setRestaurant ] = useState([]);
   const decodedToken = jwtFromWeb.decode(jwt);
   const [orders, setOrders] = useState([]);
+
 
   //get all restaurants from restaurant table
   useEffect(() => {

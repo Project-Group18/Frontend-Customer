@@ -59,7 +59,7 @@ export default function Searchbar() {
 
               <input className={styles.searchbar} 
               type="searchtext" 
-              placeholder= "Search for restaurants or dishes" 
+              placeholder= "Search for restaurants" 
               value={searchTerm}
               onChange={handleChange}
              />
@@ -71,8 +71,10 @@ export default function Searchbar() {
       >
                 <div>Search</div>
         </Link></button>
+
             </div> 
             <br/>
+
         </div>
     )
 }

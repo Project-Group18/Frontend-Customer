@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import SearchResultPage from './components/SearchResultPage';
 import FoodCategoriesPage from './components/FoodCategoriesPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import TempCustomerList from './components/TempCustomerList';
 import api from './api/config';
 import Errorpage from './components/Errorpage';
 import RestaurantInfoPage from './components/RestaurantInfoPage'; 
@@ -14,9 +13,9 @@ import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
 import Payload from './components/Payload';
 import MyAccountPage from './components/MyAccountPage';
-import ShoppingCartPopUp from './components/ShoppingCart';
 import ShoppingCartPage from './components/ShoppingCartPage';
 import FinalizeOrder from './components/FinalizeOrder';
+import Frontpage2 from './components/Frontpage2'
 //local storage space to hold the JWT
 const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
 
@@ -190,34 +189,27 @@ useEffect(() => {
   return (
 
     <div className="App">
-<Header /* countCartItems={cartItems.length} */ userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
-  setUserJWT([])
+
+<Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
+  setUserJWT(null)
+
   window.localStorage.removeItem('localStorageJWT');
   }}/>
 
 
-<Router>
-
+  <Router>
       
         <div style={{ display:"flex", justifyContent: "space-around" }}>
-        {/* <Link to='/'>Frontpage</Link>
-         <Link to='/searchresultpage'>Search Result Page</Link>  
-        <Link to='/foodcategoriespage'>Food Categories Page</Link>*/}
-        {/* <Link to='/restaurantinfopage'>Restaurant Info Page</Link> */}
-        <Link to='/'>Frontpage</Link>
-        <Link to='/customerspage'>See the list of customers</Link>
-        <Link to='/registerpage'>Register page</Link>
-        <Link to='/loginpage'>Login page</Link>
-        <Link to='/payload'>Payload</Link>
-        <Link to='/shoppingcartpage'>Cart page</Link>
-   
-
+          <Link to='/'>Frontpage</Link>
+          <Link to='/registerpage'>Register page</Link>
+          <Link to='/loginpage'>Login page</Link>
+          <Link to='/payload'>Payload</Link>
+          <Link to='/shoppingcartpage'>Cart page</Link>
+          <Link to='/frontpage2'>Go to front page 2</Link>
       </div>
 
-
-       <Searchbar/>
-
     <Routes>
+
 
 
     <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders} jwt={userJWT} />}/>
@@ -225,11 +217,12 @@ useEffect(() => {
     <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes } />}/>   
      {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
     <Route path="*"element={<Errorpage />}/>  
-    {accessableRoutes}
+    <Route path="/frontpage2" element={<Frontpage2 restaurants={restaurants} orders={ orders}/>}/>
+      {accessableRoutes}
       
 
     </Routes>
-   </Router>
+  </Router>
 
      <Footer/>
       
