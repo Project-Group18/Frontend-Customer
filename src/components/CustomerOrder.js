@@ -30,9 +30,8 @@ export default function CustomerOrder(props) {
             
             console.log("updated state successfully");
             console.log(res);
-            setTimeout(() => {
-                navigate('/')
-            }, 1500);
+            //forces component to refresh the page
+            window.location.reload(false);
            
            
                     
