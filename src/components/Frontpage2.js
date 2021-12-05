@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react'
 import api from '../api/config';
 
 
-function FrontpageLoggedIn(props) {
+function Frontpage2(props) {
  
   const [searchTerm, setSearchTerm] = useState("");
   const [restaurants, setRestaurants ] = useState([]);
@@ -69,7 +69,7 @@ function FrontpageLoggedIn(props) {
       <div>
         <div className={styles.OrderStats}>
             {
-            props.orderData.map(order => <CustomerOrder {
+            props.orders.map(order => <CustomerOrder {
             ...order} key = {order.status}/>)
             }
             <div className={styles.OrderStatus}>
@@ -97,4 +97,4 @@ function FrontpageLoggedIn(props) {
   }
 
 
-export default FrontpageLoggedIn;
+export default Frontpage2;

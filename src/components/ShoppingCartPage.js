@@ -5,7 +5,7 @@ function ShoppingCartPage(props) {
     const {cartItems, onAdd, onRemove} = props;
     console.log("cartItems:")
     console.log(cartItems)
-
+    const totalPrice = cartItems.reduce((a,c) =>a+c.price * c.qty, 0).toFixed(2);
 
     return (
         <div>
@@ -40,11 +40,11 @@ function ShoppingCartPage(props) {
                         <hr></hr>
                         <div>
                         <div>Total price</div>
-                        <div>{cartItems.reduce((a,c) =>a+c.price * c.qty, 0).toFixed(2)}€</div>
+                        <div>{totalPrice}€</div>
                         </div>
                         <Link to={{
                             pathname: '/shoppingcartpage/finalizeorder'}} 
-                            state={{cartItems, /* totalPrice */ }}>
+                            state={{cartItems, totalPrice }}>
                             <button>Submit order</button>
                         </Link>
                         </>
