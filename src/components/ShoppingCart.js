@@ -5,17 +5,19 @@ import ConfirmPopUp from './ConfirmPopUp';
 
 function ShoppingCartPopUp(props) {
     const [confirmPopup, setConfirmPopup] = useState(false);
+
     return (props.trigger) ? (
     <div>
-      
             <div className={styles.popup_inner}>
                 <p> Items in your order:</p>
                 
              <div className={styles.container}>
                 <div className={styles.items}>
-                    <p>ITEM1</p>
-                    <p>ITEM2</p>
-                    <p>ITEM3</p>
+
+                   {/* <div>{cartItems.length === 0 && <div>Cart is empty</div>}</div> */}
+
+
+
                 </div>
              </div>
 
@@ -24,7 +26,7 @@ function ShoppingCartPopUp(props) {
                     cancel order
                 </button>
                 <button onClick={() => setConfirmPopup(true)} className={styles.confirmButton}>
-                    confirm
+                    Continue to payment
                 </button>
              </div>
 

@@ -7,7 +7,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 
-export default function RestaurantInfoPage() {
+export default function RestaurantInfoPage(props) {
+
+    const {onAdd} = props;
 
     const location = useLocation();
       let {restID} = useParams();
@@ -17,9 +19,10 @@ export default function RestaurantInfoPage() {
 
     //get all dishes with restaurant id
     useEffect(() => {
-        const path = 'dish/' + restID;
+        const path = 'restaurant/' + restID+'/menu';
       api.get(path)
         .then(res => {
+            console.log("dishes with restID")
             console.log(res);
             setdishes(res.data)
         })
@@ -33,11 +36,11 @@ export default function RestaurantInfoPage() {
     <div>
         <div className={styles.restaurantInfoContainer}>
             <div className={styles.info}>
-                <div>Restaurant ID: { location.state.restaurant.restaurant_id}</div>    
-                <div>Restaurant type: { location.state.restaurant.restaurant_type}</div>
-                <div>Open Hours: {location.state.restaurant.open_hours}</div>
-                <div>Price Level: {location.state.restaurant.price_level}</div>
-                <div>Address: {location.state.restaurant.location}</div>
+                <div>Restaurant ID: { location.state.r.restaurant_id}</div>    
+                <div>Restaurant type: { location.state.r.restaurant_type}</div>
+                <div>Open Hours: {location.state.r.open_hours}</div>
+                <div>Price Level: {location.state.r.price_level}</div>
+                <div>Address: {location.state.r.location}</div>
                 <br/>   
             </div>
                 <a><img src='restaurantPlaceHolderIcon.jpg' alt='picture'/></a>
@@ -55,10 +58,14 @@ export default function RestaurantInfoPage() {
             <div className={styles.infoContainer}>
                 <div className={styles.scrolldiv}>
                     <div>
-                    {
-                    dishes.map(dish => <DishItem {
-                    ...dish} key = {dish.dish_id} />)
-                    }
+
+   {dishes.map(product =>
+      <div>
+          <DishItem key={product.dish_id} product={product} onAdd={onAdd}/>
+      </div>
+       )}
+
+     
                     </div>
                 </div>
             </div>

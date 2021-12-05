@@ -71,7 +71,9 @@ export default function Searchbar() {
       >
                 <div>Search</div>
         </Link></button>
-            </div>
+
+            </div> 
+            <br/>
 
         </div>
     )
