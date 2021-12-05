@@ -4,6 +4,8 @@ import { useState } from 'react';
 import LoginPopUp from './Login';
 /* import RegisterPopUp from './RegisterPopUp.js'; */
 import ShoppingCartPopUp from './ShoppingCart';
+
+
 export default function Header(props) {
 
     const {countCartItems} = props;
@@ -25,7 +27,6 @@ export default function Header(props) {
                                 {/* If user is logged in, render these buttons */}
                                 <button > <a href='/accountpage' > My account</a></button>
                                 <button onClick={props.logout} ><a href='/'> Log out</a></button>
-                               {/*  <i className={styles.shoppingcart} onClick={() =>setButtonShoppingCart(true)} class="fas fa-shopping-cart" ></i> */}
                                 <a href='/shoppingcartpage'>
                                     <i className={styles.shoppingcart}className="fas fa-shopping-cart">
                                         Cart {' '}

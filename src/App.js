@@ -9,7 +9,6 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import TempCustomerList from './components/TempCustomerList';
 import api from './api/config';
 import Errorpage from './components/Errorpage';
-
 import RestaurantInfoPage from './components/RestaurantInfoPage'; 
 import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
@@ -74,6 +73,10 @@ function App() {
         )
         );
    } 
+  };
+
+  const clearCart= () => {
+    setCartItems([]);
   };
 
   const orders = [
@@ -173,8 +176,8 @@ useEffect(() => {
     <Route path="/accountpage"element={<MyAccountPage orders={orders}/>}/>
     <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
     {/* <Route path="/shoppingcart"element={<ShoppingCartPopUp cartItems={cartItems} dishes={dishes}/>}/> */}
-    <Route path="/shoppingcartpage"element={<ShoppingCartPage onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
-    <Route path="/shoppingcartpage/:finalizeorder"element={<FinalizeOrder/>} />
+    <Route path="/shoppingcartpage"element={<ShoppingCartPage jwt={userJWT} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
+    <Route path="/shoppingcartpage/:finalizeorder"element={<FinalizeOrder clearCart={clearCart}/>} />
     
     </>
     }
@@ -188,7 +191,7 @@ useEffect(() => {
 
     <div className="App">
 <Header /* countCartItems={cartItems.length} */ userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
-  setUserJWT(null)
+  setUserJWT([])
   window.localStorage.removeItem('localStorageJWT');
   }}/>
 
@@ -217,7 +220,7 @@ useEffect(() => {
     <Routes>
 
 
-    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders}/>}/>
+    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders} jwt={userJWT} />}/>
     <Route path="/searchresultpage" element={<SearchResultPage/> }/>
     <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes } />}/>   
      {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
