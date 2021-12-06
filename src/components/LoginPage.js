@@ -1,3 +1,4 @@
+import styles from './LoginPage.module.css'
 import React, { useState } from 'react'
 import api from '../api/config_login';
 import { useNavigate } from 'react-router-dom';
@@ -70,7 +71,7 @@ function LoginPage(props) {
 
 
     return (
-        <div>
+        <div className={styles.background}>
             <br/>
             <h2>Login</h2>
             <form onSubmit={ handleLogIn}>
@@ -80,7 +81,7 @@ function LoginPage(props) {
                         <input type="text" name="password" placeholder="Enter password"></input>
                     <br/>
                     <div>
-                        <button type="submit">Login</button>
+                        <button className={styles.button} type="submit"><div className={styles.link}>Login</div></button>
                     </div>
                 </form>
         </div>

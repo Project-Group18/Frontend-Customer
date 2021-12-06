@@ -1,3 +1,4 @@
+import styles from './RegisterPage.module.css';
 import React, { useState } from 'react'
 import api from '../api/config_new';
 import { useNavigate } from 'react-router-dom';
@@ -47,7 +48,7 @@ function Registerpage() {
     let signupUIControls = null;
     switch(signupProcessState) {
         case "idle":
-            signupUIControls =<button type="submit">Sign up</button>
+            signupUIControls =<button className={styles.button} type="submit"><div className={styles.link}>Sign up</div></button>
             break;
         case "processing": 
             signupUIControls = <span style={{color:"blue"}}>Processing...</span>
@@ -65,7 +66,7 @@ function Registerpage() {
 
 
     return (
-            <div>
+            <div className={styles.background}>
                 <h2>Sign up as a customer</h2>
                 <form onSubmit ={handleSignupSubmit} >
                     <p>*Name</p>

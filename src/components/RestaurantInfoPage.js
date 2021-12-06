@@ -10,7 +10,7 @@ export default function RestaurantInfoPage(props) {
 
     const {onAdd} = props;
     const location = useLocation();
-    const {r} = location.state;
+    const {restaurant} = location.state;
     console.log("r!!!!!!")
     console.log(location.state);
       let {restID} = useParams();
@@ -37,11 +37,11 @@ export default function RestaurantInfoPage(props) {
     <div>
         <div className={styles.restaurantInfoContainer}>
             <div className={styles.info}>
-                <div>Restaurant ID: { r.restaurant_id}</div>    
-                <div>Restaurant type: { r.restaurant_type}</div>
-                <div>Open Hours: {r.open_hours}</div>
-                <div>Price Level: {r.price_level}</div>
-                <div>Address: {r.location}</div>
+                <div>Restaurant ID: { restaurant.restaurant_id}</div>    
+                <div>Restaurant type: { restaurant.restaurant_type}</div>
+                <div>Open Hours: {restaurant.open_hours}</div>
+                <div>Price Level: {restaurant.price_level}</div>
+                <div>Address: {restaurant.location}</div>
                 <br/>   
             </div>
                 <a><img src='restaurantPlaceHolderIcon.jpg' alt='picture'/></a>

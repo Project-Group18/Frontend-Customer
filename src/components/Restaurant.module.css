@@ -2,16 +2,26 @@
     margin-top: 20px;
     width: auto;
     height: 290px;
+    margin-bottom: 20px;
   }
 
-.restaurant{
-  display: flex;
-  justify-content: space-between;
-  
+.restaurantsContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 40px;
   font-size: 14pt;
   padding-right:20px;
-  background-color: #FFD8B4;
+  grid-gap:10px;
+  margin-bottom: 40px;
+  
 }
+.oneRestaurant{
+  display: flex;
+  background-color: #FFD8B4;
+  justify-content:space-between;
+  padding-right: 20px;
+}
+
 .button{
   font-size:14pt;
   background-color:#FA9F4B;

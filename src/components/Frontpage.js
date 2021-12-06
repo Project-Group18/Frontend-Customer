@@ -78,7 +78,7 @@ function Frontpage(props) {
       }}
       >
 
-      <div>Search</div>
+      <div  ><i class="fas fa-search" ></i></div>
       </Link></button>
       </div>
 
@@ -87,7 +87,7 @@ function Frontpage(props) {
 
        {/*  Temporary conditional rendering to show if the user is logged in */}
       <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div>
-
+      </header>
         
 
             {/* WE SHOULD CONSIDER MAKING THIS A MODAL SO THAT IT WOULDN'T BE ON THE WAY */}
@@ -103,20 +103,14 @@ function Frontpage(props) {
         </div>
 
             <div className={styles.onSale}>
-            <img className={styles.ufo} src='ufo2.png' alt=''/>
+            <img className={styles.ufo} src='casual-dining-pic.jpg' alt=''/>
             </div>
             
 
-      <p className={styles.categories}> Restaurant selection</p>
-      <div className= {styles.restaurantsContainer}>
-      <Restaurant restaurants={restaurants}/> 
-      </div>
-
-
-              <br/>            
-            
-      
-      </header>
+        <p className={styles.categories}> Restaurant selection</p>
+        <div>
+        <Restaurant restaurants={restaurants}/> 
+        </div>
       </div>
   );
   }

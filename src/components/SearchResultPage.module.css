@@ -36,3 +36,16 @@
   width: 250px;
   height: auto;
 }
+.oneresult{
+  margin-bottom: 20px;
+  border-top: 1px solid rgb(131, 128, 128);
+}
+.button{
+  font-size:12pt;
+  background-color:#FA9F4B;
+  margin-left: 40px;
+}
+.link {
+  color: white;
+  text-decoration: underline;
+}

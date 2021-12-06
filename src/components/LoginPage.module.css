@@ -1,0 +1,14 @@
+.background{
+    margin-left: 40px;
+}
+.button{
+    font-size:12pt;
+    background-color:#FA9F4B;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+.link {
+    color: white;
+    text-decoration: underline;
+  }

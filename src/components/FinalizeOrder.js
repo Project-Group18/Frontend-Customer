@@ -1,3 +1,4 @@
+import styles from './FinalizeOrder.module.css'
 import React, {useState, useEffect} from 'react'
 import {useLocation, useNavigate} from 'react-router-dom';
 import jwtFromWeb from 'jsonwebtoken';
@@ -73,7 +74,7 @@ function FinalizeOrder(props) {
     let orderUIControls = null;
     switch(orderProcessState) {
         case "idle":
-            orderUIControls =<button type="submit">Submit order</button>
+            orderUIControls =<button className={styles.button} type="submit"><div className={styles.link}>Submit order</div></button>
             break;
         case "processing": 
              orderUIControls = <span style={{color:"blue"}}>Processing...</span>
@@ -90,7 +91,7 @@ function FinalizeOrder(props) {
 
 
     return (
-        <div>
+        <div className={styles.ShoppingCartBackground}>
             <h2>Here you can finalize your order</h2>
 
             <h3>These are the items in your cart: </h3>
@@ -104,7 +105,8 @@ function FinalizeOrder(props) {
                 </div>
                 )}
 
-            <div>Total amount: {totalPrice}</div>
+            <div className={styles.total} >Total amount: {totalPrice}</div>
+            <br/>
             <br/>
        <div>
             <form onSubmit={ handleOrder}>
@@ -120,6 +122,8 @@ function FinalizeOrder(props) {
             <p>Edit message here:</p>
             <textarea type="text" name="message" placeHolder="Thanks for the food!" ></textarea>
 
+            <br/>
+            <br/>
             <br/>
             <div>
             {orderUIControls}

@@ -1,54 +1,33 @@
-.Account {
-  display:flex;
-  justify-content:space-around;
-  height: 30px;
-  width: auto;
-}
-.Account> * {
-  margin-right: 15px;
-}
+
   .background {
-    background-color: #ffffff;
-    font-size: calc(10px + 2vmin);
+    font-size: 14pt;
   }
-  .Headercontainer { 
-    margin-left: 40px;
-    display: flex;
-    justify-content: space-between;
-  
-  }
-  
+
   .onSale{
     display: flex;
     justify-content: center;
   
   }
   .ufo{
-    border-radius: 14px;
+    border-radius: 10px;
     width: 50%;
     height: auto;
+    margin-top:20px;
   }
   .search{
     background-color: #FFD8B4;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-bottom: 10px;
+    padding-top:10px;
+    padding-left:10px;
     margin-left: 40px;
   }
   .searchbar{
       width: 30%;
       height: auto;
   }
-  .image{
-    border-radius: 14px;
-  }
-  .location{
-    margin-left: 40px;
-  }
-  .Placeholder{
-    width: 100%;
-    height: auto;
-  }
+
   .optionmenu{
     justify-content: center;
     display: grid;
@@ -66,9 +45,6 @@
     margin-left: 400px;
     font-size: 20pt;
     font-weight: bold;
-  }
-  .restaurantLogin {
-    cursor: pointer;
   }
   .OrderStats {
     background-color: #FFD8B4;
@@ -90,14 +66,13 @@
   background-color: green;
   color: white;
 }
-.restaurantsContainer{
-  display:grid;
-  margin-left:40px;
-  margin-right:40px;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin-bottom:40px;
-}
+
 .searchbutton{
 background-color:#FA9F4B;
+}
+
+.categories{
+  margin-left: 40px;
+  font-size: 20pt;
+  font-weight: bold;
 }
