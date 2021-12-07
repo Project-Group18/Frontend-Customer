@@ -75,8 +75,10 @@ function Registerpage() {
                         <input type="text" name="email" placeholder="Enter email"></input>
                     <p>*Password:</p>
                         <input type="text" name="password" placeholder="Enter password"></input>
+                        <span> Note: Password must be at least 8 characters.</span>
                     <p>*CC:</p>
                         <input type="text" name="creditcard" placeholder="Enter credit card number"></input>
+                        <span> Note: Credit card number must contain 10 characters.</span>                    
                     <br></br>
                     <div>
                         {signupUIControls}

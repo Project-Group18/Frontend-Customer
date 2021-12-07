@@ -27,9 +27,9 @@ export default function DishItem(props) {
                     <p>Price: <span>{product.price}€</span></p>
                     <div>
                         <img className={styles.placeholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
-                        <div  className={styles.button}><i className={styles.shoppingcart} className="fas fa-cart-arrow-down"></i></div>
+                        
                         <br/>
-                        <button onClick={() =>onAdd(product)}>Add to cart</button>
+                        <button className={styles.button} onClick={() =>onAdd(product)}><div className={styles.link}>Add to cart <i className={styles.shoppingcart} className="fas fa-cart-arrow-down"></i></div></button>
                     </div>
             </div>
         </div>

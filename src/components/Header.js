@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Header.module.css'
 import { useState } from 'react';
-import LoginPopUp from './Login';
+
 /* import RegisterPopUp from './RegisterPopUp.js'; */
-import ShoppingCartPopUp from './ShoppingCart';
+
 
 
 export default function Header(props) {
@@ -27,7 +27,7 @@ export default function Header(props) {
                                 {/* If user is logged in, render these buttons */}
                                 <button > <a href='/accountpage' > My account</a></button>
                                 <button onClick={props.logout} ><a href='/'> Log out</a></button>
-                                <a href='/shoppingcartpage'>
+                                {/* <a href='/shoppingcartpage'>
                                     <i className={styles.shoppingcart}className="fas fa-shopping-cart">
                                         Cart {' '}
                                         {countCartItems ? (
@@ -36,7 +36,7 @@ export default function Header(props) {
                                             ''
                                         )}
                                     </i>
-                                </a>
+                                </a> */}
                             </>
                             :
                             <>
@@ -50,9 +50,9 @@ export default function Header(props) {
                     </div>
                 </div>
                 {/* Check later if these can be implemented along with the popup windows */}
-                <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/>
+                {/* <LoginPopUp trigger ={buttonLogin} setTrigger ={setButtonLogin}/> */}
                 {/*  <RegisterPopUp trigger={buttonRegister} setTrigger ={setButtonRegister}/> */}
-                <ShoppingCartPopUp trigger={buttonShoppingCart} setTrigger ={setButtonShoppingCart}/>
+                {/* <ShoppingCartPopUp trigger={buttonShoppingCart} setTrigger ={setButtonShoppingCart}/> */}
             </div>
     )
 }

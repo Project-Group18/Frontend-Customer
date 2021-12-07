@@ -23,11 +23,13 @@
 }
 
 .button{
-  font-size:14pt;
+  cursor:pointer;
   background-color:#FA9F4B;
   margin-left: 40px;
 }
 .link {
+  font-size:14pt;
   color: white;
   text-decoration: underline;
+  cursor:pointer;
 }

@@ -78,7 +78,7 @@ function Frontpage(props) {
       }}
       >
 
-      <div  ><i class="fas fa-search" ></i></div>
+      <div className={styles.searchIcon}><i class="fas fa-search" ></i></div>
       </Link></button>
       </div>
 
@@ -86,7 +86,7 @@ function Frontpage(props) {
         <br/>
 
        {/*  Temporary conditional rendering to show if the user is logged in */}
-      <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div>
+      {/* <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div> */}
       </header>
         
 
