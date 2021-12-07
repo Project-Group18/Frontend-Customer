@@ -64,17 +64,17 @@ function MyAccountPage(props) {
         <div>
         
         <div class={styles.heading}><b>My Profile</b></div>
-            <div class={styles.myaccountinfo}>
+            <div className={styles.myInfo}>
                 {customerInfo.map(c => 
                 <tr>
-                    <div>Name:</div><input className={styles.searchbar} type="name" placeholder={c.customer_name}  ></input> 
-                    <div>Default Address:</div><input className={styles.searchbar} type="address" placeholder= {c.home_address} ></input> 
-                    <div>Credit card number:</div><input className={styles.searchbar} type="creditcard" placeholder= {c.credit_card} ></input>
+                    <div >
+                    <div>Name: {c.customer_name}</div>
+                    <div>Default Address: {c.home_address}</div> 
+                    <div>Credit card number: {c.credit_card}</div>
+                    </div>
                 </tr>)}
-            
-            
             </div>
-            <button className={styles.heading}>Save Changes</button>
+
         <div className={styles.heading}><b>Order History</b></div>
    
             <div className={styles.OrderInfoContainer}>

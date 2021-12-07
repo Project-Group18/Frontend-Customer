@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Frontpage from './components/Frontpage';
 import Header from './components/Header';
-import Searchbar from './components/Searchbar';
 import Footer from './components/Footer';
 import SearchResultPage from './components/SearchResultPage';
-import FoodCategoriesPage from './components/FoodCategoriesPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import api from './api/config';
 import Errorpage from './components/Errorpage';
@@ -15,7 +13,8 @@ import Payload from './components/Payload';
 import MyAccountPage from './components/MyAccountPage';
 import ShoppingCartPage from './components/ShoppingCartPage';
 import FinalizeOrder from './components/FinalizeOrder';
-import Frontpage2 from './components/Frontpage2'
+import styles from './App.module.css'
+
 //local storage space to hold the JWT
 const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
 
@@ -199,13 +198,20 @@ useEffect(() => {
 
   <Router>
       
-        <div style={{ display:"flex", justifyContent: "space-around" }}>
-          <Link to='/'>Frontpage</Link>
+        <div style={{ display:"flex", justifyContent: "right", marginRight: "10px" }}>
+          {/* <Link to='/'>Frontpage</Link>
           <Link to='/registerpage'>Register page</Link>
           <Link to='/loginpage'>Login page</Link>
-          <Link to='/payload'>Payload</Link>
-          <Link to='/shoppingcartpage'>Cart page</Link>
-          <Link to='/frontpage2'>Go to front page 2</Link>
+          <Link to='/payload'>Payload</Link> */}
+          <Link to='/shoppingcartpage'>
+            <button style={{backgroundColor: '#FA9F4B', cursor:"pointer"}}>
+            <div style={{ color:"white", fontSize:"14pt"}}>Shopping Cart
+              <i className={styles.shoppingcart}className="fas fa-shopping-cart">
+              </i>
+            </div>
+            </button>
+          </Link>
+          
       </div>
 
     <Routes>
@@ -213,11 +219,10 @@ useEffect(() => {
 
 
     <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders} jwt={userJWT} />}/>
-    <Route path="/searchresultpage" element={<SearchResultPage/> }/>
-    <Route path="/foodcategoriespage" element={ <FoodCategoriesPage restaurants={ restaurants} dishes={dishes } />}/>   
+    <Route path="/searchresultpage" element={<SearchResultPage/> }/>  
      {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
     <Route path="*"element={<Errorpage />}/>  
-    <Route path="/frontpage2" element={<Frontpage2 restaurants={restaurants} orders={ orders}/>}/>
+    
       {accessableRoutes}
       
 

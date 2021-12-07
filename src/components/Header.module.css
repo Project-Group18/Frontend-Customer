@@ -16,13 +16,13 @@
 
 .Account {
     display:flex;
-    justify-content:space-around;
+    justify-content:space-between;
     height: 30px;
-    width: auto;
+    gap:10px;
   }
 
 .Account> * {
-    margin-right: 15px;
+    margin-right: 10px;
   }
 
 

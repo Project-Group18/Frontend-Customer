@@ -6,9 +6,9 @@
     background-color:#FA9F4B;
     margin-top: 20px;
     margin-bottom: 40px;
+    cursor: pointer;
   }
 
 .link {
     color: white;
-    text-decoration: underline;
   }
