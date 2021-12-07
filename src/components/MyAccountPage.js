@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import styles from './CustomerMyAccountPage.module.css';
+import styles from './MyAccountPage.module.css';
 import CustomerOrder from './CustomerOrder';
 import api from '../api/config_customer';
 import jwtFromWeb from 'jsonwebtoken';
@@ -9,8 +9,10 @@ function MyAccountPage(props) {
 
     const [customerInfo, setCustomerInfo] = useState([]);
     const [customerOrders, setCustomerOrders] = useState([]);
-    const {orders, jwt} = props;
+    const {jwt} = props;
     const decodedToken = jwtFromWeb.decode(jwt);
+
+
     //load customer data with customer id
     useEffect(() => {
         const loadCustomerDataWithJwt =  async () => {
@@ -37,7 +39,11 @@ function MyAccountPage(props) {
     //get all orders using customer id
     useEffect(() => {
     const loadOrdersWithJWT =  async () => {
-    try {const res = await apiCustomer.get('getOrders/customer/'+decodedToken.user.id.toString(),
+    try {const res = await apiCustomer.post('orderHistory',
+    {
+        order_status: "Delivered",
+        customer_id: decodedToken.user.id,
+    },
     {
     headers: {
     'Authorization': 'Bearer ' +jwt
@@ -52,33 +58,7 @@ function MyAccountPage(props) {
     }}
     loadOrdersWithJWT();
   }, [])
-
-
-    //old data. Can this be removed?
-/*     const [name,setName]=useState(null);
-    const [address,setAddress]=useState(null);
-    const [cc,setCC]=useState(null);
-    const [print,setPrint]=useState(false);
-
-    const [setEditProfile] = useState(false);
-    const [buttonLogOut, setButtonLogOut] = useState(false);
-    
-    const location = useLocation();
-
-    function getName(val) {
-        setName(val.target.value)
-        setPrint(false)
-    }
-    function getAddress(val) {
-        setAddress(val.target.value)
-        setPrint(false)
-    }
-    function getCC(val) {
-        setCC(val.target.value)
-        setPrint(false)
-    } */
-
-
+ 
 
     return (
         <div>
@@ -94,18 +74,31 @@ function MyAccountPage(props) {
             
             
             </div>
-            <button class={styles.heading}>Save Changes</button>
-        <div class={styles.heading}><b>Order History</b></div>
+            <button className={styles.heading}>Save Changes</button>
+        <div className={styles.heading}><b>Order History</b></div>
    
-            <div> 
-                <div className={styles.OrderInfoContainer}>
+            <div className={styles.OrderInfoContainer}>
                 <div className={styles.scrolldiv}>
-                        <CustomerOrder orders={customerOrders} />
+                           
+                            <div >
+                        {customerOrders.map(order => 
+                            <div key={order.order_id}>
+                                {/* <div>{order.order_id}</div> */}
+                                <h4>ID: <input name="orderid" value={order.order_id}/></h4>
+                                <h4 >Price: {order.total_price}€</h4>
+                                <h4>Msg: {order.message}</h4>
+                                <h4>Status: {order.order_status}</h4>
+                                <hr/>
+                            </div>
+                            )}
+                        </div>
+
+                    
+                   
                 </div>
             </div> 
 
 
-    </div>
     </div>
     )
 }

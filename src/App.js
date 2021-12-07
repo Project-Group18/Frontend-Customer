@@ -172,7 +172,7 @@ useEffect(() => {
     <>
     {/* <Route path="/customerspage"element={<TempCustomerList customers={ customers}/> }/> */}
     <Route path="/payload"element={<Payload jwt={userJWT}/> }/>
-    <Route path="/accountpage"element={<MyAccountPage jwt={userJWT} orders={orders}/> }/>
+    <Route path="/accountpage"element={<MyAccountPage jwt={userJWT}/> }/>
     <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
     {/* <Route path="/shoppingcart"element={<ShoppingCartPopUp cartItems={cartItems} dishes={dishes}/>}/> */}
     <Route path="/shoppingcartpage"element={<ShoppingCartPage jwt={userJWT} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />

@@ -57,6 +57,11 @@
     width:800px;
 }
 
+/* .OrderInfoContainer> * {
+  height: 50px;
+
+} */
+
 .OrderDetailContainer{
     display: flex;
     justify-content: space-between;

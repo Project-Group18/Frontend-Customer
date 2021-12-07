@@ -76,3 +76,10 @@ background-color:#FA9F4B;
   font-size: 20pt;
   font-weight: bold;
 }
+.scrolldiv{
+  width:800px;
+  background: #FFD8B4;
+  height:400px;
+  overflow: hidden;
+  overflow-y:scroll;
+}

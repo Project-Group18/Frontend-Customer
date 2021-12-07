@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import styles from './CustomerOrder.module.css'
 import api from '../api/config_customer';
-import { useNavigate } from 'react-router-dom';
 import jwtFromWeb from 'jsonwebtoken';
 
 export default function CustomerOrder(props) {
 
     const {orders, jwt} = props;
     const decodedToken = jwtFromWeb.decode(jwt);
-    const navigate = useNavigate();
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -47,23 +45,25 @@ export default function CustomerOrder(props) {
     return (
         <div className={styles.OrderDetailContainer}>
 
-            <div >
-                {orders.map(order => 
-                <form key={order.order_id} onSubmit={handleUpdate}>
-                    {/* <div>{order.order_id}</div> */}
-                    <input name="orderid" value={order.order_id}/>
-                    <div >{order.address}</div>
-                    <div>{order.message}</div>
-                    <div>{order.order_status}</div>
-                    <div>{order.order_arrival_time}</div>
-                    <button type="submit" className={styles.deliveredButton}>Finish order</button>
-                    
+
+                <div>
+
+                    <div >
+                        
+                    {orders.map(order =>
+                    <form key={order.order_id} onSubmit={handleUpdate}>
+                    <h4>ID: <input name="orderid" value={order.order_id}/></h4>
+                    <h4 >Price: {order.total_price}€</h4>
+                    <h4>Msg: {order.message}</h4>
+                    <h4>Status: {order.order_status}</h4>
+                    <h4><button type="submit" className={styles.deliveredButton}>Finish order</button></h4>
+
                     <hr/>
-                </form>
-                )}
-            </div>
-
-
+                    </form>
+                    )}
+                    </div>
+                    
+                </div>
 
         </div>
     )

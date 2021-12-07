@@ -37,7 +37,7 @@ export default function RestaurantInfoPage(props) {
     <div>
         <div className={styles.restaurantInfoContainer}>
             <div className={styles.info}>
-                <div>Restaurant ID: { restaurant.restaurant_id}</div>    
+                <div>Restaurant name: { restaurant.restaurant_name}</div>    
                 <div>Restaurant type: { restaurant.restaurant_type}</div>
                 <div>Open Hours: {restaurant.open_hours}</div>
                 <div>Price Level: {restaurant.price_level}</div>
