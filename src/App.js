@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import SearchResultPage from './components/SearchResultPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import api from './api/config';
-import Errorpage from './components/Errorpage';
 import RestaurantInfoPage from './components/RestaurantInfoPage'; 
 import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
@@ -18,45 +17,33 @@ import styles from './App.module.css'
 //local storage space to hold the JWT
 const jwtFromLocalStorage = window.localStorage.getItem('localStorageJWT');
 
-//local storage space to hold the shopping cart contents
-const cartListFromStorage = window.localStorage.getItem('localCartStorage');
 
 function App() {
 
- const [userJWT, setUserJWT] = useState(jwtFromLocalStorage);
-
-  const [restaurants, setRestaurant ] = useState([]);
-  const [customers, setCustomer ] = useState([]);
-  const [dishes, setDish ] = useState([]);
-  //shopping cart list
-
+    const [userJWT, setUserJWT] = useState(jwtFromLocalStorage);
+    //shopping cart list
     const [cartItems, setCartItems] = useState([]);
-   /*  const [cartItems, setCartItems] = useState(cartListFromStorage); */
-
-  const onAdd = (product) => {
-
-    //I cannot make a find function to a "null"
-    const exist = cartItems.find(x=> x.dish_id === product.dish_id);
-
-    if (exist) {
-      console.log(product)
-      console.log(" added existing product to cart")
-      setCartItems(
+    //add item to shoppingcart (or increase quantity)
+    const onAdd = (product) => {
+      const exist = cartItems.find(x=> x.dish_id === product.dish_id);
+      if (exist) {
+        console.log(product)
+        console.log(" added existing product to cart")
+        setCartItems(
         cartItems.map((x)=>
-          x.dish_id === product.dish_id ? {...exist, qty: exist.qty +1}
-          : 
-          x
-          )
-          );
-    }else {
-      console.log(" added new product to cart")
-      setCartItems([...cartItems, {...product, qty: 1}],
+        x.dish_id === product.dish_id ? {...exist, qty: exist.qty +1}
+        : 
+        x
+        )
         );
-    }
-  };
-
+      }else {
+        console.log(" added new product to cart")
+        setCartItems([...cartItems, {...product, qty: 1}],
+        );
+      }
+      };
+  //remove item or (decrease quantity)
   const onRemove = (product) => {
-
    const exist = cartItems.find((x) => x.dish_id === product.dish_id);
    if (exist.qty === 1) {
     setCartItems(cartItems.filter((x) =>
@@ -69,129 +56,44 @@ function App() {
         :
         x
         )
-        );
-   } 
+      );
+    } 
   };
+    //remove all items from cart
+    const clearCart= () => {
+      setCartItems([]);
+    };
 
-  const clearCart= () => {
-    setCartItems([]);
-  };
-
-  const orders = [
-
-    {
-      order_id: 1,
-      address: '',
-      customerName: 'Cool', 
-      message: '',
-      status: 'Received',
-    },
-    {
-      order_id: 2,
-      address: '',
-      customerName: 'Lame', 
-      message: '',
-      status: 'Delivering',
-    },
-    {
-      order_id: 3,
-      address: '',
-      customerName: 'Fun', 
-      message: '',
-      status: 'Delivered',
-    },
-    {
-      order_id: 4,
-      address: '',
-      customerName: 'Cute', 
-      message: '',
-      status: 'Ready',
-    }
-  ];
-
-  //keeps track of local cart items in local storage
-  useEffect(() => {
-    console.log("updated:")
-   /*  window.localStorage.setItem('localCartStorage', JSON.stringify(cartItems)) */
-    window.localStorage.setItem('localCartStorage', cartItems)
-}, [cartItems])
-
-
-
-//get all restaurants from restaurant table
-  useEffect(() => {
-    const fetchRestaurant =  async () => {
-    try {const res = await api.get('/restaurant');
-    console.log(res);
-    setRestaurant(res.data)
-    } catch (err) {//Not in 200 response range
-        console.log(err);
-    }}
-    fetchRestaurant();
-}, [])
-//get all customers from customer table
-useEffect(() => {
-  const fetchCustomer =  async () => {
-      try {const res = await api.get('/customers');
-      console.log(res);
-      setCustomer(res.data)
-      } catch (err) {//Not in 200 response range
-          console.log(err);
-      }}
-      fetchCustomer();
-  }, [])
-
-//get all dishes from dish table
-  useEffect(() => {
-    const fetchDish =  async () => {
-        try {const res = await api.get('/dishes');
-        console.log(res);
-        setDish(res.data)
-        } catch (err) {//Not in 200 response range
-            console.log(err);
-        }}
-        fetchDish();
-    }, [])
-
-
-    //routes which are accessable only when user is not logged in
-    let accessableRoutes = <>
-      <Route path="/registerpage"element={<Registerpage />}/>  
-      <Route path="/loginpage"element={<LoginPage login={ newJWToken => {
+      //routes which are accessable only when user is not logged in
+      let accessableRoutes = 
+      <>
+        <Route path="/registerpage"element={<Registerpage />}/>  
+        <Route path="/loginpage"element={<LoginPage login={ newJWToken => {
         setUserJWT(newJWToken)
-      window.localStorage.setItem('localStorageJWT', newJWToken)
-      }
-      
-      }/>}/>  
-    </>
+        window.localStorage.setItem('localStorageJWT', newJWToken)
+        }
+        }/>}/>  
+      </>
 
     //routes which are accessable only when user is logged in
     if (userJWT != null) {
       accessableRoutes =
     <>
-    {/* <Route path="/customerspage"element={<TempCustomerList customers={ customers}/> }/> */}
     <Route path="/payload"element={<Payload jwt={userJWT}/> }/>
     <Route path="/accountpage"element={<MyAccountPage jwt={userJWT}/> }/>
-    <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
-    {/* <Route path="/shoppingcart"element={<ShoppingCartPopUp cartItems={cartItems} dishes={dishes}/>}/> */}
-    <Route path="/shoppingcartpage"element={<ShoppingCartPage jwt={userJWT} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
     <Route path="/shoppingcartpage/:finalizeorder"element={<FinalizeOrder clearCart={clearCart}/>} />
-    
     </>
     }
     console.log("userJWT:");
     console.log(userJWT);
-
-
 
   
   return (
 
     <div className="App">
 
-<Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} customers={ customers} logout={()=> {
+<Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} logout={()=> {
   setUserJWT(null)
-
   window.localStorage.removeItem('localStorageJWT');
   }}/>
 
@@ -199,10 +101,7 @@ useEffect(() => {
   <Router>
       
         <div style={{ display:"flex", justifyContent: "right", marginRight: "10px" }}>
-          {/* <Link to='/'>Frontpage</Link>
-          <Link to='/registerpage'>Register page</Link>
-          <Link to='/loginpage'>Login page</Link>
-          <Link to='/payload'>Payload</Link> */}
+
           <Link to='/shoppingcartpage'>
             <button style={{backgroundColor: '#FA9F4B', cursor:"pointer"}}>
             <div style={{ color:"white", fontSize:"14pt"}}>Shopping Cart
@@ -211,20 +110,16 @@ useEffect(() => {
             </div>
             </button>
           </Link>
-          
       </div>
 
     <Routes>
 
-
-
-    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} orders={orders} jwt={userJWT} />}/>
+    <Route path="/shoppingcartpage"element={<ShoppingCartPage jwt={userJWT} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>} />
+    <Route path="/restaurantinfopage/:restID"element={<RestaurantInfoPage onAdd={onAdd}/>}/>
+    <Route path="/" element={<Frontpage userLoggedIn={userJWT != null} jwt={userJWT} />}/>
     <Route path="/searchresultpage" element={<SearchResultPage/> }/>  
-     {/*  <Route path="restaurantinfopage/:restID" element={<RestaurantInfoPage  />}/> */}
-    <Route path="*"element={<Errorpage />}/>  
-    
+    <Route path="*"element={<Frontpage/>}/>  
       {accessableRoutes}
-      
 
     </Routes>
   </Router>

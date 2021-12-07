@@ -78,7 +78,7 @@ function Frontpage(props) {
       }}
       >
 
-      <div className={styles.searchIcon}><i class="fas fa-search" ></i></div>
+      <div className={styles.searchIcon}><i className="fas fa-search" ></i></div>
       </Link></button>
       </div>
 
