@@ -8,6 +8,16 @@ export default function CustomerOrder(props) {
     const {orders, jwt} = props;
     const decodedToken = jwtFromWeb.decode(jwt);
 
+        console.log("orders:")
+        console.log(orders)
+
+        var onGoingOrders = orders.filter(function (el)
+        {
+        return el.order_status != "Delivered";
+        }
+        );
+
+
     const handleUpdate = (event) => {
         event.preventDefault();
         console.log(event.target.orderid.value)
@@ -25,14 +35,9 @@ export default function CustomerOrder(props) {
                 }
             } 
             );
-            
-            console.log("updated state successfully");
             console.log(res);
             //forces component to refresh the page
             window.location.reload(false);
-           
-           
-                    
             } catch (error) {
                console.log(error)
             }
@@ -49,8 +54,9 @@ export default function CustomerOrder(props) {
                 <div>
 
                     <div >
+               
                         
-                    {orders.map(order =>
+                    {onGoingOrders.map(order =>
                     <form key={order.order_id} onSubmit={handleUpdate}>
                     <h4>ID: <input name="orderid" value={order.order_id}/></h4>
                     <h4 >Price: {order.total_price}€</h4>
