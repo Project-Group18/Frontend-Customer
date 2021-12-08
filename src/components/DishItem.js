@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './DishItem.module.css'
+import {Image} from 'cloudinary-react'
 
 export default function DishItem(props) {
 
@@ -25,6 +26,8 @@ export default function DishItem(props) {
             <div className={styles.detailContainer} key={product.dish_id}>
                     <p>Food Name: <span>{product.dish_name}</span></p>
                     <p>Price: <span>{product.price}€</span></p>
+                    <p> <Image style={{width: '300px'}} cloudName="dczwvybll"
+                    publicId={product.dish_picture}/></p>
                     <div>
                         <img className={styles.placeholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
                         
