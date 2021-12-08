@@ -4,6 +4,7 @@ import {useLocation, useParams} from 'react-router-dom';
 import DishItem from './DishItem.js'
 import api from '../api/config';
 import { useState, useEffect } from 'react';
+import {Image} from 'cloudinary-react'
 
 
 export default function RestaurantInfoPage(props) {
@@ -44,7 +45,8 @@ export default function RestaurantInfoPage(props) {
                 <div>Address: {restaurant.location}</div>
                 <br/>   
             </div>
-                <a><img src='restaurantPlaceHolderIcon.jpg' alt='picture'/></a>
+                <Image style={{width: '300px'}} cloudName="dczwvybll"
+                    publicId={restaurant.restaurant_picture}/>
             </div>
 
             <div className={styles.menuInfoContainer}>
