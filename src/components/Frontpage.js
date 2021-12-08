@@ -66,10 +66,10 @@ function Frontpage(props) {
       <div className={styles.search}> 
 
       <input className={styles.searchbar} 
+      onChange={handleChange}
       type="searchtext" 
       placeholder= "Search for restaurants by name or type" 
       value={searchTerm}
-      onChange={handleChange}
       />
 
       <button className={styles.searchbutton} onClick={console.log(restaurants)}><Link to= {{ pathname: '/searchresultpage/'}} 
@@ -85,12 +85,8 @@ function Frontpage(props) {
       <header className={styles.background}>
         <br/>
 
-       {/*  Temporary conditional rendering to show if the user is logged in */}
-      {/* <div>User logged status: {props.userLoggedIn ? "is logged in" : "not logged in"} </div> */}
       </header>
-        
 
-            {/* WE SHOULD CONSIDER MAKING THIS A MODAL SO THAT IT WOULDN'T BE ON THE WAY */}
         <div>
         {props.userLoggedIn ? 
         <>

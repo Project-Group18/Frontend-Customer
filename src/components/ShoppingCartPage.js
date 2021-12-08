@@ -2,13 +2,10 @@ import styles from './ShoppingCartPage.module.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {Image} from 'cloudinary-react'
+
 function ShoppingCartPage(props) {
 
     const {jwt, cartItems, onAdd, onRemove} = props;
-    console.log("cartItems:")
-    console.log(cartItems)
-
-   
     const totalPrice = cartItems.reduce((a,c) =>a+c.price * c.qty, 0).toFixed(2);
     
 
@@ -38,7 +35,6 @@ function ShoppingCartPage(props) {
            </div> 
 
             <div>
-                   {/*  {cartItems != null && ( */}
                         {cartItems.length !== 0 && (
                         <>
                         <hr></hr>
@@ -53,7 +49,7 @@ function ShoppingCartPage(props) {
                         </Link>
                         </>
                         )}
-
+                
 
             </div>
         </div>

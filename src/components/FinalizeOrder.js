@@ -37,14 +37,17 @@ function FinalizeOrder(props) {
     event.preventDefault();
     
     setOrderProcessState("processing");
+      
 
+    if (event.target.creditcard.value.length == 10) {
     const createOrder =  async () => {
         try {const res = await api.post('createOrder', 
         {
             total_price: totalPrice,
             message: event.target.message.value,
             customer_id: decodedToken.user.id,
-            restaurant_id: cartItems[0].restaurant_id
+            restaurant_id: cartItems[0].restaurant_id,
+            delivery_location: event.target.address.value
         },
         {
             headers: {
@@ -68,6 +71,9 @@ function FinalizeOrder(props) {
         
         } 
         createOrder();
+    } else {
+        setOrderProcessState("creditcardIssue");
+    }
     }
 
 
@@ -86,6 +92,8 @@ function FinalizeOrder(props) {
         case "orderFailed":
             orderUIControls = <span style={{color:"red"}}>Something went wrong</span>
             break;
+        case "creditcardIssue":
+            orderUIControls = <span style={{color:"red"}}>There is an issue with your credit card</span>
     }
 
 
@@ -113,14 +121,14 @@ function FinalizeOrder(props) {
 
             <p>*Enter delivery address here:</p>
             {customer.length !== 0 && 
-            <input type="text" name="address" placeHolder={customer[0].home_address} ></input>
+            <input type="text" name="address" defaultValue={customer[0].home_address} ></input>
             }
             <p>*Enter credit card number here:</p>
             {customer.length !== 0 && 
-            <input type="text" name="creditcard" placeHolder={customer[0].credit_card}></input>
+            <input type="text" name="creditcard" defaultValue={customer[0].credit_card}></input>
             }
             <p>Edit message here:</p>
-            <textarea type="text" name="message" placeHolder="Thanks for the food!" ></textarea>
+            <textarea type="text" name="message" placeholder="Thanks for the food!" ></textarea>
 
             <br/>
             <br/>

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Frontpage from './components/Frontpage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SearchResultPage from './components/SearchResultPage';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import api from './api/config';
 import RestaurantInfoPage from './components/RestaurantInfoPage'; 
 import Registerpage from './components/Registerpage';
 import LoginPage from './components/LoginPage';
