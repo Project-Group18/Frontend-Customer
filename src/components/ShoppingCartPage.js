@@ -1,6 +1,7 @@
 import styles from './ShoppingCartPage.module.css'
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import {Image} from 'cloudinary-react'
 function ShoppingCartPage(props) {
 
     const {jwt, cartItems, onAdd, onRemove} = props;
@@ -22,6 +23,8 @@ function ShoppingCartPage(props) {
                     <div key={item.id} >
                         <div>ID:{item.dish_id}</div>
                         <div>Name:{item.dish_name}</div>
+                        <div><Image style={{width: '300px'}} cloudName="dczwvybll"
+                    publicId={item.dish_picture}/></div>
 
                         <div className={styles.amount}>
                         <button  onClick={() =>onRemove(item)}  className="remove"><div><i class="fas fa-minus-circle"></i></div></button>{item.qty}<button onClick={() =>onAdd(item)}  className="add"><div  ><i class="fas fa-plus-circle"></i></div></button> x € {item.price.toFixed(2)}
