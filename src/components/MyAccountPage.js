@@ -63,16 +63,15 @@ function MyAccountPage(props) {
     return (
         <div>
         
-        <div class={styles.heading}><b>My Profile</b></div>
+        <div className={styles.heading}><b>My Profile</b></div>
             <div className={styles.myInfo}>
                 {customerInfo.map(c => 
-                <tr>
                     <div >
                     <div>Name: {c.customer_name}</div>
                     <div>Default Address: {c.home_address}</div> 
                     <div>Credit card number: {c.credit_card}</div>
                     </div>
-                </tr>)}
+                )}
             </div>
 
         <div className={styles.heading}><b>Order History</b></div>
@@ -81,13 +80,14 @@ function MyAccountPage(props) {
                 <div className={styles.scrolldiv}>
                            
                             <div >
-                        {customerOrders.map(order => 
-                            <div key={order.order_id}>
-                                {/* <div>{order.order_id}</div> */}
-                                <h4>ID: <input name="orderid" value={order.order_id}/></h4>
-                                <h4 >Price: {order.total_price}€</h4>
-                                <h4>Msg: {order.message}</h4>
-                                <h4>Status: {order.order_status}</h4>
+                        {customerOrders.map(order_c => 
+                            <div key={order_c.order_id}>
+                                <h4>ID: <input name="orderid" value={order_c.order_id}/></h4>
+                                <h4 >Price: {order_c.total_price}€</h4>
+                                <h4>Msg: {order_c.message}</h4>
+                                <h4>Status: {order_c.order_status}</h4>
+                                <h4>Delivery address: {order_c.delivery_location}</h4>
+                                <h4>Delivery list: {order_c.product_list}</h4>
                                 <hr/>
                             </div>
                             )}

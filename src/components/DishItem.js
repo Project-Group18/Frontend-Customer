@@ -24,16 +24,19 @@ export default function DishItem(props) {
 
 
             <div className={styles.detailContainer} key={product.dish_id}>
+
                     <div>
                     <p> <Image style={{width: '300px', marginLeft:'20px'}} cloudName="dczwvybll"
                     publicId={product.dish_picture}/></p>
                     </div>
                     <div>
+                    <div className={styles.productInfo}>ID: <span>{product.dish_id}</span></div>
                     <div className={styles.productInfo}>Food Name: <span >{product.dish_name}</span></div>
                     <br/>
                     <br/>
                     <div className={styles.productInfo}>Price: <span>{product.price}€</span></div>
                     </div>
+
                     <div>
                         
                         <br/>

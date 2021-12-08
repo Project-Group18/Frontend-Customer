@@ -50,24 +50,19 @@ export default function CustomerOrder(props) {
     return (
         <div className={styles.OrderDetailContainer}>
 
-
                 <div>
-
-                    <div >
-               
-                        
-                    {onGoingOrders.map(order =>
-                    <form key={order.order_id} onSubmit={handleUpdate}>
-                    <h4>ID: <input name="orderid" value={order.order_id}/></h4>
-                    <h4 >Price: {order.total_price}€</h4>
-                    <h4>Msg: {order.message}</h4>
-                    <h4>Status: {order.order_status}</h4>
-                    <h4><button type="submit" className={styles.deliveredButton}>Finish order</button></h4>
-
-                    <hr/>
+                    {onGoingOrders.map(ord =>
+                    <form key={ord.order_id} onSubmit={handleUpdate}>
+                        <h4>ID: <input name="orderid" value={ord.order_id}/></h4>
+                        <h4 >Price: {ord.total_price}€</h4>
+                        <h4>Msg: {ord.message}</h4>
+                        <h4>Status: {ord.order_status}</h4>
+                        <h4>Delivery address: {ord.delivery_location}</h4>
+                        <h4>Delivery list: {ord.product_list}</h4>
+                        <h4><button type="submit" className={styles.deliveredButton}>Finish order</button></h4>
+                        <hr/>
                     </form>
                     )}
-                    </div>
                     
                 </div>
 
