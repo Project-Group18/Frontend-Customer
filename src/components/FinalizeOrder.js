@@ -12,6 +12,14 @@ function FinalizeOrder(props) {
     const [customer, setCustomer] = useState([]);
     const decodedToken = jwtFromWeb.decode(jwt);
     const [ orderProcessState, setOrderProcessState] = useState("idle")
+    const items = [];
+   cartItems.forEach(item => 
+    items.push(
+        item.dish_id+ " x "+item.qty
+        /* '{\"dish_id\": '+item.dish_id +', \"amount\": '+item.qty+'}' */
+        )
+    )  
+
 
     //jwt brings the user credentials
     //get request to get customer info with decodedToken
@@ -41,13 +49,14 @@ function FinalizeOrder(props) {
 
     if (event.target.creditcard.value.length == 10) {
     const createOrder =  async () => {
-        try {const res = await api.post('createOrder', 
+        try {const res = await api.post('/createOrder', 
         {
             total_price: totalPrice,
             message: event.target.message.value,
             customer_id: decodedToken.user.id,
             restaurant_id: cartItems[0].restaurant_id,
-            delivery_location: event.target.address.value
+            delivery_location: event.target.address.value,
+            items: JSON.stringify(items)
         },
         {
             headers: {
@@ -121,11 +130,11 @@ function FinalizeOrder(props) {
 
             <p>*Enter delivery address here:</p>
             {customer.length !== 0 && 
-            <input type="text" name="address" defaultValue={customer[0].home_address} ></input>
+            <input type="text" name="address" placeholder={customer[0].home_address} ></input>
             }
             <p>*Enter credit card number here:</p>
             {customer.length !== 0 && 
-            <input type="text" name="creditcard" defaultValue={customer[0].credit_card}></input>
+            <input type="text" name="creditcard" placeholder={customer[0].credit_card}></input>
             }
             <p>Edit message here:</p>
             <textarea type="text" name="message" placeholder="Thanks for the food!" ></textarea>
@@ -140,7 +149,6 @@ function FinalizeOrder(props) {
                
       </div>
       
-
         </div>
     )
 }

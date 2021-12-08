@@ -58,6 +58,7 @@ export default function CustomerOrder(props) {
                         <h4>Msg: {ord.message}</h4>
                         <h4>Status: {ord.order_status}</h4>
                         <h4>Delivery address: {ord.delivery_location}</h4>
+                        <h4>Delivery list: {ord.product_list}</h4>
                         <h4><button type="submit" className={styles.deliveredButton}>Finish order</button></h4>
                         <hr/>
                     </form>

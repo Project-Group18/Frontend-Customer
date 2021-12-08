@@ -87,6 +87,7 @@ function MyAccountPage(props) {
                                 <h4>Msg: {order_c.message}</h4>
                                 <h4>Status: {order_c.order_status}</h4>
                                 <h4>Delivery address: {order_c.delivery_location}</h4>
+                                <h4>Delivery list: {order_c.product_list}</h4>
                                 <hr/>
                             </div>
                             )}
