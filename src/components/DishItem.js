@@ -24,12 +24,17 @@ export default function DishItem(props) {
 
 
             <div className={styles.detailContainer} key={product.dish_id}>
-                    <p>Food Name: <span>{product.dish_name}</span></p>
-                    <p>Price: <span>{product.price}€</span></p>
-                    <p> <Image style={{width: '300px'}} cloudName="dczwvybll"
-                    publicId={product.dish_picture}/></p>
                     <div>
-                        <img className={styles.placeholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
+                    <p> <Image style={{width: '300px', marginLeft:'20px'}} cloudName="dczwvybll"
+                    publicId={product.dish_picture}/></p>
+                    </div>
+                    <div>
+                    <div className={styles.productInfo}>Food Name: <span >{product.dish_name}</span></div>
+                    <br/>
+                    <br/>
+                    <div className={styles.productInfo}>Price: <span>{product.price}€</span></div>
+                    </div>
+                    <div>
                         
                         <br/>
                         <button className={styles.button} onClick={() =>onAdd(product)}><div className={styles.link}>Add to cart <i className={styles.shoppingcart} className="fas fa-cart-arrow-down"></i></div></button>

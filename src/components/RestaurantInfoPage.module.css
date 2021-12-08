@@ -13,8 +13,14 @@
   margin-bottom: 20px;
   line-height: 40px;
 }
+.name{
+  font-size: 24pt;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 .restaurantInfoContainer{
-  width: 1200px;
+  margin-top: 40px;
+  width: 1390px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -53,11 +59,11 @@
   margin-bottom: 40px;
   line-height: 10px;
   margin-left:20px;
-  width:800px;
+  width:1000px;
 }
 
 .detailContainer{
-  width: 750px;
+  width: 1000px;
   display: flex;
   margin-bottom: 20px;
   border-top: 1px solid rgb(131, 128, 128);
@@ -65,7 +71,7 @@
 }
 
 .scrolldiv{
-  width:800px;
+  width:1020px;
   background: #FFD8B4;
   height:600px;
   overflow: hidden;
@@ -82,7 +88,10 @@
   width: 250px;
   height: auto;
 }
-
+.picture{
+  width: 450px;
+  height: auto;
+}
 .button{
   margin-left:10px;
   cursor:pointer;

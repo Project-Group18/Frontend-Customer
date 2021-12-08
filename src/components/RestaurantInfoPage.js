@@ -38,14 +38,14 @@ export default function RestaurantInfoPage(props) {
     <div>
         <div className={styles.restaurantInfoContainer}>
             <div className={styles.info}>
-                <div>Restaurant name: { restaurant.restaurant_name}</div>    
+                <div className={styles.name}>{ restaurant.restaurant_name}</div>    
                 <div>Restaurant type: { restaurant.restaurant_type}</div>
                 <div>Open Hours: {restaurant.open_hours}</div>
                 <div>Price Level: {restaurant.price_level}</div>
                 <div>Address: {restaurant.location}</div>
                 <br/>   
             </div>
-                <Image style={{width: '300px'}} cloudName="dczwvybll"
+                <Image className={styles.picture} cloudName="dczwvybll"
                     publicId={restaurant.restaurant_picture}/>
             </div>
 
