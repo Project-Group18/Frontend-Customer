@@ -3,7 +3,7 @@ import axios from 'axios';
 //access the public requests in the server
 
 export default axios.create({
-    baseURL: 'https://delivertwist18.herokuapp.com'
+    baseURL: 'https://delivertwist18.herokuapp.com/public'
     
 });
 
