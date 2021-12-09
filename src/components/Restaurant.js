@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Restaurant.module.css'
 import { Link } from 'react-router-dom';
-
+import {Image} from 'cloudinary-react'
 
 export default function Restaurant(props) {
     const {restaurants} = props;
@@ -34,7 +34,8 @@ export default function Restaurant(props) {
                     <br/>
                 </div>
                 <div>
-                <img className={styles.placeholder} src='restaurantPlaceHolderIcon.jpg' alt='picture'/>
+                <Image className={styles.placeholder} cloudName="dczwvybll"
+                    publicId={restaurant.restaurant_picture}/>
                 </div>
                 </div>
             </div>
