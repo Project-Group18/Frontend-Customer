@@ -1,9 +1,6 @@
 import React from 'react'
 import styles from './Header.module.css'
-import { useState } from 'react';
 import {Image} from 'cloudinary-react'
-
-/* import RegisterPopUp from './RegisterPopUp.js'; */
 
 
 export default function Header(props) {
