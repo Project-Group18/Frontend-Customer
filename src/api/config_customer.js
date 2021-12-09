@@ -1,14 +1,13 @@
 import axios from 'axios';
 
 
-//in the end produt there will be 3 different versions of this
-//URL (public, customer, manager). Two of which will be on this application.
+//access customer side's protected requests
 export default axios.create({
-    baseURL: 'http://localhost:3001/customer'
+    baseURL: 'https://delivertwist18.herokuapp.com/customer'
     
 });
 
-//''
-//https://delivertwist18.herokuapp.com
+//'http://localhost:3001/customer'
+//
 
 
