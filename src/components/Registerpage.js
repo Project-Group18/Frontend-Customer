@@ -8,7 +8,7 @@ function Registerpage() {
     const navigate = useNavigate();
     const [ signupProcessState, setSignupProcessState] = useState("idle")
 
-
+   
     const handleSignupSubmit = (event) => {
         event.preventDefault();
 
@@ -18,6 +18,11 @@ function Registerpage() {
         console.log(event.target.email.value);
         console.log(event.target.password.value);
         console.log(event.target.creditcard.value);
+
+        if (event.target.name.value == null) {
+            if (event.target.email.value == null) {
+            if (event.target.password.value) {
+            if (event.target.creditcard.value) {
 
         const postCustomer =  async () => {
         try {const res = await api.post('/customer', 
@@ -43,7 +48,21 @@ function Registerpage() {
        
         } 
         postCustomer();
-    };
+    
+    } else {
+        setSignupProcessState("SignUpFailed");
+    }
+    } else {
+        setSignupProcessState("SignUpFailed");
+    } 
+    } else {
+        setSignupProcessState("SignUpFailed");
+    } 
+    } else {
+        setSignupProcessState("SignUpFailed");
+    }
+}
+
 
     let signupUIControls = null;
     switch(signupProcessState) {
