@@ -17,6 +17,7 @@ export default function RestaurantInfoPage(props) {
       let {restID} = useParams();
 
     const [dishes, setdishes ] = useState([]);
+    const [categories, setCategories ] = useState([]);
 
 
     //get all dishes with restaurant id
@@ -32,6 +33,21 @@ export default function RestaurantInfoPage(props) {
           console.log(err);
       })
   }, [])
+
+  //get all categories with restaurant id
+  useEffect(() => {
+    const path = 'restaurant/' + restID+'/category';
+  api.get(path)
+    .then(res => {
+        console.log("categories with restID")
+        console.log(res);
+        setCategories(res.data)
+    })
+  .catch (function (err) {//Not in 200 response range
+      console.log(err);
+  })
+}, [])
+
 
 
     return (
@@ -52,10 +68,12 @@ export default function RestaurantInfoPage(props) {
             <div className={styles.menuInfoContainer}>
                 <div className={styles.menuContainer}>
                     <div className={styles.menuHeading}>
-                        Menu
+                        Restaurant categories
                     </div>
                     <div className={styles.menuCategory}>
-                        Recommended
+                        {categories.map(catElement =>
+                            <ul>{catElement.category_name}</ul>
+                            )}
                     </div>
             </div>
             <div className={styles.infoContainer}>
