@@ -15,6 +15,8 @@ function LoginPage(props) {
         event.preventDefault();
 
         setlogInSetUpState("processing");
+
+
         const customerLogIn =  async () => {
             try {const res = await api.post('', 
             null, 
