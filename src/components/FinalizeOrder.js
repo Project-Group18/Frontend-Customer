@@ -48,6 +48,7 @@ function FinalizeOrder(props) {
       
 
     if (event.target.creditcard.value.length == 10) {
+        if(event.target.address.value.length > 2) {
     const createOrder =  async () => {
         try {const res = await api.post('/createOrder', 
         {
@@ -80,6 +81,10 @@ function FinalizeOrder(props) {
         
         } 
         createOrder();
+    
+    } else {
+        setOrderProcessState("deliveryAddressIssue");
+    }
     } else {
         setOrderProcessState("creditcardIssue");
     }
@@ -103,6 +108,10 @@ function FinalizeOrder(props) {
             break;
         case "creditcardIssue":
             orderUIControls = <span style={{color:"red"}}>There is an issue with your credit card</span>
+            break;
+        case "deliveryAddressIssue":
+            orderUIControls = <span style={{color:"red"}}>There is an issue with your delivery address</span>
+            break;
     }
 
 
