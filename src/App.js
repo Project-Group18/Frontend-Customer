@@ -62,6 +62,11 @@ function App() {
     const clearCart= () => {
       setCartItems([]);
     };
+    //remove jwt token and log user out
+    const logout= () => {
+      setUserJWT(null)
+    window.localStorage.removeItem('localStorageJWT');
+    };
 
       //routes which are accessable only when user is not logged in
       let accessableRoutes = 
@@ -91,15 +96,32 @@ function App() {
 
     <div className="App">
 
-<Header countCartItems={cartItems.length} userLoggedIn={userJWT != null} logout={()=> {
-  setUserJWT(null)
-  window.localStorage.removeItem('localStorageJWT');
-  }}/>
+<Header />
 
 
   <Router>
       
-        <div style={{ display:"flex", justifyContent: "right", marginRight: "10px" }}>
+    <div  className= {styles.barContainer}>
+      {userJWT != null ? 
+      <>
+        <button className={styles.buttonContainer}> <a href='/accountpage' className={styles.buttonFont}> My account</a></button>
+        <button onClick={logout} className={styles.buttonContainer}><a href='/' className={styles.buttonFont}> Log out</a></button>
+      </>
+      :
+      <>
+        {/* If user is not logged in, render these buttons */}
+        <button className={styles.buttonContainer}> <a href='/loginpage' className={styles.buttonFont}> Log in</a></button>
+        <button className={styles.buttonContainer}> <a href='/registerpage' className={styles.buttonFont}> Sign up</a></button>
+      </>
+      }
+
+        <Link to='/'>
+          <button style={{backgroundColor: '#FA9F4B', cursor:"pointer"}}>
+                <div style={{ color:"white", fontSize:"14pt"}}>
+                  Frontpage
+                </div>
+          </button>
+        </Link>
 
           <Link to='/shoppingcartpage'>
             <button style={{backgroundColor: '#FA9F4B', cursor:"pointer"}}>

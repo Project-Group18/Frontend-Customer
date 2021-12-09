@@ -14,21 +14,27 @@ function Registerpage() {
 
         setSignupProcessState("processing");
 
-        console.log(event.target.name.value);
-        console.log(event.target.email.value);
-        console.log(event.target.password.value);
-        console.log(event.target.creditcard.value);
+        console.log(event.target.name.value.length);
+        console.log(event.target.email.value.length);
+        console.log(event.target.address.value.length);
+        console.log(event.target.password.value.length);
+        console.log(event.target.creditcard.value.length);
 
-        if (event.target.name.value == null) {
-            if (event.target.email.value == null) {
-            if (event.target.password.value) {
-            if (event.target.creditcard.value) {
+        if (
+            event.target.name.value.length > 1 && 
+            event.target.email.value.length > 5 && 
+            event.target.email.value.includes("@") && 
+            event.target.password.value.length >= 8 && 
+            event.target.creditcard.value.length == 10 && 
+            event.target.address.value.length > 4)
+            {
 
         const postCustomer =  async () => {
         try {const res = await api.post('/customer', 
         {
             customer_name: event.target.name.value,
             customer_email: event.target.email.value,
+            home_address: event.target.address.value,
             customer_password: event.target.password.value,
             credit_card: event.target.creditcard.value
             
@@ -49,15 +55,7 @@ function Registerpage() {
         } 
         postCustomer();
     
-    } else {
-        setSignupProcessState("SignUpFailed");
-    }
-    } else {
-        setSignupProcessState("SignUpFailed");
-    } 
-    } else {
-        setSignupProcessState("SignUpFailed");
-    } 
+   
     } else {
         setSignupProcessState("SignUpFailed");
     }
@@ -78,6 +76,9 @@ function Registerpage() {
 
         case "SignUpFailed":
             signupUIControls = <span style={{color:"red"}}>Sign up failed</span>
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 2000);
             break;
     }
 
@@ -90,8 +91,13 @@ function Registerpage() {
                 <form onSubmit ={handleSignupSubmit} >
                     <p>*Name</p>
                         <input type="text" name="name" placeholder="Enter your name"></input>
+                        <span> Note: Name must be at least 2 characters.</span>
                     <p>*Email</p>
                         <input type="text" name="email" placeholder="Enter email"></input>
+                        <span> Note: Email must be at least 6 characters and contain "@".</span>
+                    <p>*Default address</p>
+                        <input type="text" name="address" placeholder="Enter default address"></input>
+                        <span> Note: Address must be at least 5 characters.</span>
                     <p>*Password:</p>
                         <input type="text" name="password" placeholder="Enter password"></input>
                         <span> Note: Password must be at least 8 characters.</span>

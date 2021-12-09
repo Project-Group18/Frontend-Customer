@@ -56,7 +56,7 @@ function LoginPage(props) {
     let logInUIControls = null;
     switch(logInSetUpState) {
         case "idle":
-            logInUIControls =<button type="submit">Sign in</button>
+            logInUIControls =<button className={styles.button} type="submit">Sign in</button>
             break;
         case "processing": 
         logInUIControls = <span style={{color:"blue"}}>Processing...</span>
@@ -67,6 +67,9 @@ function LoginPage(props) {
 
         case "SignInFailed":
             logInUIControls = <span style={{color:"red"}}>Sign in failed</span>
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 1500);
             break;
     }
 
@@ -83,7 +86,7 @@ function LoginPage(props) {
                         <input type="text" name="password" placeholder="Enter password"></input>
                     <br/>
                     <div>
-                        <button className={styles.button} type="submit"><div className={styles.link}>Login</div></button>
+                        {logInUIControls}
                     </div>
                 </form>
         </div>

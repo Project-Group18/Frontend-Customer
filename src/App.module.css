@@ -1,3 +1,16 @@
 .shoppingcart{
     align-self: right;
 }
+.barContainer {
+    display: flex;
+    justify-content: right;
+    margin-right: 10px;
+}
+.buttonContainer {
+    background-color: #FA9F4B; 
+    cursor: pointer;
+}
+.buttonFont {
+    color:white;
+     font-size: 14pt
+}

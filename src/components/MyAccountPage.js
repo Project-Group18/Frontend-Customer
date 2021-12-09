@@ -74,8 +74,11 @@ function MyAccountPage(props) {
                 )}
             </div>
 
-        <div className={styles.heading}><b>Order History</b></div>
+        <div className={styles.heading}><b>Order History:</b></div>
+
+        <h4 >{customerOrders.length === 0 && <ul>No order history yet</ul>}</h4>
    
+            {customerOrders.length > 0 &&
             <div className={styles.OrderInfoContainer}>
                 <div className={styles.scrolldiv}>
                            
@@ -97,7 +100,7 @@ function MyAccountPage(props) {
                    
                 </div>
             </div> 
-
+        }
 
     </div>
     )
