@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 
-//this config is used only in the customer log in
+//access the jwtLogin side requests
 
 export default axios.create({
-    baseURL: 'http://localhost:3001/jwtLogin'
+    baseURL: 'https://delivertwist18.herokuapp.com/jwtLogin'
     
 });
 
-//''
-//https://delivertwist18.herokuapp.com
+//'http://localhost:3001/jwtLogin'
+//
 
 
 
