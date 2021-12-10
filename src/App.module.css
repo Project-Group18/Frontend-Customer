@@ -12,5 +12,6 @@
 }
 .buttonFont {
     color:white;
-     font-size: 14pt
+    font-size: 14pt;
+    text-decoration: underline;
 }

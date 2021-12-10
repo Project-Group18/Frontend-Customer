@@ -116,16 +116,16 @@ function App() {
       }
 
         <Link to='/'>
-          <button style={{backgroundColor: '#FA9F4B', cursor:"pointer"}}>
-                <div style={{ color:"white", fontSize:"14pt"}}>
+          <button className={styles.buttonContainer}>
+                <div className={styles.buttonFont}>
                   Frontpage
                 </div>
           </button>
         </Link>
 
           <Link to='/shoppingcartpage'>
-            <button style={{backgroundColor: '#FA9F4B', cursor:"pointer"}}>
-            <div style={{ color:"white", fontSize:"14pt"}}>Shopping Cart
+            <button className={styles.buttonContainer}>
+            <div className={styles.buttonFont}>Shopping Cart
               <i className={styles.shoppingcart}className="fas fa-shopping-cart">
               </i>
             </div>

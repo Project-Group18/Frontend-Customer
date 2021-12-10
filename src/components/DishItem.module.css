@@ -14,7 +14,7 @@
   line-height: 40px;
 }
 .restaurantInfoContainer{
-  width: 1200px;
+  margin-right: 40px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -22,7 +22,7 @@
 }
 
 .menuContainer{
-  width: 300px;
+  margin-right: 40px;
   height: 600px;
   background-color: #FFD8B4;
   margin-left: 40px;
@@ -58,30 +58,12 @@
 
 .detailContainer{
   padding-top: 40px;
-  width: 980px;
+  margin-right: 40px;
   display: flex;
   margin-bottom: 20px;
   border-top: 1px solid rgb(131, 128, 128);
   justify-content: space-between;
-}
-
-.scrolldiv{
-  width:800px;
-  background: #FFD8B4;
-  height:600px;
-  overflow: hidden;
-  overflow-y:scroll;
-}
-
-.restaurantPlaceholder{
-  width: 450px;
-  height: auto;
-}
-
-.placeholder{
-  margin-top: 20px;
-  width: 250px;
-  height: auto;
+  gap: 80px;
 }
 
 .button{
