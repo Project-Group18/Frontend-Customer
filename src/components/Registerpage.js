@@ -26,6 +26,7 @@ function Registerpage() {
             event.target.email.value.includes("@") && 
             event.target.password.value.length >= 8 && 
             event.target.creditcard.value.length == 10 && 
+            event.target.creditcard.value.match(/^[0-9]+$/) != null &&
             event.target.address.value.length > 4)
             {
 
